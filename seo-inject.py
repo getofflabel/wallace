@@ -83,8 +83,8 @@ PAGES = {
   ),
   'services/ai.html': dict(
     path='/services/ai.html',
-    title='AI Built Into Your Business | Studio Wallace',
-    desc='Answer customers at 2am, never miss another enquiry, and follow up with everyone who almost booked. Practical AI built into the business you already run.',
+    title='Your Competitors Are Already Using AI | Studio Wallace',
+    desc='Businesses using AI answer every customer instantly and book them on the spot. The ones who waited are losing customers they never hear about. Get ahead while it still counts.',
     ld=[crumbs('AI for your business', f'{SITE}/services/ai.html'),
         service('AI automation for small business',
                 'Customer-facing AI built into a business: a helper that answers customers around the clock and books them in, missed enquiries caught and answered, automatic follow-up, and personalised recommendations.',
