@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Foundry Supply · Small-Batch Coffee Roasters</title>
+<title>How We Roast · Foundry Supply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -526,38 +526,38 @@
 
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="logo" href="#top">FOUNDRY·SUPPLY</a>
+    <a class="logo" href="index.html">FOUNDRY&middot;SUPPLY</a>
     <nav class="nav-links">
-      <a href="#shop">Shop</a>
+      <a href="index.html#shop">Shop</a>
       <a href="roasting.html">Roasting</a>
       <a href="wholesale.html">Wholesale</a>
       <a href="#visit">Visit</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <button class="cart-btn" id="cartOpen" aria-label="Open cart">
+      <a class="cart-btn" href="index.html#cart" aria-label="Open the cart on the shop page">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         Cart <span class="cart-count" id="cartCount">0</span>
-      </button>
+      </a>
     </nav>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#shop">Shop</a>
+    <a href="index.html#shop">Shop</a>
     <a href="roasting.html">Roasting</a>
     <a href="wholesale.html">Wholesale</a>
     <a href="#visit">Visit</a>
   </div>
 </header>
 
-<section class="hero" id="top" style="padding:0">
-  <div class="hero-bg"><video autoplay muted loop playsinline preload="auto" poster="img/hero.jpg" aria-label="Espresso pulling into a yellow cup on a dark bar"><source src="media/hero.mp4" type="video/mp4"></video></div>
+<section class="hero sub" id="top" style="padding:0">
+  <div class="hero-bg"><img src="img/roast-drop.jpg" alt="Roasted beans pouring out of the drum into the cooling bin"></div>
   <div class="hero-content">
-    <p class="hero-kicker">Small-batch roasters · Providence, RI</p>
-    <h1>Roasted eight bags at a time.</h1>
-    <p>Foundry Supply is a two-person roastery on the ground floor of a former ironworks. We roast every Thursday, ship every Friday, and never let a batch sit longer than a day.</p>
+    <p class="hero-kicker">Behind the drum</p>
+    <h1>One drum, one day a week.</h1>
+    <p>Everything we sell is roasted on a single 8 kg drum in Providence. Here is what happens between the burlap sack and your kitchen.</p>
     <div class="hero-ctas">
-      <a href="#shop" class="btn btn-clay">Shop the roast list</a>
-      <a href="roasting.html" class="btn btn-ghost">How we roast</a>
+      <a href="index.html#shop" class="btn btn-clay">Shop the roast list</a>
+      <a href="#week" class="btn btn-ghost">The weekly cycle</a>
     </div>
   </div>
 </section>
@@ -566,70 +566,118 @@
   <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
-<section id="featured">
+<section>
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <p class="kicker">This week</p>
-        <h2>Fresh off the drum</h2>
-      </div>
-      <p>Four coffees we can't keep on the shelf. Every bag is 12 oz, whole bean, with the roast date printed on the label.</p>
+    <div class="stat-row">
+      <div class="stat"><p class="num">8 kg</p><p class="lbl">per batch, small enough that we taste every single one</p></div>
+      <div class="stat"><p class="num">1</p><p class="lbl">roast day a week, so nothing sits on a shelf</p></div>
+      <div class="stat"><p class="num">6</p><p class="lbl">farms we buy from, plus one importer we know by name</p></div>
+      <div class="stat"><p class="num">24 h</p><p class="lbl">from the cooling tray to the delivery truck</p></div>
     </div>
-    <div class="rail" id="featuredRail"></div>
   </div>
 </section>
 
-<section class="shop" id="shop">
+<section class="tint" id="week">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <p class="kicker">The full shelf</p>
-        <h2>The roast list</h2>
+        <p class="kicker">The weekly cycle</p>
+        <h2>Same week, every week</h2>
       </div>
-      <p>Beans by the bag, the gear we actually brew with, and a few things for the kitchen shelf.</p>
+      <p>The whole roastery runs on one rhythm. Order by Wednesday midnight and your bag is on Thursday's drum.</p>
     </div>
-    <div class="tabs reveal" id="tabs" role="tablist">
-      <button class="tab active" data-cat="beans" role="tab" aria-selected="true">Beans</button>
-      <button class="tab" data-cat="equipment" role="tab" aria-selected="false">Equipment</button>
-      <button class="tab" data-cat="merch" role="tab" aria-selected="false">Merch</button>
+    <div class="week">
+      <div class="day">
+        <p class="d-name">Monday</p>
+        <h3>Cupping day</h3>
+        <p>New samples on the table. Each gets a 200 g test roast and a blind cupping. About a third don't make it.</p>
+      </div>
+      <div class="day">
+        <p class="d-name">Wednesday</p>
+        <h3>Orders close</h3>
+        <p>Midnight is the cutoff. Every order in by then gets weighed into Thursday's batches.</p>
+      </div>
+      <div class="day hot">
+        <p class="d-name">Thursday</p>
+        <h3>Roast day</h3>
+        <p>The drum runs from 7 am. Batches of 8 kg, logged curve by curve, tasted as they cool.</p>
+      </div>
+      <div class="day">
+        <p class="d-name">Friday</p>
+        <h3>Ship day</h3>
+        <p>Beans rest overnight, get bagged in the morning, and are on the truck by 2 pm. Pickup runs 8 am to 2 pm.</p>
+      </div>
+      <div class="day">
+        <p class="d-name">Saturday</p>
+        <h3>Doors open</h3>
+        <p>Tours at 10 am, cupping after. The ticket price comes off any bag you take home.</p>
+      </div>
     </div>
-    <div class="grid" id="grid"></div>
   </div>
 </section>
 
-<section id="roasting">
+<section>
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <p class="kicker">Behind the drum</p>
-        <h2>Green to bag in nine days</h2>
+        <p class="kicker">Green to bag</p>
+        <h2>How a coffee gets here</h2>
       </div>
-      <p>No warehouse, no pallets of stale stock. We buy small lots, roast them the week you order, and taste every single batch before it ships. <a class="text-link" href="roasting.html">See the full week</a></p>
+      <p>Four stops between the farm and the label. None of them are automated.</p>
     </div>
-    <div class="roast-grid">
-      <div class="step reveal">
-        <div class="step-img"><img src="img/roast-cherries.jpg" alt="Coffee cherries drying in woven baskets" loading="lazy"></div>
-        <span class="step-num">01</span>
-        <h3>Buy small</h3>
-        <p>We work with six farms and one importer we know by name. Lots arrive in 30 kg boxes, not shipping containers.</p>
+
+    <div class="essay reveal">
+      <div class="essay-img"><img src="img/green-sacks.jpg" alt="Stacked burlap sacks of green coffee" loading="lazy"></div>
+      <div class="essay-txt">
+        <p class="kicker">01 &middot; Buying</p>
+        <h3>It arrives in burlap</h3>
+        <p>We buy from six farms and one importer we know by name. Lots come in 30 kg boxes, small enough that every sack gets opened, smelled, and graded by hand.</p>
+        <p>Green coffee keeps for months. Roasted coffee doesn't. So beans stay green in the back room until the week you order them.</p>
       </div>
-      <div class="step reveal">
-        <div class="step-img"><img src="img/roast-green.jpg" alt="A scoop of green unroasted coffee beans" loading="lazy"></div>
-        <span class="step-num">02</span>
-        <h3>Sample first</h3>
-        <p>Every lot gets a 200 g test roast and a cupping before we commit. About a third of what we taste never makes the list.</p>
+    </div>
+
+    <div class="essay flip reveal">
+      <div class="essay-img"><img src="img/cupping.jpg" alt="Cupping bowls and spoons on a wooden table" loading="lazy"></div>
+      <div class="essay-txt">
+        <p class="kicker">02 &middot; Tasting</p>
+        <h3>Every lot earns its place</h3>
+        <p>Before a coffee makes the list it goes through the Monday table: a small test roast, then a blind cupping. We score sweetness, acidity, and how it tastes once the cup cools down.</p>
+        <p>About a third of what we taste never makes it. That's the point.</p>
       </div>
-      <div class="step reveal">
-        <div class="step-img"><img src="img/roast-drum.jpg" alt="Coffee beans tumbling inside the roaster drum" loading="lazy"></div>
-        <span class="step-num">03</span>
-        <h3>Roast Thursday</h3>
-        <p>One roast day a week keeps every bag inside a two-day window. Batches are 8 kg, logged by hand, curve by curve.</p>
+    </div>
+
+    <div class="essay reveal">
+      <div class="essay-img"><img src="img/roast-tray.jpg" alt="A roaster stirring fresh beans in the cooling tray" loading="lazy"></div>
+      <div class="essay-txt">
+        <p class="kicker">03 &middot; Roasting</p>
+        <h3>Thursday on the drum</h3>
+        <p>The drum is hot by 7 am and runs most of the day. A batch takes 11 to 13 minutes, and every one is logged by hand so next Thursday can repeat this one exactly.</p>
+        <p>Out of the drum, beans hit the cooling tray and get stirred until they're cool enough to touch.</p>
       </div>
-      <div class="step reveal">
-        <div class="step-img"><img src="img/roast-cool.jpg" alt="Hands raking fresh roasted beans in the cooling tray" loading="lazy"></div>
-        <span class="step-num">04</span>
-        <h3>Rest, then ship</h3>
-        <p>Beans rest overnight to let the CO2 settle, get bagged Friday morning, and are on a truck by 2 pm.</p>
+    </div>
+
+    <div class="essay flip reveal">
+      <div class="essay-img"><img src="img/roast-cool.jpg" alt="Hands raking roasted beans in the cooling tray" loading="lazy"></div>
+      <div class="essay-txt">
+        <p class="kicker">04 &middot; Shipping</p>
+        <h3>Rest, bag, truck</h3>
+        <p>Fresh roasted coffee is full of CO2, so it rests overnight before bagging. Friday morning every bag gets weighed, sealed, and stamped with the roast date.</p>
+        <p>By 2 pm the week's work is on a truck. By the weekend it's in a kettle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Taste what Thursday made.</h2>
+        <p>Every bag on the list was roasted this week and stamped with the date to prove it.</p>
+      </div>
+      <div class="hero-ctas">
+        <a href="index.html#shop" class="btn btn-clay">Shop the roast list</a>
+        <a href="wholesale.html" class="btn btn-ghost">Buying for a cafe?</a>
       </div>
     </div>
   </div>
@@ -656,460 +704,30 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© Foundry Supply</span>
+    <span>&copy; Foundry Supply</span>
     <span>Roasted in Providence</span>
   </div>
 </footer>
 
-<!-- overlay + modal + drawer -->
-<div class="overlay" id="overlay"></div>
-
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details">
-  <div class="modal-box">
-    <div class="modal-img">
-      <img id="mImg" alt="">
-      <button class="modal-close" id="mClose" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-body">
-      <div>
-        <p class="kicker" id="mKicker"></p>
-        <h3 id="mName"></h3>
-      </div>
-      <p class="modal-meta" id="mMeta"></p>
-      <p class="modal-desc" id="mDesc"></p>
-      <div id="mPlans" class="plan-row" style="display:none">
-        <button class="plan active" id="planOnce">
-          <span class="p-name">One-time</span>
-          <span class="p-price" id="planOncePrice"></span>
-        </button>
-        <button class="plan" id="planSub">
-          <span class="p-name">Subscribe, save 15%</span>
-          <span class="p-price" id="planSubPrice"></span>
-        </button>
-      </div>
-      <div id="mFreq" class="freq-row" style="display:none">
-        <button class="freq active" data-freq="2">Every 2 weeks</button>
-        <button class="freq" data-freq="4">Every 4 weeks</button>
-      </div>
-      <div class="qty-cart">
-        <div class="stepper">
-          <button id="qtyMinus" aria-label="Decrease quantity">−</button>
-          <span class="qty" id="qtyVal">1</span>
-          <button id="qtyPlus" aria-label="Increase quantity">+</button>
-        </div>
-        <button class="add-btn" id="addBtn">Add to cart</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<aside class="drawer" id="drawer" aria-label="Shopping cart">
-  <div class="drawer-head">
-    <h3 id="drawerTitle">Your cart</h3>
-    <button class="drawer-close" id="drawerClose" aria-label="Close cart">✕</button>
-  </div>
-  <div id="drawerBody" style="display:flex;flex-direction:column;flex:1;min-height:0"></div>
-</aside>
-
 <script>
 (function(){
   "use strict";
-  var money = function(n){ return "$" + n.toFixed(2); };
-
-  /* last Thursday's date (roast day) */
-  var now = new Date();
-  var lt = new Date(now);
-  var diff = (now.getDay() - 4 + 7) % 7;
-  lt.setDate(now.getDate() - diff);
-  var ROAST_DATE = lt.toLocaleDateString("en-US", {month:"short", day:"numeric"}).replace(" ", "\u00A0");
-
-  /* subscription unit price, rounded to the cent so displayed price × qty always matches totals */
-  function subUnit(price){ return Math.round(price*0.85*100)/100; }
-
-  var PRODUCTS = [
-    {id:"foundry-blend", cat:"beans", name:"The Foundry Blend", price:17.5, img:"img/foundry-blend.jpg",
-      origin:"Brazil + Ethiopia", process:"Natural + washed", notes:"dark chocolate, toasted hazelnut, orange peel",
-      desc:"Our house espresso, built to hold its own through milk and still taste like something as a straight shot. This is the coffee on our bar seven days a week.", featured:true, alt:"Latte with fresh latte art on a wooden table"},
-    {id:"hollow-bright", cat:"beans", name:"Hollow & Bright", price:19, img:"img/hollow-bright.jpg",
-      origin:"Guji, Ethiopia", process:"Washed", notes:"apricot, bergamot, honey",
-      desc:"A washed Guji lot roasted light enough to keep the florals intact. Our favorite pour over on the list right now.", featured:true, alt:"Black coffee in a glass cup beside scattered beans"},
-    {id:"slate", cat:"beans", name:"Slate", price:17, img:"img/slate.jpg",
-      origin:"Huila, Colombia", process:"Washed", notes:"baker's chocolate, black cherry, molasses",
-      desc:"The dark roast for people who think they don't like dark roasts. Developed right up to second crack's front door, never inside it, so the sweetness survives.", featured:true, alt:"Dark roasted coffee beans filling the frame"},
-    {id:"porchlight", cat:"beans", name:"Porchlight Decaf", price:18, img:"img/porchlight.jpg",
-      origin:"Cauca, Colombia", process:"Sugarcane EA", notes:"caramel, red apple, graham cracker",
-      desc:"Sugarcane-process decaf that we cup blind against the caffeinated shelf, and it holds. Drink it at 9 pm like it's nothing.", featured:true, alt:"Coffee cup with roasted beans suspended above it"},
-    {id:"kettle-song", cat:"beans", name:"Kettle Song", price:21, img:"img/kettle-song.jpg",
-      origin:"Nyeri, Kenya", process:"Washed, AB grade", notes:"blackcurrant, grapefruit, brown sugar",
-      desc:"A classic Nyeri AB with the juicy acidity Kenya is famous for. Small lot, roughly 40 bags per roast week, gone when it's gone.", alt:"Espresso in a white cup on a gray wooden table"},
-    {id:"field-blend", cat:"beans", name:"Field Blend", price:16.5, img:"img/field-blend.jpg",
-      origin:"Brazil + Guatemala", process:"Natural + washed", notes:"peanut brittle, dried fig, cocoa",
-      desc:"The everyday drinker. Comfortable as drip, forgiving in a French press, and priced so you never have to ration it.", alt:"Medium roasted coffee beans filling the frame"},
-    {id:"brewer", cat:"equipment", name:"Glass Pour-Over Brewer", price:34, img:"img/brewer.jpg",
-      detail:"Borosilicate glass · 2-cup · fits standard cone filters",
-      desc:"The same brewer we use at the tasting bar every Saturday. Thick borosilicate glass, pours clean, and looks good enough to leave on the counter.", alt:"Hand pouring hot water into a glass pour-over brewer"},
-    {id:"brew-kit", cat:"equipment", name:"Brew Bar Starter Kit", price:68, img:"img/brew-kit.jpg",
-      detail:"Brewer + 100 filters + dosing scoop + brew guide",
-      desc:"Everything you need to make cafe-grade coffee at home except the kettle. We include the same one-page brew guide that's taped above our own bar.", alt:"Home brew bar with pour-over gear on a wooden counter"},
-    {id:"glasses", cat:"equipment", name:"Double-Wall Glasses, Set of 2", price:24, img:"img/glasses.jpg",
-      detail:"150 ml · hand-blown · dishwasher safe",
-      desc:"Hand-blown double-wall glasses that keep espresso hot and knuckles cool. The right size for a cortado, which is the right drink.", alt:"Glass espresso cup on a warm-lit table"},
-    {id:"mug", cat:"merch", name:"Foundry Diner Mug", price:14, img:"img/mug.jpg",
-      detail:"10 oz stoneware · fired matte white",
-      desc:"A proper diner mug, heavy enough to feel serious. Stamped with our anvil mark on the bottom where only you know it's there.", alt:"White diner mug beside a pile of roasted beans"},
-    {id:"tour", cat:"merch", name:"Roastery Tour + Cupping", price:15, img:"img/tour.jpg",
-      detail:"Saturdays 10 am · 90 minutes · 6 seats",
-      desc:"Stand at the drum while a batch turns, then cup the week's roasts with us. Ticket price comes off any bag you take home.", alt:"Overhead view of the roastery floor and roasting drum"},
-    {id:"giftcard", cat:"merch", name:"Gift Card", price:25, img:"img/giftcard.jpg",
-      detail:"Digital delivery · never expires",
-      desc:"For the person whose coffee opinions you trust. Delivered by email with a note in your words, not ours.", alt:"Two lattes and a slice of cake on a dark table"}
-  ];
 
   /* ---------- marquee ---------- */
   var track = document.getElementById("marqueeTrack");
-  var chunk = 'ROASTED THURSDAYS<span class="dot">·</span>SHIPPED FRIDAY<span class="dot">·</span>SMALL BATCH<span class="dot">·</span>';
-  var half = "";
-  for (var i=0;i<4;i++) half += chunk;
-  track.innerHTML = '<div class="marquee-chunk">'+half+'</div><div class="marquee-chunk">'+half+'</div>';
-
-  /* ---------- cards ---------- */
-  function cardHTML(p, tag){
-    var meta = p.cat === "beans"
-      ? '<p class="card-meta">' + p.origin + ' · ' + p.process + '</p><p class="card-notes">' + p.notes + '</p><p class="card-roasted">Roasted ' + ROAST_DATE + ' · ships Friday</p>'
-      : '<p class="card-meta">' + p.detail + '</p>';
-    return '<article class="card" data-id="' + p.id + '" tabindex="0" role="button" aria-label="View ' + p.name + '">' +
-      '<div class="card-img">' + (tag ? '<span class="card-tag">' + tag + '</span>' : '') +
-      '<img src="' + p.img + '" alt="' + p.alt + '" loading="lazy"></div>' +
-      '<div class="card-body"><h3>' + p.name + '</h3>' + meta +
-      '<div class="card-foot"><span class="card-price">' + money(p.price) + (p.cat === "beans" ? ' <span style="font-weight:400;font-size:12.5px;color:var(--ink-40)">/ 12 oz</span>' : '') + '</span>' +
-      '<button class="order-btn">Order</button></div></div></article>';
+  if (track) {
+    var chunk = 'ROASTED THURSDAYS<span class="dot">&middot;</span>SHIPPED FRIDAY<span class="dot">&middot;</span>SMALL BATCH<span class="dot">&middot;</span>';
+    var half = "";
+    for (var i=0;i<4;i++) half += chunk;
+    track.innerHTML = '<div class="marquee-chunk">'+half+'</div><div class="marquee-chunk">'+half+'</div>';
   }
 
-  var rail = document.getElementById("featuredRail");
-  rail.innerHTML = PRODUCTS.filter(function(p){return p.featured;})
-    .map(function(p,i){ return cardHTML(p, i===0 ? "House espresso" : null); }).join("");
-
-  var grid = document.getElementById("grid");
-  function renderGrid(cat){
-    grid.innerHTML = PRODUCTS.filter(function(p){return p.cat===cat;}).map(function(p){return cardHTML(p);}).join("");
-  }
-  renderGrid("beans");
-
-  document.getElementById("tabs").addEventListener("click", function(e){
-    var t = e.target.closest(".tab");
-    if(!t) return;
-    document.querySelectorAll(".tab").forEach(function(b){
-      b.classList.toggle("active", b===t);
-      b.setAttribute("aria-selected", b===t ? "true" : "false");
-    });
-    renderGrid(t.dataset.cat);
-  });
-
-  /* ---------- modal ---------- */
-  var overlay = document.getElementById("overlay");
-  var modal = document.getElementById("modal");
-  var mState = {product:null, qty:1, sub:false, freq:2};
-
-  function openModal(p){
-    mState = {product:p, qty:1, sub:false, freq:2};
-    document.getElementById("mImg").src = p.img;
-    document.getElementById("mImg").alt = p.alt;
-    document.getElementById("mKicker").textContent =
-      p.cat==="beans" ? "12 oz whole bean · Roasted " + ROAST_DATE : (p.cat==="equipment" ? "Equipment" : "Merch");
-    document.getElementById("mName").textContent = p.name;
-    document.getElementById("mMeta").innerHTML = p.cat==="beans"
-      ? "<strong>Origin</strong> " + p.origin + " &nbsp;·&nbsp; <strong>Process</strong> " + p.process + "<br><strong>Notes</strong> " + p.notes
-      : p.detail;
-    document.getElementById("mDesc").textContent = p.desc;
-    var isBean = p.cat==="beans";
-    document.getElementById("mPlans").style.display = isBean ? "flex" : "none";
-    document.getElementById("mFreq").style.display = "none";
-    document.getElementById("planOncePrice").textContent = money(p.price) + " per bag";
-    document.getElementById("planSubPrice").textContent = money(subUnit(p.price)) + " per bag";
-    setPlan(false);
-    syncModal();
-    overlay.classList.add("open");
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeModal(){
-    modal.classList.remove("open");
-    if(!drawer.classList.contains("open")){
-      overlay.classList.remove("open");
-      document.body.style.overflow = "";
-    }
-  }
-  function setPlan(sub){
-    mState.sub = sub;
-    document.getElementById("planOnce").classList.toggle("active", !sub);
-    document.getElementById("planSub").classList.toggle("active", sub);
-    document.getElementById("mFreq").style.display = sub ? "flex" : "none";
-    syncModal();
-  }
-  function unitPrice(){
-    return mState.sub ? subUnit(mState.product.price) : mState.product.price;
-  }
-  function syncModal(){
-    document.getElementById("qtyVal").textContent = mState.qty;
-    document.getElementById("addBtn").textContent = "Add to cart · " + money(unitPrice()*mState.qty);
-  }
-
-  document.getElementById("planOnce").addEventListener("click", function(){ setPlan(false); });
-  document.getElementById("planSub").addEventListener("click", function(){ setPlan(true); });
-  document.querySelectorAll("#mFreq .freq").forEach(function(b){
-    b.addEventListener("click", function(){
-      mState.freq = +b.dataset.freq;
-      document.querySelectorAll("#mFreq .freq").forEach(function(x){ x.classList.toggle("active", x===b); });
-    });
-  });
-  document.getElementById("qtyMinus").addEventListener("click", function(){
-    if(mState.qty>1){ mState.qty--; syncModal(); }
-  });
-  document.getElementById("qtyPlus").addEventListener("click", function(){
-    if(mState.qty<20){ mState.qty++; syncModal(); }
-  });
-  document.getElementById("mClose").addEventListener("click", closeModal);
-
-  document.addEventListener("click", function(e){
-    var card = e.target.closest(".card");
-    if(card){
-      var p = PRODUCTS.find(function(x){return x.id===card.dataset.id;});
-      if(p) openModal(p);
-    }
-  });
-  document.addEventListener("keydown", function(e){
-    if(e.key==="Enter" && document.activeElement && document.activeElement.classList.contains("card")){
-      var p = PRODUCTS.find(function(x){return x.id===document.activeElement.dataset.id;});
-      if(p) openModal(p);
-    }
-    if(e.key==="Escape"){
-      if(modal.classList.contains("open")) closeModal();
-      else if(drawer.classList.contains("open")) closeDrawer();
-    }
-  });
-
-  /* ---------- cart ---------- */
-  var drawer = document.getElementById("drawer");
-  var drawerBody = document.getElementById("drawerBody");
-  var cart = [];
-  try{
+  /* ---------- cart count (shared with the shop page) ---------- */
+  try {
     var saved = JSON.parse(localStorage.getItem("foundry_cart") || "[]");
-    if(Array.isArray(saved)) cart = saved.filter(function(l){
-      return PRODUCTS.some(function(p){return p.id===l.id;}) && l.qty>0;
-    });
-  }catch(e){ cart = []; }
-  var coStep = "cart"; /* cart | checkout | done */
-  var lastOrder = null;
-
-  function saveCart(){ localStorage.setItem("foundry_cart", JSON.stringify(cart)); }
-  function lineKey(id, sub, freq){ return id + (sub ? ":sub" + freq : ":once"); }
-  function linePrice(l){
-    var p = PRODUCTS.find(function(x){return x.id===l.id;});
-    return (l.sub ? subUnit(p.price) : p.price);
-  }
-  function subtotal(){
-    return cart.reduce(function(s,l){ return s + linePrice(l)*l.qty; }, 0);
-  }
-  function itemCount(){
-    return cart.reduce(function(s,l){ return s + l.qty; }, 0);
-  }
-  function updateCount(){
-    document.getElementById("cartCount").textContent = itemCount();
-  }
-
-  function addToCart(p, qty, sub, freq){
-    var key = lineKey(p.id, sub, freq);
-    var found = cart.find(function(l){ return l.key===key; });
-    if(found) found.qty += qty;
-    else cart.push({key:key, id:p.id, qty:qty, sub:sub, freq:sub?freq:null});
-    saveCart(); updateCount();
-  }
-
-  document.getElementById("addBtn").addEventListener("click", function(){
-    addToCart(mState.product, mState.qty, mState.sub, mState.freq);
-    closeModal();
-    openDrawer();
-  });
-
-  var FREE_SHIP = 40, SHIP_COST = 6;
-
-  function renderDrawer(){
-    updateCount();
-    var title = document.getElementById("drawerTitle");
-    if(coStep==="done"){
-      title.textContent = "Order confirmed";
-      drawerBody.innerHTML =
-        '<div class="confirm">' +
-          '<div class="confirm-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>' +
-          '<h3>Order ' + lastOrder.num + ' is in</h3>' +
-          '<p>' + lastOrder.bags + ' on next Thursday\'s roast. We roast Thursday, ship Friday, and tracking lands at ' + lastOrder.email + '.</p>' +
-          '<button class="checkout-btn" id="doneBtn">Keep browsing</button>' +
-        '</div>';
-      document.getElementById("doneBtn").addEventListener("click", function(){
-        coStep = "cart"; closeDrawer();
-      });
-      return;
-    }
-    if(cart.length===0){
-      title.textContent = "Your cart";
-      drawerBody.innerHTML =
-        '<div class="empty-cart"><p>Nothing here yet. The roast list is waiting.</p>' +
-        '<button class="checkout-btn" id="emptyBtn" style="max-width:220px;margin:0 auto">Browse coffee</button></div>';
-      document.getElementById("emptyBtn").addEventListener("click", function(){
-        closeDrawer();
-        document.getElementById("shop").scrollIntoView({behavior:"smooth"});
-      });
-      return;
-    }
-    if(coStep==="cart"){
-      title.textContent = "Your cart (" + itemCount() + ")";
-      var st = subtotal();
-      var pct = Math.min(100, st/FREE_SHIP*100);
-      var shipMsg = st >= FREE_SHIP
-        ? "<strong>Shipping's on us.</strong> Your order rides free."
-        : "You're <strong>" + money(FREE_SHIP-st) + "</strong> from free shipping.";
-      var itemsHTML = cart.map(function(l){
-        var p = PRODUCTS.find(function(x){return x.id===l.id;});
-        return '<div class="cart-line" data-key="' + l.key + '">' +
-          '<img src="' + p.img + '" alt="' + p.alt + '">' +
-          '<div class="cl-info"><h4>' + p.name + '</h4>' +
-          (l.sub ? '<p class="cl-plan">Every ' + l.freq + ' weeks · 15% off</p>' : '') +
-          '<div class="cl-row">' +
-            '<div class="mini-step"><button class="cl-minus" aria-label="Decrease">−</button><span>' + l.qty + '</span><button class="cl-plus" aria-label="Increase">+</button></div>' +
-            '<span class="cl-price">' + money(linePrice(l)*l.qty) + '</span>' +
-          '</div>' +
-          '<button class="cl-remove">Remove</button></div></div>';
-      }).join("");
-      drawerBody.innerHTML =
-        '<div class="ship-bar"><p class="ship-msg">' + shipMsg + '</p>' +
-        '<div class="ship-track"><div class="ship-fill" style="width:' + pct + '%"></div></div></div>' +
-        '<div class="drawer-items">' + itemsHTML + '</div>' +
-        '<div class="drawer-foot">' +
-          '<div class="sub-row"><span>Subtotal</span><span>' + money(st) + '</span></div>' +
-          '<p class="sub-note">Shipping and roast schedule confirmed at checkout.</p>' +
-          '<button class="checkout-btn" id="toCheckout">Check out · ' + money(st) + '</button>' +
-        '</div>';
-      document.getElementById("toCheckout").addEventListener("click", function(){
-        coStep = "checkout"; renderDrawer();
-      });
-      drawerBody.querySelectorAll(".cart-line").forEach(function(row){
-        var key = row.dataset.key;
-        var line = cart.find(function(l){return l.key===key;});
-        row.querySelector(".cl-minus").addEventListener("click", function(){
-          if(line.qty>1){ line.qty--; } else { cart = cart.filter(function(l){return l.key!==key;}); }
-          saveCart(); renderDrawer();
-        });
-        row.querySelector(".cl-plus").addEventListener("click", function(){
-          if(line.qty<20) line.qty++;
-          saveCart(); renderDrawer();
-        });
-        row.querySelector(".cl-remove").addEventListener("click", function(){
-          cart = cart.filter(function(l){return l.key!==key;});
-          saveCart(); renderDrawer();
-        });
-      });
-      return;
-    }
-    /* checkout */
-    title.textContent = "Checkout";
-    var st2 = subtotal();
-    var ship = st2 >= FREE_SHIP ? 0 : SHIP_COST;
-    var lines = cart.map(function(l){
-      var p = PRODUCTS.find(function(x){return x.id===l.id;});
-      return '<div class="sub-row"><span>' + l.qty + ' × ' + p.name + (l.sub ? ", every " + l.freq + " weeks" : "") + '</span><span>' + money(linePrice(l)*l.qty) + '</span></div>';
-    }).join("");
-    drawerBody.innerHTML =
-      '<div class="drawer-items" style="padding-top:20px">' +
-        '<button class="back-link" id="backToCart">Back to cart</button>' +
-        '<div class="co-summary">' + lines +
-          '<div class="sub-row" style="margin-top:8px"><span>Shipping</span><span>' + (ship===0 ? "Free" : money(ship)) + '</span></div>' +
-          '<div class="sub-row total"><span>Total</span><span>' + money(st2+ship) + '</span></div>' +
-        '</div>' +
-        '<form id="coForm" novalidate>' +
-          '<div class="co-field"><label for="coName">Full name</label><input id="coName" type="text" autocomplete="off" placeholder="Sam Rivera"><p class="co-err" id="eName">Add your name.</p></div>' +
-          '<div class="co-field"><label for="coEmail">Email</label><input id="coEmail" type="email" autocomplete="off" placeholder="you@example.com"><p class="co-err" id="eEmail">That email doesn\'t look right.</p></div>' +
-          '<div class="co-field"><label for="coAddr">Street address</label><input id="coAddr" type="text" autocomplete="off" placeholder="Street and number"><p class="co-err" id="eAddr">Add a street address.</p></div>' +
-          '<div class="co-2col">' +
-            '<div class="co-field"><label for="coCity">City</label><input id="coCity" type="text" autocomplete="off" placeholder="Providence"><p class="co-err" id="eCity">Add a city.</p></div>' +
-            '<div class="co-field"><label for="coZip">ZIP</label><input id="coZip" type="text" inputmode="numeric" autocomplete="off" placeholder="00000"><p class="co-err" id="eZip">5 digits.</p></div>' +
-          '</div>' +
-          '<div class="co-field"><label for="coCard">Card number</label><input id="coCard" type="text" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242"><p class="co-err" id="eCard">16 digits needed.</p></div>' +
-          '<div class="co-2col">' +
-            '<div class="co-field"><label for="coExp">Expiry</label><input id="coExp" type="text" autocomplete="off" placeholder="08/28"><p class="co-err" id="eExp">Use MM/YY.</p></div>' +
-            '<div class="co-field"><label for="coCvc">CVC</label><input id="coCvc" type="text" inputmode="numeric" autocomplete="off" placeholder="123"><p class="co-err" id="eCvc">3 or 4 digits.</p></div>' +
-          '</div>' +
-          '<button class="checkout-btn" type="submit" style="margin-top:8px">Place order · ' + money(st2+ship) + '</button>' +
-        '</form>' +
-      '</div>';
-    document.getElementById("backToCart").addEventListener("click", function(){
-      coStep = "cart"; renderDrawer();
-    });
-    var cardInput = document.getElementById("coCard");
-    cardInput.addEventListener("input", function(){
-      var v = cardInput.value.replace(/\D/g,"").slice(0,16);
-      cardInput.value = v.replace(/(\d{4})(?=\d)/g, "$1 ");
-    });
-    var expInput = document.getElementById("coExp");
-    expInput.addEventListener("input", function(){
-      var v = expInput.value.replace(/\D/g,"").slice(0,4);
-      expInput.value = v.length>2 ? v.slice(0,2) + "/" + v.slice(2) : v;
-    });
-    document.getElementById("coForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      var ok = true;
-      function check(id, errId, test){
-        var el = document.getElementById(id);
-        var bad = !test(el.value.trim());
-        el.classList.toggle("err", bad);
-        document.getElementById(errId).classList.toggle("show", bad);
-        if(bad) ok = false;
-      }
-      check("coName","eName",function(v){return v.length>1;});
-      check("coEmail","eEmail",function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);});
-      check("coAddr","eAddr",function(v){return v.length>3;});
-      check("coCity","eCity",function(v){return v.length>1;});
-      check("coZip","eZip",function(v){return /^\d{5}$/.test(v);});
-      check("coCard","eCard",function(v){return v.replace(/\s/g,"").length===16;});
-      check("coExp","eExp",function(v){return /^(0[1-9]|1[0-2])\/\d{2}$/.test(v);});
-      check("coCvc","eCvc",function(v){return /^\d{3,4}$/.test(v);});
-      if(!ok) return;
-      var n = itemCount();
-      lastOrder = {
-        num: "FS-" + (1000 + Math.floor(Math.random()*9000)),
-        bags: n + (n===1 ? " item" : " items"),
-        email: document.getElementById("coEmail").value.trim()
-      };
-      cart = []; saveCart();
-      coStep = "done";
-      renderDrawer();
-    });
-  }
-
-  function openDrawer(){
-    renderDrawer();
-    drawer.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
-  function closeDrawer(){
-    drawer.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-    if(coStep==="checkout") coStep = "cart";
-  }
-  document.getElementById("cartOpen").addEventListener("click", openDrawer);
-  document.getElementById("drawerClose").addEventListener("click", closeDrawer);
-  overlay.addEventListener("click", function(){
-    if(modal.classList.contains("open")) closeModal();
-    if(drawer.classList.contains("open")) closeDrawer();
-  });
-  updateCount();
-
-  /* ---------- open cart when arriving via #cart ---------- */
-  if (location.hash === "#cart") {
-    openDrawer();
-    history.replaceState(null, "", location.pathname + location.search);
-  }
+    var n = Array.isArray(saved) ? saved.reduce(function(s,l){ return s + (l && l.qty > 0 ? l.qty : 0); }, 0) : 0;
+    document.getElementById("cartCount").textContent = n;
+  } catch(e){}
 
   /* ---------- newsletter ---------- */
   document.getElementById("newsForm").addEventListener("submit", function(e){
@@ -1149,9 +767,9 @@
   });
 
   /* ---------- scroll reveal ---------- */
-  document.querySelectorAll(".rail .card, .roast-grid .step").forEach(function(el,i){
+  document.querySelectorAll(".stat-row .stat, .week .day, .num-steps .nstep, .info-rail .info-card, .info-rail .nstep, .price-table").forEach(function(el,i){
     el.classList.add("reveal");
-    el.style.transitionDelay = (i%4)*0.08 + "s";
+    el.style.transitionDelay = (i%5)*0.07 + "s";
   });
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
@@ -1159,12 +777,6 @@
     });
   }, {threshold:0.12});
   document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
-
-  /* ---------- reduced motion: pause hero video ---------- */
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var heroVid = document.querySelector('.hero-bg video');
-    if (heroVid){ heroVid.removeAttribute('autoplay'); heroVid.pause(); }
-  }
 })();
 </script>
 </body>

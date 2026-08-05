@@ -642,3 +642,6 @@ a { color: inherit; text-decoration: none; }
   .bwrap { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
   .bfoot { padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
 }
+
+/* big stat numbers on the websites sales page */
+.stat-n { font-size: clamp(30px, 3.4vw, 44px); font-weight: 700; letter-spacing: -0.02em; color: var(--clay); line-height: 1; }
