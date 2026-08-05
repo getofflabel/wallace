@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORO · Italian Wine Bar &amp; Kitchen · Brooklyn</title>
+<meta name="description" content="ORO is an Italian wine bar and kitchen in Brooklyn. Fresh pasta, a short wine list that is always right, and a courtyard under string lights.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141110;
+    --bg2:#1a1613;
+    --card:#201b17;
+    --cream:#f3ecdf;
+    --ink60:rgba(243,236,223,.62);
+    --ink40:rgba(243,236,223,.42);
+    --amber:#d9a548;
+    --amber-deep:#b8862f;
+    --line:rgba(243,236,223,.09);
+    --line-strong:rgba(243,236,223,.16);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.25);
+    --shadow-lg:0 16px 40px rgba(0,0,0,.45);
+    --r-card:16px;
+    --r-media:24px;
+    --pad:clamp(72px,11vh,140px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+  h1,h2,h3{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:-0.03em;line-height:1.08}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px clamp(20px,4vw,40px);
+    transition:background .3s ease,border-color .3s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{background:rgba(20,17,16,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:.28em;color:var(--cream)}
+  .nav-links{display:flex;align-items:center;gap:clamp(16px,2.5vw,32px)}
+  .nav-links a{font-size:15px;color:var(--ink60);transition:color .2s ease}
+  .nav-links a:hover{color:var(--cream)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:999px;border:none;font-weight:600;font-size:15px;
+    padding:12px 26px;transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-amber{background:var(--amber);color:#1d1508}
+  .btn-amber:hover{background:#e3b25c}
+  .btn-cream{background:var(--cream);color:#1d1508;box-shadow:var(--shadow-lg)}
+  .btn-cream:hover{background:#fff}
+  .nav .btn{padding:10px 22px}
+  .nav-links a.btn-amber{color:#1d1508}
+  .nav-links a.btn-amber:hover{color:#1d1508}
+  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;height:min(92vh,860px);min-height:560px;display:flex;align-items:flex-end}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  video.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-shade{position:absolute;inset:0;background:
+    linear-gradient(to top,rgba(20,17,16,.92) 0%,rgba(20,17,16,.35) 45%,rgba(20,17,16,.15) 70%,rgba(20,17,16,.4) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:clamp(48px,8vh,88px)}
+  .hero-kicker{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(44px,6vw,84px);max-width:11ch;margin-bottom:22px;font-weight:700}
+  .hero p:not(.hero-kicker){color:var(--ink60);max-width:44ch;margin-bottom:32px;font-size:17px}
+  .hero .btn{padding:15px 34px;font-size:16px}
+
+  /* ---------- ticker ---------- */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:14px 0}
+  .ticker-track{display:flex;width:max-content;animation:tick 36s linear infinite}
+  .ticker-set{display:flex;align-items:center;white-space:nowrap}
+  .ticker-set span{font-size:14.5px;color:var(--ink60);letter-spacing:.03em}
+  .ticker-set i{width:5px;height:5px;border-radius:50%;background:var(--amber);display:inline-block;margin:0 26px;flex:none}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  section{padding-top:var(--pad)}
+  .sec-head{margin-bottom:clamp(36px,6vh,60px)}
+  .kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(34px,4.5vw,54px);max-width:18ch}
+  .sec-head p{color:var(--ink60);max-width:52ch;margin-top:16px}
+
+  /* ---------- spaces (fanned cards) ---------- */
+  .spaces{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,28px);align-items:start}
+  .space{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:transform .35s cubic-bezier(.22,.9,.3,1),box-shadow .35s ease,border-color .35s ease;
+  }
+  .space:nth-child(1){transform:rotate(-2.2deg) translateY(10px)}
+  .space:nth-child(2){transform:rotate(0deg) translateY(-6px)}
+  .space:nth-child(3){transform:rotate(2.2deg) translateY(10px)}
+  .space:hover{transform:rotate(0deg) translateY(-12px);box-shadow:var(--shadow-lg);border-color:var(--line-strong);z-index:2;position:relative}
+  .space .ph{height:300px;overflow:hidden}
+  .space img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .space:hover img{transform:scale(1.05)}
+  .space .body{padding:22px 24px 26px}
+  .space h3{font-size:21px;margin-bottom:8px}
+  .space p{color:var(--ink60);font-size:15.5px}
+  .space .tag{display:inline-block;font-size:12.5px;letter-spacing:.08em;color:var(--amber);font-weight:600;margin-bottom:10px;text-transform:uppercase}
+  @media(max-width:860px){
+    .spaces{grid-template-columns:1fr}
+    .space:nth-child(n){transform:none}
+    .space:hover{transform:translateY(-6px)}
+    .space .ph{height:230px}
+  }
+
+  /* ---------- split layout: menu + reviews | booking ---------- */
+  .split{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:clamp(28px,4vw,60px);align-items:start}
+  @media(max-width:1020px){.split{grid-template-columns:minmax(0,1fr)}}
+
+  /* ---------- menu ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .chip{
+    border-radius:999px;padding:9px 20px;font-size:14.5px;font-weight:500;
+    background:transparent;color:var(--ink60);border:1px solid var(--line-strong);
+    transition:all .2s ease;
+  }
+  .chip:hover{color:var(--cream);border-color:var(--cream)}
+  .chip.on{background:var(--cream);color:#1d1508;border-color:var(--cream);font-weight:600}
+  .menu-count{font-size:13.5px;color:var(--ink40);margin-bottom:10px}
+  .menu-list{border-top:1px solid var(--line)}
+  .dish{
+    display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    padding:20px 4px;border-bottom:1px solid var(--line);
+    opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease;
+  }
+  .dish.hide{display:none}
+  .dish.entering{opacity:0;transform:translateY(10px)}
+  .dish .l h3{font-size:17.5px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:0;margin-bottom:4px}
+  .dish .l p{font-size:14.5px;color:var(--ink60)}
+  .dish .l .cat{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:600}
+  .dish .price{font-family:'Sora',sans-serif;font-weight:600;font-size:17px;white-space:nowrap;color:var(--cream)}
+  .menu-note{font-size:13.5px;color:var(--ink40);margin-top:16px}
+
+  /* ---------- food band ---------- */
+  .band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(48px,7vh,72px)}
+  .band figure{margin:0}
+  .band .im{border-radius:var(--r-media);overflow:hidden}
+  .band img{width:100%;height:260px;object-fit:cover;transition:transform .5s ease}
+  .band figure:hover img{transform:scale(1.04)}
+  .band figcaption{font-size:13.5px;color:var(--ink40);margin-top:10px}
+  @media(max-width:720px){.band{grid-template-columns:1fr}.band img{height:220px}}
+
+  /* ---------- reviews ---------- */
+  .car-wrap{position:relative}
+  .car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .car::-webkit-scrollbar{display:none}
+  .review{
+    min-width:100%;scroll-snap-align:start;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:clamp(28px,4vw,44px);box-shadow:var(--shadow-sm);
+  }
+  .stars{display:flex;gap:4px;margin-bottom:20px}
+  .stars svg{width:16px;height:16px;fill:var(--amber)}
+  .review blockquote{font-family:'Sora',sans-serif;font-size:clamp(19px,2.2vw,24px);font-weight:400;letter-spacing:-0.01em;line-height:1.45;margin-bottom:22px}
+  .review cite{font-style:normal;font-size:14.5px;color:var(--ink60)}
+  .car-ctl{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
+  .dots{display:flex;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line-strong);border:none;padding:0;transition:background .2s ease,transform .2s ease}
+  .dot.on{background:var(--amber);transform:scale(1.2)}
+  .arrows{display:flex;gap:10px}
+  .arrow{
+    width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);
+    background:transparent;color:var(--cream);display:flex;align-items:center;justify-content:center;
+    transition:all .2s ease;
+  }
+  .arrow:hover{background:var(--cream);color:#1d1508;border-color:var(--cream)}
+  .arrow svg{width:16px;height:16px}
+
+  /* ---------- booking card ---------- */
+  .book{
+    position:sticky;top:86px;
+    background:var(--card);border:1px solid var(--line-strong);border-radius:20px;
+    box-shadow:var(--shadow-lg);padding:26px 26px 28px;
+  }
+  .book-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .book-head h3{font-size:20px}
+  .steps-ind{display:flex;gap:6px}
+  .steps-ind i{width:7px;height:7px;border-radius:50%;background:var(--line-strong);transition:background .25s ease}
+  .steps-ind i.done{background:var(--amber)}
+  .book-sub{font-size:13.5px;color:var(--ink40);margin-bottom:18px}
+  .next-avail{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:18px;background:var(--bg2)}
+  .next-avail .na-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:10px}
+  .na-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .na-chip{
+    border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--cream);
+    font-size:13.5px;font-weight:500;padding:8px 15px;transition:all .2s ease;
+  }
+  .na-chip:hover{background:var(--cream);color:#1d1508;border-color:var(--cream)}
+  .step-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink40);font-weight:600;margin-bottom:12px}
+  .pill-grid{display:flex;flex-wrap:wrap;gap:8px}
+  .pill-grid .opt{
+    border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--cream);
+    font-size:14.5px;padding:10px 16px;transition:all .18s ease;min-width:46px;
+  }
+  .pill-grid .opt:hover{border-color:var(--cream)}
+  .pill-grid .opt.sel{background:var(--amber);color:#1d1508;border-color:var(--amber);font-weight:600}
+  .pill-grid .opt:disabled{opacity:.32;cursor:not-allowed}
+  .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .time-grid .opt{border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--cream);font-size:14px;padding:11px 6px;transition:all .18s ease}
+  .time-grid .opt:hover{border-color:var(--cream)}
+  .time-grid .opt.sel{background:var(--amber);color:#1d1508;border-color:var(--amber);font-weight:600}
+  .book input{
+    width:100%;background:var(--bg2);border:1px solid var(--line-strong);border-radius:10px;
+    color:var(--cream);font-family:inherit;font-size:15px;padding:13px 15px;margin-bottom:10px;
+    transition:border-color .2s ease;
+  }
+  .book input:focus{outline:none;border-color:var(--amber)}
+  .book input::placeholder{color:var(--ink40)}
+  .field-err{font-size:13px;color:#e08b7a;margin:-4px 0 10px;display:none}
+  .field-err.show{display:block}
+  .book-nav{display:flex;gap:10px;margin-top:18px}
+  .book-nav .btn{flex:1;padding:13px 10px;font-size:15px}
+  .btn-ghost{background:transparent;color:var(--ink60);border:1px solid var(--line-strong)}
+  .btn-ghost:hover{color:var(--cream);border-color:var(--cream)}
+  .summary-line{font-size:14px;color:var(--ink60);border:1px solid var(--line);background:var(--bg2);border-radius:10px;padding:11px 14px;margin-bottom:16px}
+  .summary-line b{color:var(--cream);font-weight:600}
+  .confirm{text-align:center;padding:8px 0 4px}
+  .confirm .ok{
+    width:56px;height:56px;border-radius:50%;background:rgba(217,165,72,.15);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+  }
+  .confirm .ok svg{width:26px;height:26px;stroke:var(--amber)}
+  .confirm h4{font-family:'Sora',sans-serif;font-size:21px;letter-spacing:-0.02em;margin-bottom:10px}
+  .confirm p{font-size:14.5px;color:var(--ink60);margin-bottom:6px}
+  .confirm .code{
+    display:inline-block;font-family:'Sora',sans-serif;font-weight:600;letter-spacing:.12em;
+    border:1px dashed var(--line-strong);border-radius:10px;padding:9px 18px;margin:12px 0 18px;color:var(--amber);
+  }
+  .book .fine{font-size:12.5px;color:var(--ink40);margin-top:14px;text-align:center}
+  @media(max-width:1020px){.book{position:static;max-width:520px}}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:var(--pad);border-top:1px solid var(--line);background:var(--bg2)}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);padding:clamp(48px,7vh,72px) 0}
+  .foot .logo{font-size:26px;margin-bottom:14px;display:block}
+  .foot p{font-size:14.5px;color:var(--ink60)}
+  .foot h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink40);font-weight:600;margin-bottom:14px;font-family:'Inter',sans-serif}
+  .foot ul{list-style:none}
+  .foot li{font-size:14.5px;color:var(--ink60);margin-bottom:9px}
+  .foot a{transition:color .2s ease}
+  .foot a:hover{color:var(--cream)}
+  .foot-base{border-top:1px solid var(--line);padding:20px 0;font-size:12.5px;color:var(--ink40);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.foot{grid-template-columns:1fr}}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal-fade{opacity:0;transition:opacity .7s ease}
+  .reveal-fade.in{opacity:1}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+    .ticker-track{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="#top">ORO</a>
+  <div class="nav-links">
+    <a href="#spaces">The Rooms</a>
+    <a href="#menu">Menu</a>
+    <a href="#reviews">Reviews</a>
+    <a class="btn btn-amber" href="#reserve">Reserve</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <video class="hero-img" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/hero.jpg" aria-label="Candlelit tables and a wall of wine at ORO">
+    <source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker">Italian wine bar &amp; kitchen&nbsp;· Boerum Hill, Brooklyn</p>
+    <h1>Stay for one more glass.</h1>
+    <p>Fresh pasta rolled every afternoon, a short wine list that is always right, and nobody will ever rush your table.</p>
+    <a class="btn btn-cream" href="#reserve">Reserve a table</a>
+  </div>
+</header>
+
+<div class="ticker" aria-label="Tonight at ORO">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-set">
+      <span>Tonight's pours: Nebbiolo · Etna Rosso · Franciacorta</span><i></i>
+      <span>Walk-ins welcome at the bar</span><i></i>
+      <span>Fresh pasta rolled at 4pm daily</span><i></i>
+      <span>Open till midnight Friday and Saturday</span><i></i>
+      <span>Courtyard open, weather permitting</span><i></i>
+      <span>Half-price bottles every Tuesday</span><i></i>
+    </div>
+  </div>
+</div>
+
+<section id="spaces">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Three rooms, one kitchen</p>
+      <h2>Pick your kind of evening</h2>
+      <p>Same menu everywhere. The only decision is how much noise you want with it.</p>
+    </div>
+    <div class="spaces">
+      <article class="space reveal-fade">
+        <div class="ph"><img src="img/bar.jpg" alt="The amber-lit bar counter at ORO" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Seats 14</span>
+          <h3>The Bar</h3>
+          <p>First come, first poured. The seats regulars fight over, closest to the corkscrew.</p>
+        </div>
+      </article>
+      <article class="space reveal-fade">
+        <div class="ph"><img src="img/dining.jpg" alt="Candlelit tables in the dining room" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Seats 42</span>
+          <h3>The Dining Room</h3>
+          <p>Candles, low ceilings, and the kind of dark that makes everyone look well rested.</p>
+        </div>
+      </article>
+      <article class="space reveal-fade">
+        <div class="ph"><img src="img/courtyard.jpg" alt="The courtyard at dusk under string lights" loading="lazy"></div>
+        <div class="body">
+          <span class="tag">Seats 28 · Seasonal</span>
+          <h3>The Courtyard</h3>
+          <p>String lights, brick walls, and long dinners that quietly turn into late ones.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <div id="menu">
+        <div class="sec-head reveal">
+          <p class="kicker">The menu</p>
+          <h2>Short, seasonal, argued over daily</h2>
+          <p>Everything below is on tonight. The pasta changes when the kitchen wins the argument.</p>
+        </div>
+        <div class="filters reveal" id="filters" aria-label="Filter the menu">
+          <button class="chip on" data-cat="all">Everything</button>
+          <button class="chip" data-cat="antipasti">Antipasti</button>
+          <button class="chip" data-cat="pasta">Pasta</button>
+          <button class="chip" data-cat="mains">Mains</button>
+          <button class="chip" data-cat="wine">Wine</button>
+        </div>
+        <p class="menu-count" id="menuCount"></p>
+        <div class="menu-list" id="menuList"></div>
+        <p class="menu-note">Tell us about allergies, we take them seriously. Corkage $25, waived on Tuesdays.</p>
+
+        <div class="band">
+          <figure class="reveal">
+            <div class="im"><img src="img/pasta.jpg" alt="Spaghetti al pomodoro twirled on a fork"></div>
+            <figcaption>Spaghetti al pomodoro, rolled at 4pm</figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="im"><img src="img/antipasti.jpg" alt="Focaccia, cheese and cured meat on a wooden board"></div>
+            <figcaption>The board that starts most tables</figcaption>
+          </figure>
+          <figure class="reveal">
+            <div class="im"><img src="img/pour.jpg" alt="Red wine being poured into a glass"></div>
+            <figcaption>Sixteen wines by the glass</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <section id="reviews" style="padding-bottom:0">
+        <div class="sec-head reveal">
+          <p class="kicker">Word of mouth</p>
+          <h2>What the neighborhood says</h2>
+        </div>
+        <div class="car-wrap reveal">
+          <div class="car" id="car">
+            <article class="review">
+              <div class="stars" aria-label="5 stars"></div>
+              <blockquote>&ldquo;Came in for one glass after work and left three hours later. The bar seats are the best seats in Brooklyn.&rdquo;</blockquote>
+              <cite>Dana R. · Fort Greene</cite>
+            </article>
+            <article class="review">
+              <div class="stars" aria-label="5 stars"></div>
+              <blockquote>&ldquo;The tagliatelle is the thing. Order it first, it runs out, and yes I have seen it happen at 8:15.&rdquo;</blockquote>
+              <cite>Mike T. · Park Slope</cite>
+            </article>
+            <article class="review">
+              <div class="stars" aria-label="5 stars"></div>
+              <blockquote>&ldquo;Took my parents on a Sunday. Courtyard, string lights, nobody rushed us. They still bring it up.&rdquo;</blockquote>
+              <cite>Priya S. · Clinton Hill</cite>
+            </article>
+            <article class="review">
+              <div class="stars" aria-label="5 stars"></div>
+              <blockquote>&ldquo;The wine list is one page and every bottle on it is right. Ask for whatever the room is drinking.&rdquo;</blockquote>
+              <cite>Jon L. · Bed-Stuy</cite>
+            </article>
+          </div>
+          <div class="car-ctl">
+            <div class="dots" id="dots"></div>
+            <div class="arrows">
+              <button class="arrow" id="prevBtn" aria-label="Previous review">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="arrow" id="nextBtn" aria-label="Next review">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="book" id="reserve" aria-label="Reserve a table">
+      <div class="book-head">
+        <h3>Reserve a table</h3>
+        <div class="steps-ind" id="stepsInd"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <p class="book-sub">No card needed. We hold tables for 15 minutes.</p>
+      <div id="bookBody"></div>
+      <p class="fine">Parties of 9 or more: ask at the bar and we will make it work.</p>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <span class="logo">ORO</span>
+        <p>Italian wine bar &amp; kitchen.<br>Pasta at 4, corks at 5, lights low by 8.</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Tue&ndash;Thu · 5pm&ndash;11pm</li>
+          <li>Fri&ndash;Sat · 5pm&ndash;12am</li>
+          <li>Sun · 4pm&ndash;10pm</li>
+          <li>Closed Mondays</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <ul>
+          <li>Boerum Hill, Brooklyn</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li>@oro.bk on Instagram</li>
+          <li>Wine club opens this fall</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© ORO, Brooklyn</span>
+      <span>Wednesday to Sunday from five</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- hero video: respect reduced motion ---------- */
+  var heroVideo = document.getElementById('heroVideo');
+  if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+  }
+
+  /* ---------- nav scroll state ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- scroll reveal ---------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal, .reveal-fade'));
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          var el = e.target;
+          var siblings = Array.prototype.filter.call(el.parentNode.children, function(c){ return c.classList && c.classList.contains('reveal'); });
+          var idx = siblings.indexOf(el);
+          el.style.transitionDelay = (Math.max(idx,0) * 90) + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.12});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- ticker duplicate ---------- */
+  var track = document.getElementById('tickerTrack');
+  var clone = track.children[0].cloneNode(true);
+  clone.setAttribute('aria-hidden','true');
+  track.appendChild(clone);
+
+  /* ---------- stars ---------- */
+  var starSVG = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.4 1.15 6.55L12 17.1l-5.9 3.15L7.25 13.7 2.5 9.3l6.6-1.04L12 2z"/></svg>';
+  Array.prototype.forEach.call(document.querySelectorAll('.stars'), function(s){
+    s.innerHTML = starSVG + starSVG + starSVG + starSVG + starSVG;
+  });
+
+  /* ---------- menu ---------- */
+  var MENU = [
+    {cat:'antipasti', name:'Focaccia di Recco', desc:'Paper-thin, stracchino, rosemary oil', price:9},
+    {cat:'antipasti', name:'Burrata &amp; peaches', desc:'Charred peaches, basil, aged balsamic', price:18},
+    {cat:'antipasti', name:'Polpette al sugo', desc:'Beef and pork meatballs, ricotta salata', price:16},
+    {cat:'antipasti', name:'Carciofi fritti', desc:'Crisp artichokes, lemon aioli', price:15},
+    {cat:'antipasti', name:'The board', desc:'Focaccia, taleggio, coppa, olive tapenade', price:24},
+    {cat:'pasta', name:'Tagliatelle al rag&ugrave;', desc:'Six-hour beef and pork rag&ugrave;, grana', price:26},
+    {cat:'pasta', name:'Cacio e pepe', desc:'Tonnarelli, pecorino, cracked black pepper', price:23},
+    {cat:'pasta', name:'Spaghetti al pomodoro', desc:'San Marzano tomatoes, basil, good olive oil', price:21},
+    {cat:'pasta', name:'Pappardelle', desc:'Braised short rib, gremolata', price:29},
+    {cat:'pasta', name:'Tortelli di zucca', desc:'Squash, brown butter, crispy sage', price:25},
+    {cat:'mains', name:'Branzino', desc:'Whole roasted, salsa verde, charred lemon', price:34},
+    {cat:'mains', name:'Pollo al mattone', desc:'Brick-pressed half chicken, chili honey', price:28},
+    {cat:'mains', name:'Bistecca', desc:'16 oz ribeye, rosemary, made for sharing', price:58},
+    {cat:'mains', name:'Melanzane alla parmigiana', desc:'Eggplant, tomato, mozzarella, basil', price:24},
+    {cat:'wine', name:'Nebbiolo, Langhe &rsquo;21', desc:'Glass · roses and tar, the regulars&rsquo; pick', price:16},
+    {cat:'wine', name:'Etna Rosso &rsquo;22', desc:'Glass · volcanic, light on its feet', price:15},
+    {cat:'wine', name:'Vermentino, Sardinia &rsquo;23', desc:'Glass · salty, cold, made for antipasti', price:13},
+    {cat:'wine', name:'Franciacorta Brut', desc:'Glass · the better answer to prosecco', price:17},
+    {cat:'wine', name:'Chianti Classico &rsquo;20', desc:'Glass · cherry, leather, a Tuscan evening', price:14},
+    {cat:'wine', name:'Primitivo, Puglia &rsquo;21', desc:'Glass · dark, generous, dangerously easy', price:12}
+  ];
+  var CAT_LABEL = {antipasti:'Antipasti', pasta:'Pasta', mains:'Mains', wine:'Wine'};
+  var menuList = document.getElementById('menuList');
+  var menuCount = document.getElementById('menuCount');
+  MENU.forEach(function(m){
+    var row = document.createElement('div');
+    row.className = 'dish';
+    row.setAttribute('data-cat', m.cat);
+    row.innerHTML = '<div class="l"><span class="cat">' + CAT_LABEL[m.cat] + '</span><h3>' + m.name + '</h3><p>' + m.desc + '</p></div>' +
+                    '<span class="price">$' + m.price + '</span>';
+    menuList.appendChild(row);
+  });
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#filters .chip'));
+  function applyFilter(cat){
+    var shown = 0;
+    Array.prototype.forEach.call(menuList.children, function(row){
+      var match = (cat === 'all' || row.getAttribute('data-cat') === cat);
+      row.classList.toggle('hide', !match);
+      if (match){
+        shown++;
+        row.classList.add('entering');
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ row.classList.remove('entering'); }); });
+      }
+    });
+    menuCount.textContent = shown + (cat === 'wine' ? ' pours tonight' : (cat === 'all' ? ' items on tonight' : ' dishes tonight'));
+  }
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('on'); });
+      chip.classList.add('on');
+      applyFilter(chip.getAttribute('data-cat'));
+    });
+  });
+  applyFilter('all');
+
+  /* ---------- reviews carousel ---------- */
+  var car = document.getElementById('car');
+  var slides = car.children.length;
+  var dotsWrap = document.getElementById('dots');
+  var dots = [];
+  for (var d = 0; d < slides; d++){
+    (function(i){
+      var b = document.createElement('button');
+      b.className = 'dot' + (i === 0 ? ' on' : '');
+      b.setAttribute('aria-label', 'Go to review ' + (i+1));
+      b.addEventListener('click', function(){ goTo(i); });
+      dotsWrap.appendChild(b);
+      dots.push(b);
+    })(d);
+  }
+  function slideW(){ return car.children[0].getBoundingClientRect().width + 18; }
+  function current(){ return Math.round(car.scrollLeft / slideW()); }
+  function goTo(i){
+    i = Math.max(0, Math.min(slides - 1, i));
+    car.scrollTo({left: i * slideW(), behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current() - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current() + 1); });
+  var scrollT;
+  car.addEventListener('scroll', function(){
+    clearTimeout(scrollT);
+    scrollT = setTimeout(function(){
+      var i = current();
+      dots.forEach(function(dot, j){ dot.classList.toggle('on', j === i); });
+    }, 80);
+  }, {passive:true});
+
+  /* ---------- booking wizard ---------- */
+  var TIMES = ['5:00 PM','5:30 PM','6:00 PM','6:30 PM','7:00 PM','7:30 PM','8:00 PM','8:30 PM','9:00 PM','9:30 PM','10:00 PM'];
+  var DAY_COUNT = 7;
+  var state = {party:null, dateOffset:null, time:null, name:'', phone:''};
+  var stepOrder = ['party','date','time','details'];
+  var stepIdx = 0;
+  var confirmed = false;
+  var bookBody = document.getElementById('bookBody');
+  var stepsInd = document.getElementById('stepsInd');
+
+  function dateFor(offset){
+    var dt = new Date();
+    dt.setDate(dt.getDate() + offset);
+    return dt;
+  }
+  function dayLabel(offset){
+    if (offset === 0) return 'Tonight';
+    if (offset === 1) return 'Tomorrow';
+    return dateFor(offset).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+  }
+  function fullDayLabel(offset){
+    return dateFor(offset).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+  }
+  function timeToMinutes(t){
+    var parts = t.split(/[: ]/);
+    var h = parseInt(parts[0], 10) % 12 + (parts[2] === 'PM' ? 12 : 0);
+    return h * 60 + parseInt(parts[1], 10);
+  }
+  function slotsFor(offset){
+    var day = dateFor(offset).getDay();
+    if (day === 1) return [];                                 /* closed Mondays */
+    var out = [];
+    for (var i = 0; i < TIMES.length; i++){
+      if ((offset * 3 + i) % 4 === 0) continue;               /* pseudo-random "taken" slots */
+      if (day === 0 && timeToMinutes(TIMES[i]) > 21 * 60) continue;  /* Sunday closes at 10, last seating 9 */
+      if (offset === 0){
+        var now = new Date();
+        if (timeToMinutes(TIMES[i]) <= now.getHours() * 60 + now.getMinutes() + 45) continue;
+      }
+      out.push(TIMES[i]);
+    }
+    return out;
+  }
+  function nextAvailable(n){
+    var found = [];
+    for (var o = 0; o < DAY_COUNT && found.length < n; o++){
+      var s = slotsFor(o);
+      if (s.length) found.push({offset:o, time:s[0]});
+    }
+    return found;
+  }
+  function updateInd(){
+    Array.prototype.forEach.call(stepsInd.children, function(el, i){
+      el.classList.toggle('done', confirmed || i <= stepIdx);
+    });
+  }
+  function firstIncompleteFrom(i){
+    for (var k = i; k < stepOrder.length; k++){
+      var s = stepOrder[k];
+      if (s === 'party' && state.party === null) return k;
+      if (s === 'date' && state.dateOffset === null) return k;
+      if (s === 'time' && state.time === null) return k;
+      if (s === 'details') return k;
+    }
+    return stepOrder.length - 1;
+  }
+  function advance(){
+    stepIdx = firstIncompleteFrom(stepIdx + 1);
+    render();
+  }
+  function back(){
+    if (stepIdx > 0){ stepIdx -= 1; render(); }
+  }
+  function summaryHTML(){
+    var bits = [];
+    if (state.party) bits.push('<b>Table for ' + state.party + '</b>');
+    if (state.dateOffset !== null) bits.push('<b>' + (state.dateOffset === 0 ? 'Tonight' : fullDayLabel(state.dateOffset)) + '</b>');
+    if (state.time) bits.push('<b>' + state.time + '</b>');
+    return bits.length ? '<div class="summary-line">' + bits.join(' &middot; ') + '</div>' : '';
+  }
+  function navHTML(showNext, nextLabel){
+    return '<div class="book-nav">' +
+      (stepIdx > 0 ? '<button class="btn btn-ghost" data-act="back">Back</button>' : '') +
+      (showNext ? '<button class="btn btn-amber" data-act="next">' + (nextLabel || 'Next') + '</button>' : '') +
+      '</div>';
+  }
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function makeCode(){
+    var chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    var out = 'ORO-';
+    for (var i = 0; i < 4; i++){ out += chars[Math.floor(Math.random() * chars.length)]; }
+    return out;
+  }
+  function render(){
+    updateInd();
+    var step = stepOrder[stepIdx];
+    var html = '';
+
+    if (confirmed){
+      html = '<div class="confirm">' +
+        '<div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h4>See you ' + (state.dateOffset === 0 ? 'tonight' : 'on ' + fullDayLabel(state.dateOffset)) + '.</h4>' +
+        '<p>Table for ' + state.party + ' &middot; ' + state.time + '</p>' +
+        '<p>Booked under ' + escapeHTML(state.name) + '</p>' +
+        '<span class="code">' + makeCode() + '</span>' +
+        '<p>Running late? We are reasonable people, your table will wait.</p>' +
+        '<div class="book-nav"><button class="btn btn-ghost" data-act="reset">Book another table</button></div>' +
+        '</div>';
+      bookBody.innerHTML = html;
+      wire();
+      return;
+    }
+
+    if (stepIdx === 0 && state.party === null && state.dateOffset === null){
+      var na = nextAvailable(2);
+      if (na.length){
+        html += '<div class="next-avail"><p class="na-label">Next available</p><div class="na-chips">' +
+          na.map(function(s){
+            return '<button class="na-chip" data-quick="' + s.offset + '|' + s.time + '">' + dayLabel(s.offset) + ' &middot; ' + s.time + '</button>';
+          }).join('') + '</div></div>';
+      }
+    }
+
+    html += summaryHTML();
+    html += '<p class="step-label">Step ' + (stepIdx + 1) + ' of 4</p>';
+
+    if (step === 'party'){
+      html += '<p style="font-size:15px;margin-bottom:14px">How many of you?</p><div class="pill-grid">';
+      for (var p = 1; p <= 8; p++){
+        html += '<button class="opt' + (state.party === p ? ' sel' : '') + '" data-party="' + p + '">' + p + '</button>';
+      }
+      html += '</div>' + navHTML(state.party !== null);
+    }
+
+    if (step === 'date'){
+      html += '<p style="font-size:15px;margin-bottom:14px">Which night?</p><div class="pill-grid">';
+      for (var o = 0; o < DAY_COUNT; o++){
+        var free = slotsFor(o).length;
+        var whyNot = dateFor(o).getDay() === 1 ? 'Closed Mondays' : 'Fully booked';
+        html += '<button class="opt' + (state.dateOffset === o ? ' sel' : '') + '" data-date="' + o + '"' + (free ? '' : ' disabled title="' + whyNot + '"') + '>' + dayLabel(o) + '</button>';
+      }
+      html += '</div>' + navHTML(state.dateOffset !== null);
+    }
+
+    if (step === 'time'){
+      var slots = slotsFor(state.dateOffset);
+      html += '<p style="font-size:15px;margin-bottom:14px">Pick a time</p><div class="time-grid">';
+      slots.forEach(function(t){
+        html += '<button class="opt' + (state.time === t ? ' sel' : '') + '" data-time="' + t + '">' + t + '</button>';
+      });
+      html += '</div>' + navHTML(state.time !== null);
+    }
+
+    if (step === 'details'){
+      html += '<p style="font-size:15px;margin-bottom:14px">Almost done. Who is coming?</p>' +
+        '<input type="text" id="fName" placeholder="Name on the reservation" autocomplete="name" value="' + escapeHTML(state.name) + '">' +
+        '<p class="field-err" id="errName">We need a name to hold the table.</p>' +
+        '<input type="tel" id="fPhone" placeholder="Phone number" autocomplete="tel" value="' + escapeHTML(state.phone) + '">' +
+        '<p class="field-err" id="errPhone">That number looks short. Ten digits, please.</p>' +
+        navHTML(true, 'Confirm reservation');
+    }
+
+    bookBody.innerHTML = html;
+    wire();
+  }
+  function wire(){
+    Array.prototype.forEach.call(bookBody.querySelectorAll('[data-quick]'), function(b){
+      b.addEventListener('click', function(){
+        var parts = b.getAttribute('data-quick').split('|');
+        state.dateOffset = parseInt(parts[0], 10);
+        state.time = parts[1];
+        stepIdx = 0;
+        render();
+      });
+    });
+    Array.prototype.forEach.call(bookBody.querySelectorAll('[data-party]'), function(b){
+      b.addEventListener('click', function(){
+        state.party = parseInt(b.getAttribute('data-party'), 10);
+        render();
+        setTimeout(advance, 180);
+      });
+    });
+    Array.prototype.forEach.call(bookBody.querySelectorAll('[data-date]'), function(b){
+      b.addEventListener('click', function(){
+        var o = parseInt(b.getAttribute('data-date'), 10);
+        if (state.dateOffset !== o){ state.time = null; }
+        state.dateOffset = o;
+        render();
+        setTimeout(advance, 180);
+      });
+    });
+    Array.prototype.forEach.call(bookBody.querySelectorAll('[data-time]'), function(b){
+      b.addEventListener('click', function(){
+        state.time = b.getAttribute('data-time');
+        render();
+        setTimeout(advance, 180);
+      });
+    });
+    var backBtn = bookBody.querySelector('[data-act="back"]');
+    if (backBtn) backBtn.addEventListener('click', back);
+    var resetBtn = bookBody.querySelector('[data-act="reset"]');
+    if (resetBtn) resetBtn.addEventListener('click', function(){
+      state = {party:null, dateOffset:null, time:null, name:'', phone:''};
+      stepIdx = 0; confirmed = false; render();
+    });
+    var nextBtn = bookBody.querySelector('[data-act="next"]');
+    if (nextBtn) nextBtn.addEventListener('click', function(){
+      var step = stepOrder[stepIdx];
+      if (step === 'details'){
+        var nameEl = document.getElementById('fName');
+        var phoneEl = document.getElementById('fPhone');
+        state.name = nameEl.value.trim();
+        state.phone = phoneEl.value.trim();
+        var okName = state.name.length >= 2;
+        var okPhone = state.phone.replace(/\D/g,'').length >= 10;
+        document.getElementById('errName').classList.toggle('show', !okName);
+        document.getElementById('errPhone').classList.toggle('show', !okPhone);
+        if (okName && okPhone){ confirmed = true; render(); }
+        return;
+      }
+      advance();
+    });
+    var nameEl = document.getElementById('fName');
+    var phoneEl = document.getElementById('fPhone');
+    if (nameEl) nameEl.addEventListener('input', function(){ state.name = nameEl.value; });
+    if (phoneEl) phoneEl.addEventListener('input', function(){ state.phone = phoneEl.value; });
+  }
+  render();
+})();
+</script>
+</body>
+</html>

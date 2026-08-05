@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a meeting — WALLACE</title>
+<meta name="description" content="Book a half hour with Wallace. Tell me what you need, then pick a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="book-page">
+
+<header class="top">
+  <a class="back" href="index.html">&larr;&nbsp; Wallace</a>
+  <nav class="nav">
+    <a href="index.html#services">Services</a>
+    <a href="pricing.html">Pricing</a>
+  </nav>
+</header>
+
+<main class="bwrap">
+
+  <!-- STEP 1 -->
+  <section class="step-panel" id="step1">
+    <span class="step-tag">Step 1 of 2</span>
+    <h1>Who am I<br>meeting?</h1>
+    <p class="step-lead">Thirty seconds, so I can turn up to the call already knowing something about you instead of asking the obvious.</p>
+
+    <form id="intake" novalidate>
+      <label class="fld">
+        <span>Your name <em>required</em></span>
+        <input type="text" id="fName" autocomplete="name" placeholder="First and last">
+      </label>
+
+      <label class="fld">
+        <span>Business name <em>optional</em></span>
+        <input type="text" id="fBiz" autocomplete="organization" placeholder="Leave blank if you don't have one yet">
+      </label>
+
+      <fieldset class="fld">
+        <span class="fld-l">What do you need <em>pick any</em></span>
+        <div class="picks">
+          <label class="pick"><input type="checkbox" value="A website"><span>Website</span></label>
+          <label class="pick"><input type="checkbox" value="Video"><span>Video</span></label>
+          <label class="pick"><input type="checkbox" value="Photography"><span>Photography</span></label>
+          <label class="pick"><input type="checkbox" value="A rebuild of something existing"><span>Rebuild</span></label>
+          <label class="pick"><input type="checkbox" value="Not sure yet"><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
+
+      <label class="fld">
+        <span>Anything I should know <em>optional</em></span>
+        <textarea id="fNote" rows="3" placeholder="Current site, a deadline, a budget in mind, whatever matters"></textarea>
+      </label>
+
+      <button class="go" type="submit">Continue to the calendar &nbsp;&rarr;</button>
+      <p class="hint" id="hint">Next screen is the calendar. Nothing is booked until you pick a time there.</p>
+    </form>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step-panel" id="step2" hidden>
+    <span class="step-tag">Step 2 of 2</span>
+    <h1>Pick a time.</h1>
+    <p class="step-lead">Half an hour on Google Meet. The invite and the link land in your calendar the moment you choose.</p>
+
+    <div class="recap" id="recap"></div>
+
+    <div id="cal-mount"></div>
+
+    <p class="hint">Put your name and what you need in the booking notes so it comes through with the invite. <a href="#" id="backStep">Change your answers</a></p>
+  </section>
+
+</main>
+
+<footer class="bfoot">
+  <span>Wallace · New York · wallacechen23@gmail.com</span>
+  <span class="foot-llc">A Blueprint Advantage LLC company</span>
+</footer>
+
+<script>
+var BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ13QWKwQGfZmmGo7apGxh0CNyPUsqYQlFwrB5iA8KSWKWKhgDTTnCJDhovqx2Dvj6iAFHYoSg1Q";
+
+var step1 = document.getElementById('step1');
+var step2 = document.getElementById('step2');
+var form  = document.getElementById('intake');
+var hint  = document.getElementById('hint');
+var mounted = false;
+
+function mountCalendar() {
+  if (mounted || !BOOKING_URL) return;
+  var f = document.createElement('iframe');
+  f.src = BOOKING_URL + (BOOKING_URL.indexOf('?') > -1 ? '&' : '?') + 'gv=true';
+  f.title = 'Pick a time';
+  f.style.cssText = 'width:100%;height:660px;border:2px solid var(--line);background:#fff';
+  document.getElementById('cal-mount').appendChild(f);
+  mounted = true;
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  var name = document.getElementById('fName').value.trim();
+  if (!name) {
+    hint.textContent = 'Just your name and we can carry on.';
+    hint.classList.add('bad');
+    document.getElementById('fName').focus();
+    return;
+  }
+  hint.classList.remove('bad');
+
+  var biz   = document.getElementById('fBiz').value.trim();
+  var needs = [].slice.call(form.querySelectorAll('.picks input:checked')).map(function (i) { return i.value; });
+  var note  = document.getElementById('fNote').value.trim();
+
+  /* Held in the tab only. There is no backend on a static site, so this is
+     shown back on the next screen to copy into the booking notes rather
+     than being quietly sent anywhere. */
+  var answers = { name: name, biz: biz, needs: needs, note: note };
+  try { sessionStorage.setItem('wc_intake', JSON.stringify(answers)); } catch (err) {}
+
+  var lines = [];
+  lines.push('<b>' + answers.name + '</b>' + (biz ? ' · ' + biz : ''));
+  if (needs.length) lines.push('Needs: ' + needs.join(', '));
+  if (note) lines.push(note);
+
+  document.getElementById('recap').innerHTML =
+    '<span class="recap-k">Your answers</span>' +
+    lines.map(function (l) { return '<p>' + l + '</p>'; }).join('') +
+    '<button class="copy" id="copyBtn" type="button">Copy for the booking notes</button>';
+
+  step1.hidden = true;
+  step2.hidden = false;
+  window.scrollTo(0, 0);
+  mountCalendar();
+
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    var txt = answers.name + (biz ? ' — ' + biz : '')
+      + (needs.length ? '\nNeeds: ' + needs.join(', ') : '')
+      + (note ? '\n' + note : '');
+    var btn = this;
+    navigator.clipboard.writeText(txt).then(function () {
+      btn.textContent = 'Copied';
+      setTimeout(function () { btn.textContent = 'Copy for the booking notes'; }, 2200);
+    }).catch(function () {
+      btn.textContent = 'Select the text above and copy';
+    });
+  });
+});
+
+document.getElementById('backStep').addEventListener('click', function (e) {
+  e.preventDefault();
+  step2.hidden = true;
+  step1.hidden = false;
+  window.scrollTo(0, 0);
+});
+</script>
+
+</body>
+</html>

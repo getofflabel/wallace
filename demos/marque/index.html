@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARQUE | Premium Pre-Owned Cars, Brooklyn</title>
+<meta name="description" content="MARQUE is a Brooklyn dealership for hand-picked performance and luxury cars. Every car inspected over 150 points, priced straight, ready to drive today.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0b0d'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='17' font-weight='700' fill='%232b59ff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b0d;
+    --panel:#0f1114;
+    --card:#12151a;
+    --line:rgba(255,255,255,.08);
+    --text:#e9ebef;
+    --muted:#9aa1ab;
+    --faint:#6b727c;
+    --accent:#2b59ff;
+    --accent-hi:#4a71ff;
+    --radius:16px;
+    --pad:clamp(72px,11vh,140px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.08;letter-spacing:-.02em}
+  h1{font-size:clamp(44px,6vw,84px);font-weight:700}
+  h2{font-size:clamp(30px,3.6vw,46px);font-weight:600}
+  h3{font-size:19px;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+  section{padding:var(--pad) 0}
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent-hi);margin-bottom:18px;
+  }
+  .sub{color:var(--muted);max-width:56ch}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(10,11,13,.72);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{
+    max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px);
+    height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:19px;letter-spacing:.22em}
+  .nav-links{display:flex;gap:30px;font-size:14px;color:var(--muted)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .pill{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--accent);color:#fff;border:none;border-radius:999px;
+    padding:13px 26px;font-size:14px;font-weight:600;
+    transition:background .2s,transform .2s;
+  }
+  .pill:hover{background:var(--accent-hi);transform:translateY(-1px)}
+  .pill.sm{padding:10px 20px}
+  .ghost{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.22);
+    border-radius:999px;padding:13px 26px;font-size:14px;font-weight:600;
+    transition:border-color .2s,background .2s;
+  }
+  .ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:94svh;display:flex;align-items:flex-end;
+    padding:0;
+  }
+  .hero-bg{position:absolute;inset:0;overflow:hidden}
+  .hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(10,11,13,.55) 0%,rgba(10,11,13,.22) 38%,rgba(10,11,13,.94) 86%,var(--bg) 100%),
+      linear-gradient(78deg,rgba(10,11,13,.82) 0%,rgba(10,11,13,.45) 48%,rgba(10,11,13,0) 78%);
+  }
+  @media (max-width:760px){
+    .hero-bg::after{
+      background:
+        linear-gradient(180deg,rgba(10,11,13,.62) 0%,rgba(10,11,13,.5) 45%,rgba(10,11,13,.95) 84%,var(--bg) 100%);
+    }
+  }
+  .hero-in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vh,110px);padding-top:150px}
+  .hero p.sub{margin:22px 0 34px;font-size:17px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{
+    display:flex;gap:clamp(20px,4vw,54px);flex-wrap:wrap;
+    margin-top:clamp(40px,6vh,64px);padding-top:26px;border-top:1px solid rgba(255,255,255,.14);
+  }
+  .hero-meta div{font-size:13px;color:var(--muted)}
+  .hero-meta b{display:block;font-family:'Sora',sans-serif;font-size:17px;color:var(--text);font-weight:600;margin-bottom:2px}
+
+  /* ---------- inventory ---------- */
+  .inv-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+  .count{color:var(--faint);font-size:14px}
+  .filters{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding:16px 18px;margin-bottom:34px;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  }
+  .filters select{
+    background:var(--card);color:var(--text);border:1px solid var(--line);
+    border-radius:10px;padding:10px 34px 10px 14px;font-size:14px;font-family:inherit;
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239aa1ab' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;
+    cursor:pointer;
+  }
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{
+    background:var(--card);color:var(--muted);border:1px solid var(--line);
+    border-radius:999px;padding:9px 18px;font-size:13px;font-weight:500;
+    transition:all .2s;
+  }
+  .chip:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .price-filter{display:flex;align-items:center;gap:12px;margin-left:auto;font-size:13px;color:var(--muted)}
+  .price-filter output{min-width:104px;text-align:right;color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:170px;height:4px;border-radius:4px;
+    background:linear-gradient(to right,var(--accent) var(--fill,100%),rgba(255,255,255,.14) var(--fill,100%));
+    outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;
+    background:#fff;border:none;box-shadow:0 2px 8px rgba(0,0,0,.5);
+  }
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:none}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;text-align:left;color:var(--text);padding:0;
+    transition:transform .2s,border-color .2s,box-shadow .2s;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);
+  }
+  .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .card figure{aspect-ratio:4/3;overflow:hidden}
+  .card figure img{width:100%;height:100%;object-fit:cover;transition:transform .2s}
+  .card:hover figure img{transform:scale(1.035)}
+  .card-body{padding:18px 20px 20px}
+  .card-sub{font-size:12.5px;color:var(--faint);letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+  .card-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;margin:5px 0 10px}
+  .card-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .card-meta{font-size:13.5px;color:var(--muted)}
+  .card-price{font-family:'Sora',sans-serif;font-weight:600;font-size:17px}
+  .empty{
+    display:none;padding:60px 20px;text-align:center;color:var(--muted);
+    border:1px dashed var(--line);border-radius:var(--radius);
+  }
+  .empty.show{display:block}
+
+  /* ---------- modal ---------- */
+  .overlay{
+    position:fixed;inset:0;z-index:100;background:rgba(6,7,9,.8);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    display:none;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px);
+  }
+  .overlay.open{display:flex}
+  .modal{
+    background:var(--panel);border:1px solid rgba(255,255,255,.1);border-radius:20px;
+    width:min(1020px,100%);max-height:92svh;overflow-y:auto;position:relative;
+    box-shadow:0 40px 120px rgba(0,0,0,.6);
+  }
+  .modal-x{
+    position:absolute;top:14px;right:14px;z-index:5;
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.15);
+    background:rgba(10,11,13,.6);color:var(--text);display:flex;align-items:center;justify-content:center;
+    transition:background .2s;
+  }
+  .modal-x:hover{background:rgba(255,255,255,.12)}
+  .modal-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:0}
+  .m-gallery{padding:clamp(16px,2.5vw,28px)}
+  .m-main{aspect-ratio:16/10;border-radius:12px;overflow:hidden;margin-bottom:10px}
+  .m-main img{width:100%;height:100%;object-fit:cover}
+  .m-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .m-thumbs button{
+    aspect-ratio:16/10;border-radius:9px;overflow:hidden;border:2px solid transparent;
+    padding:0;background:none;transition:border-color .2s,opacity .2s;opacity:.65;
+  }
+  .m-thumbs button img{width:100%;height:100%;object-fit:cover}
+  .m-thumbs button.on{border-color:var(--accent);opacity:1}
+  .m-thumbs button:hover{opacity:1}
+  .m-info{padding:clamp(20px,2.5vw,32px);border-left:1px solid var(--line)}
+  .m-info .card-sub{margin-top:8px}
+  .m-title{font-size:clamp(22px,2.4vw,28px);font-weight:600;margin:6px 0 4px}
+  .m-price{font-family:'Sora',sans-serif;font-size:24px;font-weight:700;color:var(--accent-hi);margin-bottom:20px}
+  .specs{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;
+    padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:22px;
+  }
+  .specs div dt{font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1px}
+  .specs div dd{font-size:14px;font-weight:500}
+  .m-actions{display:flex;flex-direction:column;gap:10px}
+  .m-actions .pill,.m-actions .ghost{width:100%}
+
+  /* ---------- financing ---------- */
+  .fin{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,90px);align-items:center}
+  .calc{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(22px,3vw,34px);box-shadow:0 20px 60px rgba(0,0,0,.35);
+  }
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;font-weight:500}
+  .field .in-wrap{position:relative}
+  .field .in-wrap span{
+    position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    color:var(--faint);font-size:14px;pointer-events:none;
+  }
+  .field input[type=number]{
+    width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);font-size:15px;font-family:inherit;padding:12px 14px;
+    transition:border-color .2s;
+  }
+  .field .in-wrap input{padding-left:30px}
+  .field input:focus{outline:none;border-color:var(--accent)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  input[type=range].term-track{width:100%}
+  .term-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--faint);margin-top:8px}
+  .term-labels span{width:44px;text-align:center;transition:color .2s}
+  .term-labels span:first-child{text-align:left}
+  .term-labels span:last-child{text-align:right}
+  .term-labels span.on{color:var(--text);font-weight:600}
+  .calc-out{
+    margin-top:24px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .monthly{font-family:'Sora',sans-serif;font-size:clamp(34px,3.4vw,44px);font-weight:700;line-height:1}
+  .monthly small{font-size:15px;font-weight:500;color:var(--muted)}
+  .calc-mini{font-size:13px;color:var(--muted);text-align:right;line-height:1.75}
+  .calc-mini b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
+  .fin-points{margin-top:28px;display:grid;gap:14px}
+  .fin-points li{list-style:none;display:flex;gap:12px;color:var(--muted);font-size:15px}
+  .fin-points svg{flex:none;margin-top:4px}
+
+  /* ---------- booking ---------- */
+  .book-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(36px,6vw,80px)}
+  .book-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(22px,3vw,34px);
+  }
+  .book-card select,.book-card input[type=date],.book-card input[type=text],.book-card input[type=tel]{
+    width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);font-size:15px;font-family:inherit;padding:12px 14px;
+    transition:border-color .2s;
+  }
+  .book-card select{
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239aa1ab' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;cursor:pointer;
+  }
+  .book-card input:focus,.book-card select:focus{outline:none;border-color:var(--accent)}
+  .book-card input[type=date]{color-scheme:dark}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .slot{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    color:var(--text);padding:11px 6px;font-size:14px;font-weight:500;
+    transition:all .2s;
+  }
+  .slot:hover{border-color:rgba(255,255,255,.3)}
+  .slot.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+  .form-err{display:none;color:#ff7a7a;font-size:13.5px;margin-top:14px}
+  .form-err.show{display:block}
+  .confirm{display:none;text-align:center;padding:26px 8px}
+  .confirm.show{display:block}
+  .confirm .ok-ring{
+    width:74px;height:74px;border-radius:50%;background:rgba(43,89,255,.14);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .confirm h3{font-size:24px;margin-bottom:10px}
+  .confirm p{color:var(--muted);max-width:40ch;margin:0 auto 8px}
+  .confirm .conf-line{color:var(--text);font-weight:600;font-size:16.5px;margin-bottom:14px}
+  .visit-list{margin-top:26px;display:grid;gap:18px}
+  .visit-list div b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);font-weight:600;margin-bottom:3px}
+  .visit-list div{color:var(--muted);font-size:15px}
+
+  /* ---------- trade / about ---------- */
+  .strip{position:relative;overflow:hidden;border-radius:20px}
+  .strip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .strip::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,9,11,.93) 30%,rgba(8,9,11,.55) 70%,rgba(8,9,11,.3));z-index:1}
+  .strip-in{position:relative;z-index:2;padding:clamp(40px,6vw,72px);max-width:560px}
+  .strip-in h2{margin-bottom:14px}
+  .strip-in p{color:var(--muted);margin-bottom:26px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,90px);align-items:center}
+  .about-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3.4}
+  .about-img img{width:100%;height:100%;object-fit:cover}
+  .about-grid h2{margin-bottom:18px}
+  .about-grid p{color:var(--muted);margin-bottom:14px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:60px 0 34px;background:var(--panel)}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:44px}
+  .foot-grid p,.foot-grid li{color:var(--muted);font-size:14px;line-height:1.9}
+  .foot-grid ul{list-style:none}
+  .foot-grid a:hover{color:var(--text)}
+  .foot-h{font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);font-weight:600;margin-bottom:12px}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--faint);font-size:13px}
+
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition:none!important;animation:none!important}
+    .rv{opacity:1;transform:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1020px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .modal-grid{grid-template-columns:1fr}
+    .m-info{border-left:none;border-top:1px solid var(--line)}
+    .price-filter{margin-left:0;width:100%}
+    .price-filter input[type=range]{flex:1}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .grid{grid-template-columns:1fr}
+    .split,.book-grid,.about-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .slots{grid-template-columns:repeat(3,1fr)}
+    .hero{min-height:88svh}
+    .calc-out{flex-direction:column;align-items:flex-start}
+    .calc-mini{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#top">MARQUE</a>
+    <div class="nav-links">
+      <a href="#inventory">Inventory</a>
+      <a href="#financing">Financing</a>
+      <a href="#trade">Trade-in</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="pill sm" href="#testdrive">Book a test drive</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"><video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-label="Mercedes-AMG sedan at night with headlights on"><source src="media/hero.mp4" type="video/mp4"></video></div>
+  <div class="wrap hero-in">
+    <span class="eyebrow">Premium pre-owned · Williamsburg, Brooklyn</span>
+    <h1>Great cars<br>have second acts.</h1>
+    <p class="sub">MARQUE hand-picks performance and luxury cars, inspects each one over 150 points, and prices it straight. No wholesale flips, no mystery history, no games at the desk.</p>
+    <div class="hero-cta">
+      <a class="pill" href="#testdrive">Book a test drive</a>
+      <a class="ghost" href="#inventory">Browse the showroom</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>9 cars</b>on the floor this week</div>
+      <div><b>150-point</b>inspection on every car</div>
+      <div><b>7-day</b>exchange, no questions</div>
+      <div><b>On-site</b>financing from 6.9% APR</div>
+    </div>
+  </div>
+</header>
+
+<section id="inventory">
+  <div class="wrap">
+    <div class="inv-head rv">
+      <div>
+        <span class="eyebrow">Inventory</span>
+        <h2>In the showroom now</h2>
+      </div>
+      <span class="count" id="invCount">9 cars</span>
+    </div>
+
+    <div class="filters rv" id="filters">
+      <select id="fMake" aria-label="Filter by make">
+        <option value="all">All makes</option>
+      </select>
+      <div class="chips" id="fBody" role="group" aria-label="Filter by body style">
+        <button class="chip on" data-body="all">All</button>
+        <button class="chip" data-body="Coupe">Coupe</button>
+        <button class="chip" data-body="Sedan">Sedan</button>
+        <button class="chip" data-body="SUV">SUV</button>
+        <button class="chip" data-body="Convertible">Convertible</button>
+      </div>
+      <div class="price-filter">
+        <label for="fPrice">Max price</label>
+        <input type="range" id="fPrice" min="35000" max="200000" step="5000" value="200000">
+        <output id="fPriceOut">$200,000</output>
+      </div>
+    </div>
+
+    <div class="grid" id="carGrid"></div>
+    <div class="empty" id="invEmpty">No cars match those filters. Widen the net: the right one may be in transit.</div>
+  </div>
+</section>
+
+<section class="fin" id="financing">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="eyebrow">Financing</span>
+      <h2>Know your number before you walk in.</h2>
+      <p class="sub" style="margin-top:16px">We work with eight lenders and close most deals in under an hour. Run the math yourself, then bring us the payment you want to hit.</p>
+      <ul class="fin-points">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#2b59ff" stroke-width="2" stroke-linecap="round"/></svg>Rates from 6.9% APR with approved credit</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#2b59ff" stroke-width="2" stroke-linecap="round"/></svg>Terms from 36 to 72 months, no prepayment penalty</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#2b59ff" stroke-width="2" stroke-linecap="round"/></svg>Trade equity applies straight to your down payment</li>
+      </ul>
+    </div>
+    <div class="calc rv" aria-label="Payment calculator">
+      <h3 style="margin-bottom:20px">Payment calculator</h3>
+      <div class="field">
+        <label for="calcPrice">Vehicle price</label>
+        <div class="in-wrap"><span>$</span><input type="number" id="calcPrice" value="47900" min="0" step="100"></div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="calcDown">Down payment</label>
+          <div class="in-wrap"><span>$</span><input type="number" id="calcDown" value="8000" min="0" step="100"></div>
+        </div>
+        <div class="field">
+          <label for="calcApr">APR (%)</label>
+          <input type="number" id="calcApr" value="6.9" min="0" max="30" step="0.1">
+        </div>
+      </div>
+      <div class="field">
+        <label for="calcTerm">Term (months)</label>
+        <input type="range" class="term-track" id="calcTerm" min="0" max="3" step="1" value="2" aria-valuetext="60 months">
+        <div class="term-labels" id="termLabels">
+          <span>36</span><span>48</span><span class="on">60</span><span>72</span>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Estimated payment</div>
+          <div class="monthly"><span id="calcMonthly">$788</span><small> /mo</small></div>
+        </div>
+        <div class="calc-mini">
+          Amount financed <b id="calcFin">$39,900</b><br>
+          Total interest <b id="calcInt">$7,391</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testdrive">
+  <div class="wrap book-grid">
+    <div class="rv">
+      <span class="eyebrow">Test drives</span>
+      <h2>Drive it before you decide anything.</h2>
+      <p class="sub" style="margin-top:16px">Thirty minutes, real roads, no salesperson riding along unless you want one. Bring a valid license and we handle the rest.</p>
+      <div class="visit-list">
+        <div><b>Where</b>Williamsburg, Brooklyn</div>
+        <div><b>Routes</b>BQE on-ramp 4 minutes away for highway feel, plus quiet blocks for low-speed manners</div>
+        <div><b>Good to know</b>Cars can be held for 24 hours with a refundable $250 deposit</div>
+      </div>
+    </div>
+    <div class="book-card rv" id="bookCard">
+      <form id="bookForm" novalidate>
+        <h3 style="margin-bottom:20px">Book a test drive</h3>
+        <div class="field">
+          <label for="bkCar">Car</label>
+          <select id="bkCar"></select>
+        </div>
+        <div class="field">
+          <label for="bkDate">Date</label>
+          <input type="date" id="bkDate">
+        </div>
+        <div class="field">
+          <label>Time</label>
+          <div class="slots" id="bkSlots">
+            <button type="button" class="slot">10:00 am</button>
+            <button type="button" class="slot">11:30 am</button>
+            <button type="button" class="slot">1:00 pm</button>
+            <button type="button" class="slot">2:30 pm</button>
+            <button type="button" class="slot">4:00 pm</button>
+            <button type="button" class="slot">5:30 pm</button>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bkName">Full name</label>
+            <input type="text" id="bkName" autocomplete="name" placeholder="Sam Rivera">
+          </div>
+          <div class="field">
+            <label for="bkPhone">Phone</label>
+            <input type="tel" id="bkPhone" autocomplete="tel">
+          </div>
+        </div>
+        <button type="submit" class="pill" style="width:100%">Confirm booking</button>
+        <div class="form-err" id="bkErr">Pick a date and time slot, and add your name and phone so we can confirm.</div>
+      </form>
+      <div class="confirm" id="bookDone">
+        <div class="ok-ring">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M7 18l7 7L27 10" stroke="#4a71ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>You're booked.</h3>
+        <div class="conf-line" id="confLine"></div>
+        <p>We'll text you within the hour to confirm and hold the car. Bring your license; plates and insurance are on us.</p>
+        <button type="button" class="ghost" id="bookAgain" style="margin-top:16px">Book another time</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trade" style="padding-top:0">
+  <div class="wrap">
+    <div class="strip rv">
+      <img src="img/garage.jpg" alt="Private garage with a BMW i8 and other sports cars">
+      <div class="strip-in">
+        <span class="eyebrow">Trade-in</span>
+        <h2>Have one worth selling?</h2>
+        <p>We buy clean, interesting cars outright, whether or not you buy from us. Bring the car and its VIN by the showroom, get a real number within one business day, and get paid the day we collect it.</p>
+        <a class="pill" href="#visit">Get an offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap about-grid">
+    <div class="about-img rv"><img src="img/interior.jpg" alt="Black leather interior of a Mercedes-AMG"></div>
+    <div class="rv">
+      <span class="eyebrow">About MARQUE</span>
+      <h2>Nine cars, chosen like we're keeping them.</h2>
+      <p>MARQUE opened in 2016 in Williamsburg with a simple rule: never stock a car we wouldn't drive home. We turn down about nine out of ten cars we're offered, and the ones that make the floor get a 150-point inspection, fresh fluids, and a full history file you can read before you ever ask.</p>
+      <p>Prices are posted, firm, and checked weekly against the wider market. The showroom is open seven days, and the coffee is better than it needs to be.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="visit">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top" style="display:inline-block;margin-bottom:14px">MARQUE</a>
+        <p>Premium pre-owned cars in Williamsburg, Brooklyn. Inspected, documented, priced straight.</p>
+      </div>
+      <div>
+        <div class="foot-h">Visit</div>
+        <p>Williamsburg, Brooklyn</p>
+      </div>
+      <div>
+        <div class="foot-h">Hours</div>
+        <p>Mon to Sat: 10am to 7pm<br>Sun: 11am to 5pm</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 MARQUE Motors LLC. All rights reserved.</span>
+      <span>NY Dealer #7104482</span>
+    </div>
+  </div>
+</footer>
+
+<!-- car detail modal -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal">
+    <button class="modal-x" id="modalX" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-grid">
+      <div class="m-gallery">
+        <div class="m-main"><img id="mMain" alt=""></div>
+        <div class="m-thumbs" id="mThumbs"></div>
+      </div>
+      <div class="m-info">
+        <span class="card-sub" id="mSub"></span>
+        <h3 class="m-title" id="mTitle"></h3>
+        <div class="m-price" id="mPrice"></div>
+        <dl class="specs" id="mSpecs"></dl>
+        <div class="m-actions">
+          <button class="pill" id="mBook">Book a test drive</button>
+          <button class="ghost" id="mCalc">Calculate payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const CARS = [
+  {id:"audi-rs7", make:"Audi", model:"RS 7 Sportback", year:2022, body:"Sedan", price:86900, miles:18420,
+   engine:"4.0L twin-turbo V8", power:"591 hp", zero60:"3.5s", trans:"8-speed automatic", drive:"AWD (quattro)",
+   ext:"Mythos Black", int:"Black Valcona leather", alt:"Black Audi RS 7 parked on a brick street"},
+  {id:"audi-r8", make:"Audi", model:"R8 V10 performance", year:2020, body:"Coupe", price:146500, miles:9860,
+   engine:"5.2L V10", power:"602 hp", zero60:"3.1s", trans:"7-speed dual-clutch", drive:"AWD (quattro)",
+   ext:"Mythos Black", int:"Black leather, contrast stitch", alt:"Black Audi R8 on a tree-lined driveway"},
+  {id:"amg-gtr", make:"Mercedes-Benz", model:"AMG GT R", year:2021, body:"Coupe", price:139900, miles:12350,
+   engine:"4.0L twin-turbo V8", power:"577 hp", zero60:"3.5s", trans:"7-speed dual-clutch", drive:"RWD",
+   ext:"Cardinal Red", int:"Black Nappa leather", alt:"Red Mercedes-AMG GT R parked under a tree"},
+  {id:"amg-s63", make:"Mercedes-Benz", model:"AMG S 63 Cabriolet", year:2019, body:"Convertible", price:92800, miles:21400,
+   engine:"4.0L twin-turbo V8", power:"603 hp", zero60:"3.4s", trans:"9-speed automatic", drive:"AWD (4MATIC+)",
+   ext:"Selenite Grey", int:"Black Exclusive Nappa", alt:"Grey Mercedes-AMG S 63 Cabriolet with the top down"},
+  {id:"huracan", make:"Lamborghini", model:"Huracán LP 580-2", year:2019, body:"Coupe", price:189500, miles:8150,
+   engine:"5.2L V10", power:"572 hp", zero60:"3.2s", trans:"7-speed dual-clutch", drive:"RWD",
+   ext:"Verde Mantis", int:"Nero Ade Alcantara", alt:"Green Lamborghini Huracán on a city street"},
+  {id:"corvette", make:"Chevrolet", model:"Corvette Grand Sport", year:2019, body:"Coupe", price:61900, miles:15700,
+   engine:"6.2L V8", power:"460 hp", zero60:"3.6s", trans:"7-speed manual", drive:"RWD",
+   ext:"Watkins Glen Gray", int:"Jet Black leather", alt:"Grey Chevrolet Corvette Grand Sport in a showroom"},
+  {id:"supra", make:"Toyota", model:"GR Supra 3.0 Premium", year:2021, body:"Coupe", price:47900, miles:22600,
+   engine:"3.0L turbo inline-6", power:"382 hp", zero60:"3.9s", trans:"8-speed automatic", drive:"RWD",
+   ext:"Absolute Zero White", int:"Black leather", alt:"White Toyota GR Supra in a parking lot at night"},
+  {id:"evoque", make:"Land Rover", model:"Range Rover Evoque HSE", year:2018, body:"SUV", price:38900, miles:36800,
+   engine:"2.0L turbo inline-4", power:"237 hp", zero60:"6.7s", trans:"9-speed automatic", drive:"AWD",
+   ext:"Fuji White", int:"Ebony leather", alt:"White Range Rover Evoque three-quarter rear view"},
+  {id:"bmw-340i", make:"BMW", model:"340i xDrive Gran Turismo", year:2019, body:"Sedan", price:36400, miles:41200,
+   engine:"3.0L turbo inline-6", power:"320 hp", zero60:"4.9s", trans:"8-speed automatic", drive:"AWD (xDrive)",
+   ext:"Estoril Blue", int:"Black Dakota leather", alt:"Blue BMW 340i Gran Turismo parked by a green"}
+];
+
+const $ = s => document.querySelector(s);
+const fmt = n => "$" + Math.round(n).toLocaleString("en-US");
+const fmtMi = n => n.toLocaleString("en-US") + " mi";
+
+/* ---------- inventory render + filters ---------- */
+const grid = $("#carGrid");
+CARS.forEach(c => {
+  const el = document.createElement("button");
+  el.type = "button";
+  el.className = "card rv";
+  el.dataset.id = c.id;
+  el.innerHTML = `
+    <figure><img src="img/${c.id}.jpg" alt="${c.alt}" loading="lazy"></figure>
+    <div class="card-body">
+      <span class="card-sub">${c.year} · ${c.make}</span>
+      <div class="card-title">${c.model}</div>
+      <div class="card-row">
+        <span class="card-meta">${fmtMi(c.miles)} · ${c.body}</span>
+        <span class="card-price">${fmt(c.price)}</span>
+      </div>
+    </div>`;
+  el.addEventListener("click", () => openModal(c));
+  grid.appendChild(el);
+});
+
+const fMake = $("#fMake");
+[...new Set(CARS.map(c => c.make))].sort().forEach(m => {
+  const o = document.createElement("option");
+  o.value = m; o.textContent = m;
+  fMake.appendChild(o);
+});
+
+const fPrice = $("#fPrice"), fPriceOut = $("#fPriceOut");
+let bodyFilter = "all";
+
+function paintRange(input){
+  const pct = (input.value - input.min) / (input.max - input.min) * 100;
+  input.style.setProperty("--fill", pct + "%");
+}
+
+function applyFilters(){
+  const make = fMake.value, max = +fPrice.value;
+  let shown = 0;
+  grid.querySelectorAll(".card").forEach(el => {
+    const c = CARS.find(x => x.id === el.dataset.id);
+    const ok = (make === "all" || c.make === make)
+            && (bodyFilter === "all" || c.body === bodyFilter)
+            && c.price <= max;
+    el.style.display = ok ? "" : "none";
+    if (ok) shown++;
+  });
+  $("#invCount").textContent = shown + (shown === 1 ? " car" : " cars");
+  $("#invEmpty").classList.toggle("show", shown === 0);
+}
+
+fMake.addEventListener("change", applyFilters);
+fPrice.addEventListener("input", () => {
+  fPriceOut.textContent = fmt(+fPrice.value);
+  paintRange(fPrice);
+  applyFilters();
+});
+paintRange(fPrice);
+
+document.querySelectorAll("#fBody .chip").forEach(ch => {
+  ch.addEventListener("click", () => {
+    document.querySelectorAll("#fBody .chip").forEach(x => x.classList.remove("on"));
+    ch.classList.add("on");
+    bodyFilter = ch.dataset.body;
+    applyFilters();
+  });
+});
+
+/* ---------- modal ---------- */
+const overlay = $("#overlay");
+let activeCar = null;
+
+function openModal(c){
+  activeCar = c;
+  $("#mSub").textContent = `${c.year} · ${c.make} · ${fmtMi(c.miles)}`;
+  $("#mTitle").textContent = c.model;
+  $("#mPrice").textContent = fmt(c.price);
+  const specs = [
+    ["Engine", c.engine], ["Power", c.power],
+    ["0-60 mph", c.zero60], ["Transmission", c.trans],
+    ["Drivetrain", c.drive], ["Mileage", fmtMi(c.miles)],
+    ["Exterior", c.ext], ["Interior", c.int]
+  ];
+  $("#mSpecs").innerHTML = specs.map(([k,v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+  const shots = [`img/${c.id}.jpg`, `img/${c.id}-d1.jpg`, `img/${c.id}-d2.jpg`];
+  const main = $("#mMain");
+  main.src = shots[0];
+  main.alt = c.alt;
+  $("#mThumbs").innerHTML = shots.map((s,i) =>
+    `<button type="button" class="${i===0?'on':''}" data-src="${s}" aria-label="Photo ${i+1}"><img src="${s}" alt="" loading="lazy"></button>`).join("");
+  $("#mThumbs").querySelectorAll("button").forEach(b => {
+    b.addEventListener("click", () => {
+      main.src = b.dataset.src;
+      $("#mThumbs").querySelectorAll("button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+    });
+  });
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+  $("#modalX").focus();
+}
+
+function closeModal(){
+  overlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+$("#modalX").addEventListener("click", closeModal);
+overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && overlay.classList.contains("open")) closeModal(); });
+
+$("#mBook").addEventListener("click", () => {
+  if (activeCar) $("#bkCar").value = activeCar.id;
+  closeModal();
+  $("#testdrive").scrollIntoView({behavior:"smooth"});
+});
+$("#mCalc").addEventListener("click", () => {
+  if (activeCar){
+    $("#calcPrice").value = activeCar.price;
+    calc();
+  }
+  closeModal();
+  $("#financing").scrollIntoView({behavior:"smooth"});
+});
+
+/* ---------- financing calculator ---------- */
+const TERMS = [36, 48, 60, 72];
+const calcTerm = $("#calcTerm");
+
+function calc(){
+  const price = Math.max(0, +$("#calcPrice").value || 0);
+  const down = Math.min(Math.max(0, +$("#calcDown").value || 0), price);
+  const apr = Math.max(0, +$("#calcApr").value || 0);
+  const n = TERMS[+calcTerm.value];
+  const P = price - down;
+  const r = apr / 100 / 12;
+  const monthly = P <= 0 ? 0 : (r === 0 ? P / n : P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+  $("#calcMonthly").textContent = fmt(monthly);
+  $("#calcFin").textContent = fmt(P);
+  $("#calcInt").textContent = fmt(Math.max(0, monthly * n - P));
+  calcTerm.setAttribute("aria-valuetext", n + " months");
+  document.querySelectorAll("#termLabels span").forEach((s,i) =>
+    s.classList.toggle("on", i === +calcTerm.value));
+  paintRange(calcTerm);
+}
+["calcPrice","calcDown","calcApr"].forEach(id => $("#"+id).addEventListener("input", calc));
+calcTerm.addEventListener("input", calc);
+calc();
+
+/* ---------- booking ---------- */
+const bkCar = $("#bkCar");
+bkCar.innerHTML = `<option value="unsure">Not sure yet, help me choose</option>` +
+  CARS.map(c => `<option value="${c.id}">${c.year} ${c.make} ${c.model}</option>`).join("");
+
+const today = new Date();
+const iso = d => d.toISOString().slice(0,10);
+const bkDate = $("#bkDate");
+bkDate.min = iso(today);
+const maxD = new Date(today); maxD.setDate(maxD.getDate() + 60);
+bkDate.max = iso(maxD);
+
+let slotVal = null;
+document.querySelectorAll("#bkSlots .slot").forEach(s => {
+  s.addEventListener("click", () => {
+    document.querySelectorAll("#bkSlots .slot").forEach(x => x.classList.remove("sel"));
+    s.classList.add("sel");
+    slotVal = s.textContent;
+  });
+});
+
+$("#bookForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#bkName").value.trim();
+  const phone = $("#bkPhone").value.trim();
+  const date = bkDate.value;
+  const ok = name && phone && date && slotVal;
+  $("#bkErr").classList.toggle("show", !ok);
+  if (!ok) return;
+  const carTxt = bkCar.value === "unsure"
+    ? "a few cars from the floor"
+    : (c => `the ${c.year} ${c.make} ${c.model}`)(CARS.find(x => x.id === bkCar.value));
+  const [y,m,d] = date.split("-").map(Number);
+  const nice = new Date(y, m-1, d).toLocaleDateString("en-US", {weekday:"long", month:"long", day:"numeric"});
+  $("#confLine").textContent = `${carTxt.charAt(0).toUpperCase() + carTxt.slice(1)}, ${nice} at ${slotVal}`;
+  $("#bookForm").style.display = "none";
+  $("#bookDone").classList.add("show");
+});
+
+$("#bookAgain").addEventListener("click", () => {
+  $("#bookDone").classList.remove("show");
+  $("#bookForm").style.display = "";
+  $("#bookForm").reset();
+  bkDate.min = iso(new Date());
+  document.querySelectorAll("#bkSlots .slot").forEach(x => x.classList.remove("sel"));
+  slotVal = null;
+});
+
+/* ---------- hero video: respect reduced motion ---------- */
+const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const heroVideo = document.querySelector(".hero-bg video");
+function syncHeroVideo(){
+  if (!heroVideo) return;
+  if (motionQuery.matches) heroVideo.pause();
+  else heroVideo.play().catch(() => {});
+}
+if (motionQuery.addEventListener) motionQuery.addEventListener("change", syncHeroVideo);
+syncHeroVideo();
+
+/* ---------- scroll reveal ---------- */
+const reduce = motionQuery.matches;
+if (!reduce && "IntersectionObserver" in window){
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+    });
+  }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+}
+</script>
+</body>
+</html>

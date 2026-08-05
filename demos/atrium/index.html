@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atrium · Pilates and Strength · Tribeca</title>
+<meta name="description" content="Atrium is a pilates and strength studio in Tribeca. Twelve people a class, reformers by the windows, membership from $185 a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,440;9..144,520;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#F4F1EA;
+    --cream:#FBF9F4;
+    --sage:#6E7A62;
+    --sage-deep:#525E48;
+    --sage-tint:#EAEDE1;
+    --terra-tint:#F2E7DC;
+    --ink:#33302A;
+    --ink-60:rgba(51,48,42,.62);
+    --ink-45:rgba(51,48,42,.45);
+    --hair:rgba(51,48,42,.09);
+    --hair-soft:rgba(51,48,42,.06);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-lg:0 1px 2px rgba(0,0,0,.05), 0 16px 40px rgba(0,0,0,.08);
+    --r-card:16px;
+    --r-media:24px;
+    --max:1200px;
+    --pad:clamp(72px,11vh,140px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    font-size:17px;line-height:1.65;
+    color:var(--ink);
+    background:var(--stone);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:520;letter-spacing:-.02em;line-height:1.06}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  section{padding:var(--pad) 0}
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sage-deep);margin-bottom:18px;
+  }
+  .sec-h{font-size:clamp(34px,4.2vw,54px);margin-bottom:14px}
+  .sec-sub{color:var(--ink-60);max-width:56ch}
+
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,241,234,0);
+    transition:background .25s ease, box-shadow .25s ease;
+  }
+  header.solid{background:rgba(244,241,234,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--hair-soft)}
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .nav .mark{
+    font-family:'Fraunces',serif;font-weight:600;font-size:20px;
+    letter-spacing:.22em;margin-right:-.22em;text-decoration:none;
+  }
+  .nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+  .nav-links a{
+    font-size:14.5px;font-weight:500;text-decoration:none;color:var(--ink-60);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:999px;padding:13px 26px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    background:var(--sage-deep);color:#FBF9F4;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn:hover{background:#454F3D}
+  .btn.ghost{
+    background:rgba(251,249,244,.14);color:#FBF9F4;
+    border:1px solid rgba(251,249,244,.45);
+  }
+  .btn.ghost:hover{background:rgba(251,249,244,.24)}
+  .btn.small{padding:10px 20px;font-size:14px}
+  .btn.line{background:transparent;color:var(--ink);border:1px solid var(--hair);box-shadow:none}
+  .btn.line:hover{background:rgba(51,48,42,.04)}
+  .nav .btn{padding:10px 22px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:88vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;overflow:hidden;padding:0;
+  }
+  .hero img.bg,.hero video.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero .tint{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(58% 52% at 50% 50%, rgba(52,46,36,.4) 0%, rgba(52,46,36,0) 74%),
+      linear-gradient(180deg, rgba(62,55,42,.38) 0%, rgba(62,55,42,.34) 55%, rgba(51,48,42,.54) 100%),
+      rgba(151,120,74,.18);
+  }
+  .hero-inner{
+    position:relative;z-index:2;color:#FBF8F1;padding:120px 20px;
+    text-shadow:0 1px 2px rgba(40,34,25,.2), 0 2px 28px rgba(40,34,25,.38);
+  }
+  .hero .kicker{
+    font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(251,248,241,.85);margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(56px,10vw,124px);font-weight:440;
+    letter-spacing:.16em;margin-right:-.16em;
+    line-height:1;text-transform:uppercase;
+  }
+  .hero .sub{
+    margin:26px auto 0;max-width:44ch;
+    font-size:clamp(16px,1.4vw,18.5px);color:rgba(251,248,241,.88);
+  }
+  .hero-cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- intro strip ---------- */
+  .intro{background:linear-gradient(180deg,var(--stone) 0%,var(--sage-tint) 100%)}
+  .intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .intro p.lead{
+    font-family:'Fraunces',serif;font-weight:440;letter-spacing:-.01em;
+    font-size:clamp(23px,2.4vw,31px);line-height:1.35;
+  }
+  .intro p.rest{margin-top:20px;color:var(--ink-60)}
+  .intro-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fact{
+    background:var(--cream);border:1px solid var(--hair-soft);border-radius:var(--r-card);
+    padding:24px 22px;box-shadow:var(--shadow-sm);
+  }
+  .fact b{font-family:'Fraunces',serif;font-weight:520;font-size:30px;letter-spacing:-.02em;display:block;line-height:1.1}
+  .fact span{font-size:14px;color:var(--ink-60);display:block;margin-top:6px}
+
+  /* ---------- instructors ---------- */
+  .instructors{background:linear-gradient(180deg,var(--sage-tint) 0%,var(--cream) 30%,var(--stone) 100%)}
+  .inst-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+  .search-box{position:relative;flex:0 1 340px;min-width:250px}
+  .search-box svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);pointer-events:none}
+  .search-box input{
+    width:100%;border:1px solid var(--hair);border-radius:999px;
+    background:var(--cream);padding:14px 20px 14px 46px;
+    font:inherit;font-size:15px;color:var(--ink);
+    box-shadow:var(--shadow-sm);outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .search-box input::placeholder{color:var(--ink-45)}
+  .search-box input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(110,122,98,.15)}
+  .inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .inst-card{
+    background:var(--cream);border:1px solid var(--hair-soft);
+    border-radius:var(--r-card);overflow:hidden;
+    box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .inst-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .inst-card .ph{aspect-ratio:4/4.6;overflow:hidden}
+  .inst-card .ph img{width:100%;height:100%;object-fit:cover}
+  .inst-card .body{padding:20px 22px 24px}
+  .inst-card h3{font-size:22px;font-weight:520}
+  .inst-card p{font-size:14.5px;color:var(--ink-60);margin-top:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{
+    font-size:12.5px;font-weight:500;letter-spacing:.02em;
+    background:var(--sage-tint);color:var(--sage-deep);
+    border-radius:999px;padding:5px 12px;
+  }
+  .no-match{
+    display:none;text-align:center;padding:60px 20px;color:var(--ink-60);
+    background:var(--cream);border:1px dashed var(--hair);border-radius:var(--r-card);
+  }
+  .no-match b{font-family:'Fraunces',serif;font-weight:520;font-size:22px;color:var(--ink);display:block;margin-bottom:8px}
+
+  /* ---------- schedule ---------- */
+  .schedule{background:linear-gradient(180deg,var(--stone) 0%,var(--terra-tint) 100%)}
+  .day-tabs{
+    display:flex;gap:8px;margin:36px 0 26px;
+    overflow-x:auto;padding-bottom:6px;
+    scrollbar-width:none;
+  }
+  .day-tabs::-webkit-scrollbar{display:none}
+  .day-tab{
+    flex:0 0 auto;border-radius:999px;padding:10px 20px;
+    font-size:14.5px;font-weight:600;color:var(--ink-60);
+    border:1px solid var(--hair);background:transparent;
+    transition:all .2s ease;white-space:nowrap;
+  }
+  .day-tab:hover{background:rgba(51,48,42,.05)}
+  .day-tab[aria-selected="true"]{background:var(--sage-deep);border-color:var(--sage-deep);color:#FBF9F4}
+  .class-list{display:flex;flex-direction:column;gap:10px}
+  .class-row{
+    display:grid;grid-template-columns:110px 1.4fr 1fr auto;gap:18px;align-items:center;
+    background:var(--cream);border:1px solid var(--hair-soft);
+    border-radius:14px;padding:18px 24px;
+    box-shadow:var(--shadow-sm);
+  }
+  .class-row .time{font-weight:600;font-size:15.5px}
+  .class-row .cname{font-family:'Fraunces',serif;font-weight:520;font-size:19px;letter-spacing:-.01em}
+  .class-row .who{font-size:14.5px;color:var(--ink-60)}
+  .spots{font-size:14px;color:var(--ink-60);text-align:right;white-space:nowrap}
+  .badge-low{
+    display:inline-block;font-size:12.5px;font-weight:600;
+    background:#EDD9C6;color:#8A5A34;
+    border-radius:999px;padding:5px 12px;
+  }
+  .badge-full{
+    display:inline-block;font-size:12.5px;font-weight:600;
+    background:rgba(51,48,42,.07);color:var(--ink-60);
+    border-radius:999px;padding:5px 12px;
+  }
+  .sched-note{margin-top:24px;font-size:14px;color:var(--ink-45)}
+
+  /* ---------- membership ---------- */
+  .membership{background:linear-gradient(180deg,var(--terra-tint) 0%,var(--stone) 26%,var(--sage-tint) 100%)}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;align-items:stretch}
+  .tier{
+    background:var(--cream);border:1px solid var(--hair-soft);
+    border-radius:var(--r-card);padding:34px 30px 30px;
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
+    position:relative;transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .tier:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .tier.featured{background:var(--sage-deep);color:#F4F3EC;border-color:transparent;box-shadow:var(--shadow-lg)}
+  .tier .flag{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    background:#C9803F;color:#FFF7EC;font-size:12px;font-weight:600;letter-spacing:.04em;
+    border-radius:999px;padding:6px 16px;white-space:nowrap;
+  }
+  .tier h3{font-size:24px}
+  .tier .price{margin:16px 0 4px;display:flex;align-items:baseline;gap:6px}
+  .tier .price b{font-family:'Fraunces',serif;font-weight:520;font-size:46px;letter-spacing:-.03em}
+  .tier .price span{font-size:15px;opacity:.62}
+  .tier .per{font-size:14px;opacity:.62;margin-bottom:22px}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px}
+  .tier li{display:flex;gap:10px;align-items:flex-start;font-size:14.8px}
+  .tier li svg{flex:0 0 auto;margin-top:4px}
+  .tier li.off{opacity:.42}
+  .tier .btn{margin-top:auto;width:100%}
+  .tier.featured .btn{background:#F4F3EC;color:var(--sage-deep)}
+  .tier.featured .btn:hover{background:#fff}
+  .drop-in{margin-top:26px;font-size:14.5px;color:var(--ink-60);text-align:center}
+
+  /* ---------- join modal ---------- */
+  .modal-back{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(38,35,29,.5);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:6vh 18px 40px;overflow-y:auto;
+  }
+  .modal-back.open{display:flex}
+  .modal{
+    background:var(--cream);border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.28);
+    width:100%;max-width:520px;padding:36px clamp(22px,5vw,42px) 38px;
+    position:relative;
+  }
+  .modal .x{
+    position:absolute;top:16px;right:16px;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:999px;color:var(--ink-60);
+    transition:background .2s ease;
+  }
+  .modal .x:hover{background:rgba(51,48,42,.06)}
+  .step-label{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:12px}
+  .modal h3{font-size:27px;margin-bottom:20px}
+  .plan-switch{display:flex;gap:8px;margin-bottom:22px}
+  .plan-pill{
+    flex:1;border:1px solid var(--hair);border-radius:12px;padding:10px 6px;
+    font-size:13.5px;font-weight:600;text-align:center;color:var(--ink-60);
+    transition:all .2s ease;
+  }
+  .plan-pill[aria-pressed="true"]{background:var(--sage-deep);border-color:var(--sage-deep);color:#FBF9F4}
+  .bill-box{
+    background:var(--sage-tint);border-radius:14px;padding:20px 22px;margin-bottom:20px;
+  }
+  .bill-box .amt{font-family:'Fraunces',serif;font-weight:520;font-size:32px;letter-spacing:-.02em}
+  .bill-box .when{font-size:14.5px;color:var(--ink-60);margin-top:4px}
+  .terms{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+  .terms li{display:flex;gap:10px;font-size:14.2px;color:var(--ink-60)}
+  .terms li svg{flex:0 0 auto;margin-top:4px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px}
+  .field input{
+    width:100%;border:1px solid var(--hair);border-radius:12px;
+    background:#fff;padding:13px 16px;font:inherit;font-size:15.5px;outline:none;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .field input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(110,122,98,.15)}
+  .field .err{display:none;font-size:13px;color:#A0522D;margin-top:6px}
+  .field.bad input{border-color:#C07A4A}
+  .field.bad .err{display:block}
+  .modal-actions{display:flex;gap:12px;margin-top:26px}
+  .modal-actions .btn{flex:1}
+  .confirm-wrap{text-align:center;padding:8px 0 4px}
+  .confirm-wrap .ok{
+    width:64px;height:64px;border-radius:999px;background:var(--sage-tint);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .confirm-wrap h3{margin-bottom:10px}
+  .confirm-wrap p{font-size:15px;color:var(--ink-60);max-width:36ch;margin:0 auto}
+  .confirm-sum{
+    margin:22px auto;text-align:left;background:var(--stone);
+    border-radius:14px;padding:18px 22px;font-size:14.5px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .confirm-sum div{display:flex;justify-content:space-between;gap:20px}
+  .confirm-sum span{color:var(--ink-60)}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;margin-top:44px}
+  .faq-item{border-bottom:1px solid var(--hair)}
+  .faq-item:first-child{border-top:1px solid var(--hair)}
+  .faq-q{
+    width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    text-align:left;padding:24px 4px;
+    font-family:'Fraunces',serif;font-weight:520;font-size:20px;letter-spacing:-.01em;
+  }
+  .faq-q svg{flex:0 0 auto;transition:transform .3s ease}
+  .faq-item.open .faq-q svg{transform:rotate(45deg)}
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .faq-a p{padding:0 4px 26px;color:var(--ink-60);font-size:15.5px;max-width:62ch}
+
+  /* ---------- first class ---------- */
+  .first{background:linear-gradient(180deg,var(--stone) 0%,var(--terra-tint) 120%)}
+  .first-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+  .first-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .first-photos img{border-radius:var(--r-media);width:100%;height:100%;object-fit:cover;box-shadow:var(--shadow-lg)}
+  .first-photos .tall{aspect-ratio:3/4}
+  .first-photos .short{aspect-ratio:3/4;margin-top:40px}
+  .first ol{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:18px;counter-reset:step}
+  .first ol li{display:flex;gap:18px;align-items:flex-start}
+  .first ol li::before{
+    counter-increment:step;content:counter(step);
+    flex:0 0 34px;height:34px;border-radius:999px;
+    background:var(--sage-tint);color:var(--sage-deep);
+    font-weight:600;font-size:14px;
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .first ol b{display:block;font-size:16px;font-weight:600}
+  .first ol span{font-size:14.8px;font-weight:400;color:var(--ink-60)}
+  .first .btn{margin-top:34px}
+
+  /* ---------- footer ---------- */
+  footer{background:#2C2A24;color:#EFEBE1;padding:var(--pad) 0 46px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:clamp(36px,5vw,70px);align-items:start}
+  footer .mark{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:.22em}
+  footer p{font-size:14.8px;color:rgba(239,235,225,.62);margin-top:14px;max-width:34ch}
+  footer h4{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,235,225,.5);margin-bottom:16px}
+  .foot-addr{font-style:normal;font-size:15.5px;line-height:1.8;color:rgba(239,235,225,.85)}
+  .foot-hours{font-size:15px;line-height:1.9;color:rgba(239,235,225,.85)}
+  .foot-hours span{color:rgba(239,235,225,.5)}
+  footer img{border-radius:var(--r-card);margin-top:6px;aspect-ratio:16/10;object-fit:cover;filter:sepia(.25) brightness(.92)}
+  .foot-base{
+    margin-top:64px;padding-top:24px;border-top:1px solid rgba(239,235,225,.12);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:13px;color:rgba(239,235,225,.45);
+  }
+
+  /* ---------- reveal ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
+    .rv.in{opacity:1;transform:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px){
+    .inst-grid{grid-template-columns:repeat(2,1fr)}
+    .tier-grid{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
+    .tier .flag{top:-13px}
+    .intro-grid,.first-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-photo{grid-column:1/-1}
+  }
+  @media (max-width: 700px){
+    .nav-links{display:none}
+    .inst-grid{grid-template-columns:1fr}
+    .class-row{grid-template-columns:86px 1fr auto;row-gap:2px;padding:16px 18px}
+    .class-row .who{grid-column:2;grid-row:2;font-size:13.5px}
+    .class-row .time{grid-row:1/3;align-self:center}
+    .class-row .spots{grid-row:1/3;align-self:center}
+    .class-row .cname{font-size:17px}
+    .hero{min-height:78vh}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="mark" href="#top">ATRIUM</a>
+    <ul class="nav-links">
+      <li><a href="#instructors">Instructors</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn" href="#membership">Join Atrium</a>
+  </div>
+</header>
+
+<!-- 1 · HERO -->
+<section class="hero" id="top">
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="img/hero.jpg" aria-label="Sunlit pilates studio with wooden reformers and arched mirrors">
+    <source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="tint"></div>
+  <div class="hero-inner">
+    <p class="kicker">Pilates &amp; Strength · Tribeca</p>
+    <h1>Atrium</h1>
+    <p class="sub">Reformers by the windows, twelve people a class, coaches who know your name by week two. In Tribeca since 2021.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#schedule">See this week's schedule</a>
+      <a class="btn ghost" href="#instructors">Meet the instructors</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · INTRO -->
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="rv">
+      <p class="eyebrow">The studio</p>
+      <p class="lead">Most studios pick a lane: pilates or weights. We built one room for both, because your body doesn't care which aisle it came from.</p>
+      <p class="rest">Mornings run on the reformers. Evenings add kettlebells, dumbbells and a slow, coached strength hour. Everything is small-group, everything is booked, nobody wanders in mid-class. You'll never share a reformer or wait for a rack.</p>
+    </div>
+    <div class="intro-facts rv">
+      <div class="fact"><b>12</b><span>people max, every class</span></div>
+      <div class="fact"><b>12</b><span>reformers under the front windows</span></div>
+      <div class="fact"><b>37</b><span>classes on the schedule each week</span></div>
+      <div class="fact"><b>$25</b><span>your first class, any format</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · INSTRUCTORS -->
+<section class="instructors" id="instructors">
+  <div class="wrap">
+    <div class="inst-head rv">
+      <div>
+        <p class="eyebrow">Instructors</p>
+        <h2 class="sec-h">Six coaches, no rotation roulette</h2>
+        <p class="sec-sub">The same faces every week, so your instructor actually tracks your progress. Search by name or by what you want to work on.</p>
+      </div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.2" stroke="#8B877D" stroke-width="1.6"/><path d="M11 11l3.4 3.4" stroke="#8B877D" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input type="search" id="instSearch" placeholder="Try &quot;reformer&quot; or &quot;Mara&quot;" aria-label="Filter instructors by name or specialty">
+      </div>
+    </div>
+
+    <div class="inst-grid" id="instGrid">
+      <article class="inst-card rv" data-search="mara k reformer prenatal classical">
+        <div class="ph"><img src="img/inst1.jpg" alt="Instructor standing beside a rolled mat in a bright studio" loading="lazy"></div>
+        <div class="body">
+          <h3>Mara K.</h3>
+          <p>Nine years of classical pilates, trained in Chicago. Slow cues, deep burn, zero shouting.</p>
+          <div class="tags"><span class="tag">Reformer</span><span class="tag">Prenatal</span></div>
+        </div>
+      </article>
+      <article class="inst-card rv" data-search="lena h mat mobility stretch">
+        <div class="ph"><img src="img/inst2.jpg" alt="Smiling instructor in a lavender sweatshirt with hands on hips" loading="lazy"></div>
+        <div class="body">
+          <h3>Lena H.</h3>
+          <p>Runs our mat and mobility hours. Former dancer, obsessive about hips that actually open.</p>
+          <div class="tags"><span class="tag">Mat</span><span class="tag">Mobility</span></div>
+        </div>
+      </article>
+      <article class="inst-card rv" data-search="dani r strength reformer conditioning">
+        <div class="ph"><img src="img/inst3.jpg" alt="Instructor in athletic wear photographed against a dark backdrop" loading="lazy"></div>
+        <div class="body">
+          <h3>Dani R.</h3>
+          <p>Bridges both sides of the room: reformer in the morning, barbells at night. Counts every rep.</p>
+          <div class="tags"><span class="tag">Strength</span><span class="tag">Reformer</span></div>
+        </div>
+      </article>
+      <article class="inst-card rv" data-search="iris t mat tower foundations beginner">
+        <div class="ph"><img src="img/inst4.jpg" alt="Instructor seated on the floor in a wide stretch" loading="lazy"></div>
+        <div class="body">
+          <h3>Iris T.</h3>
+          <p>Teaches Foundations, the class every new member starts with. Patient to a fault.</p>
+          <div class="tags"><span class="tag">Foundations</span><span class="tag">Tower</span></div>
+        </div>
+      </article>
+      <article class="inst-card rv" data-search="marcus b strength conditioning kettlebell">
+        <div class="ph"><img src="img/inst5.jpg" alt="Smiling instructor with arms crossed in a training gym" loading="lazy"></div>
+        <div class="body">
+          <h3>Marcus B.</h3>
+          <p>Owns the evening strength block. Kettlebells, tempo work, and a warm-up you won't skip.</p>
+          <div class="tags"><span class="tag">Strength</span><span class="tag">Conditioning</span></div>
+        </div>
+      </article>
+      <article class="inst-card rv" data-search="sam o reformer foundations tower">
+        <div class="ph"><img src="img/inst6.jpg" alt="Instructor with arms crossed in a dim training room" loading="lazy"></div>
+        <div class="body">
+          <h3>Sam O.</h3>
+          <p>Twenty years teaching movement. If a position hurts, Sam has four ways around it.</p>
+          <div class="tags"><span class="tag">Reformer</span><span class="tag">Tower</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="no-match" id="noMatch">
+      <b>No one matches that</b>
+      Try reformer, mat, strength, mobility, prenatal or foundations.
+    </div>
+  </div>
+</section>
+
+<!-- 4 · SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">This week</p>
+      <h2 class="sec-h">The timetable</h2>
+      <p class="sec-sub">Every class is capped at twelve. Book from the app or the front desk; spots below update as members book.</p>
+    </div>
+    <div class="day-tabs rv" role="tablist" aria-label="Day of the week" id="dayTabs"></div>
+    <div class="class-list rv" id="classList" role="tabpanel"></div>
+    <p class="sched-note rv">Cancel up to 12 hours before class and your credit comes straight back. Later than that, the credit is used.</p>
+  </div>
+</section>
+
+<!-- 5 · MEMBERSHIP -->
+<section class="membership" id="membership">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;max-width:640px;margin:0 auto">
+      <p class="eyebrow">Membership</p>
+      <h2 class="sec-h">Three ways in</h2>
+      <p class="sec-sub" style="margin:0 auto">Every plan is month to month. No joining fee, no contract, cancel whenever you like from your account or the front desk.</p>
+    </div>
+
+    <div class="tier-grid">
+      <div class="tier rv">
+        <h3>Four</h3>
+        <div class="price"><b>$185</b><span>/ month</span></div>
+        <p class="per">4 class credits a month</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Any class format, reformer or strength</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unused credits roll over one month</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Book 7 days ahead</li>
+          <li class="off"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3.5 7.5h8" stroke="#8B877D" stroke-width="2" stroke-linecap="round"/></svg>Guest passes</li>
+          <li class="off"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3.5 7.5h8" stroke="#8B877D" stroke-width="2" stroke-linecap="round"/></svg>Priority waitlist</li>
+        </ul>
+        <button class="btn line" data-join="Four">Choose Four</button>
+      </div>
+
+      <div class="tier featured rv">
+        <span class="flag">Most members pick this</span>
+        <h3>Eight</h3>
+        <div class="price"><b>$295</b><span>/ month</span></div>
+        <p class="per">8 class credits a month</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#D8DCC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Any class format, reformer or strength</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#D8DCC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unused credits roll over one month</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#D8DCC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Book 10 days ahead</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#D8DCC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>2 guest passes a month</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#D8DCC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority waitlist</li>
+        </ul>
+        <button class="btn" data-join="Eight">Choose Eight</button>
+      </div>
+
+      <div class="tier rv">
+        <h3>Unlimited</h3>
+        <div class="price"><b>$410</b><span>/ month</span></div>
+        <p class="per">Every class, every day</p>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited classes, both formats</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Book 14 days ahead</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>4 guest passes a month</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority waitlist</li>
+          <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free grip socks each quarter</li>
+        </ul>
+        <button class="btn line" data-join="Unlimited">Choose Unlimited</button>
+      </div>
+    </div>
+    <p class="drop-in rv">Not ready for a plan? Drop-ins are $42, and your first class is $25.</p>
+  </div>
+</section>
+
+<!-- JOIN MODAL -->
+<div class="modal-back" id="joinBack" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+  <div class="modal">
+    <button class="x" id="joinClose" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- step 1 -->
+    <div class="join-step" id="step1">
+      <p class="step-label">Join Atrium · Step 1 of 2</p>
+      <h3 id="joinTitle">Your plan</h3>
+      <div class="plan-switch" id="planSwitch">
+        <button class="plan-pill" data-plan="Four">Four<br>$185</button>
+        <button class="plan-pill" data-plan="Eight">Eight<br>$295</button>
+        <button class="plan-pill" data-plan="Unlimited">Unlimited<br>$410</button>
+      </div>
+      <div class="bill-box">
+        <div class="amt" id="billAmt">$295 a month</div>
+        <div class="when" id="billWhen"></div>
+      </div>
+      <ul class="terms">
+        <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Cancel anytime, online or at the desk. Billing stops at the end of the month you've paid for.</li>
+        <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No joining fee and no minimum term.</li>
+        <li><svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 8l3.2 3.2L12.5 4.5" stroke="#6E7A62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pause for up to two months a year, free.</li>
+      </ul>
+      <div class="modal-actions">
+        <button class="btn" id="toStep2">Continue</button>
+      </div>
+    </div>
+
+    <!-- step 2 -->
+    <div class="join-step" id="step2" hidden>
+      <p class="step-label">Join Atrium · Step 2 of 2</p>
+      <h3>Your details</h3>
+      <div class="field" id="fName">
+        <label for="inName">Full name</label>
+        <input id="inName" type="text" autocomplete="name" placeholder="Alex Rivera">
+        <p class="err">Please enter your name.</p>
+      </div>
+      <div class="field" id="fEmail">
+        <label for="inEmail">Email</label>
+        <input id="inEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        <p class="err">That email doesn't look right.</p>
+      </div>
+      <p style="font-size:13.5px;color:var(--ink-45)">Payment is set up at the studio before your first class. Bring a card; it takes two minutes.</p>
+      <div class="modal-actions">
+        <button class="btn line" id="backTo1">Back</button>
+        <button class="btn" id="toConfirm">Start membership</button>
+      </div>
+    </div>
+
+    <!-- confirmation -->
+    <div class="join-step" id="stepDone" hidden>
+      <div class="confirm-wrap">
+        <div class="ok">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M5 13.5l5.5 5.5L21 7.5" stroke="#525E48" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 id="doneTitle">You're in</h3>
+        <p id="doneCopy">We've emailed your welcome details. Your credits are live the moment payment is set up at the desk.</p>
+        <div class="confirm-sum">
+          <div><span>Plan</span><b id="sumPlan"></b></div>
+          <div><span>Recurring charge</span><b id="sumAmt"></b></div>
+          <div><span>Bills on</span><b id="sumWhen"></b></div>
+        </div>
+        <button class="btn" id="doneBook">Book your first class</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 · FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Questions</p>
+      <h2 class="sec-h">Before you ask</h2>
+    </div>
+    <div class="faq-list rv">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">I've never done pilates. Will I be lost?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="#525E48" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><p>No. Start with Foundations, which runs five times a week and assumes nothing. Iris walks you through the reformer piece by piece, and the first class is $25 so you can find out if it's for you before committing to anything.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What do I wear and bring?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="#525E48" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><p>Leggings or shorts you can move in, and grip socks for reformer classes. We sell them at the desk for $14 if you forget. Water, towels and showers are here, so you can come straight from work with just your keys.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How do bookings and cancellations work?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="#525E48" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><p>Book from the app up to 7, 10 or 14 days out depending on your plan. Cancel 12 hours or more before class and the credit returns instantly. Inside 12 hours the credit is used, because a held spot in a class of twelve is a real spot.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I pause or cancel my membership?
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="#525E48" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a"><p>Yes to both, no fees for either. Pause for up to two months a year from your account. Cancel anytime; you keep your credits until the end of the month you've already paid for, and that's the last charge.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · FIRST CLASS -->
+<section class="first">
+  <div class="wrap first-grid">
+    <div class="rv">
+      <p class="eyebrow">Your first class</p>
+      <h2 class="sec-h">What actually happens</h2>
+      <ol>
+        <li><b>Come 15 minutes early.<span> Someone at the desk sets you up on a reformer and shows you how the springs work. No group orientation, just you.</span></b></li>
+        <li><b>The class is 50 minutes.<span> Your instructor cues everyone by name, twelve people at most, and adjusts anything that doesn't feel right.</span></b></li>
+        <li><b>After, nobody sells you anything.<span> You get one email with the schedule. If it clicked, book again. That's the whole pitch.</span></b></li>
+      </ol>
+      <a class="btn" href="#schedule">Pick a class, it's $25</a>
+    </div>
+    <div class="first-photos rv">
+      <img class="tall" src="img/studio2.jpg" alt="White studio room with a wooden pilates tower" loading="lazy">
+      <img class="short" src="img/lobby.jpg" alt="Sunlit studio corner with a clothes rail and low table" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- 8 · FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="mark">ATRIUM</div>
+        <p>A pilates and strength studio in Tribeca. Twelve people a class, the same coaches every week.</p>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <address class="foot-addr">
+          Tribeca<br>
+          New York, NY
+        </address>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <div class="foot-hours">
+          <span>Mon to Fri</span> &nbsp;6:00a to 9:00p<br>
+          <span>Saturday</span> &nbsp;8:00a to 2:00p<br>
+          <span>Sunday</span> &nbsp;8:00a to 1:30p
+        </div>
+      </div>
+      <div class="foot-photo" style="grid-column:1/-1;max-width:520px">
+        <img src="img/street.jpg" alt="Cast iron buildings in lower Manhattan" loading="lazy">
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© Atrium</span>
+      <span>Tribeca, New York</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- sticky header ---------- */
+  var hdr = document.getElementById('hdr');
+  var onScroll = function(){ hdr.classList.toggle('solid', window.scrollY > 10); };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- scroll reveal ---------- */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- hero video: respect reduced motion ---------- */
+  var heroVid = document.querySelector('.hero video.bg');
+  if(heroVid && reduced){
+    heroVid.removeAttribute('autoplay');
+    heroVid.pause();
+  }
+  var rvEls = document.querySelectorAll('.rv');
+  if(!reduced && 'IntersectionObserver' in window){
+    // stagger siblings inside grids
+    document.querySelectorAll('.inst-grid, .tier-grid, .intro-facts').forEach(function(g){
+      Array.prototype.forEach.call(g.children, function(c, i){
+        if(c.classList.contains('rv')) c.style.transitionDelay = (i * 70) + 'ms';
+      });
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    rvEls.forEach(function(el){ io.observe(el); });
+  } else {
+    rvEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- instructor filter ---------- */
+  var search = document.getElementById('instSearch');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.inst-card'));
+  var noMatch = document.getElementById('noMatch');
+  search.addEventListener('input', function(){
+    var q = search.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(c){
+      var hit = !q || c.getAttribute('data-search').indexOf(q) !== -1;
+      c.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    noMatch.style.display = shown ? 'none' : 'block';
+  });
+
+  /* ---------- timetable ---------- */
+  var SCHEDULE = {
+    'Mon': [
+      {t:'6:30a',  n:'Sunrise Reformer',    w:'Mara K.',   s:5},
+      {t:'8:00a',  n:'Reformer Flow',       w:'Sam O.',    s:2},
+      {t:'12:15p', n:'Mat Pilates',         w:'Lena H.',   s:7},
+      {t:'5:30p',  n:'Strength 50',         w:'Marcus B.', s:3},
+      {t:'6:45p',  n:'Reformer Flow',       w:'Dani R.',   s:0},
+      {t:'8:00p',  n:'Mobility + Stretch',  w:'Lena H.',   s:9}
+    ],
+    'Tue': [
+      {t:'6:30a',  n:'Strength 50',         w:'Dani R.',   s:6},
+      {t:'8:00a',  n:'Foundations',         w:'Iris T.',   s:4},
+      {t:'12:15p', n:'Reformer Flow',       w:'Mara K.',   s:1},
+      {t:'5:30p',  n:'Tower',               w:'Sam O.',    s:8},
+      {t:'6:45p',  n:'Strength 50',         w:'Marcus B.', s:2},
+      {t:'8:00p',  n:'Mat Pilates',         w:'Lena H.',   s:10}
+    ],
+    'Wed': [
+      {t:'6:30a',  n:'Sunrise Reformer',    w:'Sam O.',    s:7},
+      {t:'8:00a',  n:'Reformer Flow',       w:'Mara K.',   s:5},
+      {t:'12:15p', n:'Prenatal Pilates',    w:'Mara K.',   s:6},
+      {t:'5:30p',  n:'Strength 50',         w:'Dani R.',   s:0},
+      {t:'6:45p',  n:'Foundations',         w:'Iris T.',   s:3},
+      {t:'8:00p',  n:'Mobility + Stretch',  w:'Lena H.',   s:11}
+    ],
+    'Thu': [
+      {t:'6:30a',  n:'Strength 50',         w:'Marcus B.', s:4},
+      {t:'8:00a',  n:'Tower',               w:'Iris T.',   s:9},
+      {t:'12:15p', n:'Reformer Flow',       w:'Sam O.',    s:2},
+      {t:'5:30p',  n:'Reformer Flow',       w:'Mara K.',   s:1},
+      {t:'6:45p',  n:'Strength 50',         w:'Marcus B.', s:5},
+      {t:'8:00p',  n:'Mat Pilates',         w:'Lena H.',   s:8}
+    ],
+    'Fri': [
+      {t:'6:30a',  n:'Sunrise Reformer',    w:'Dani R.',   s:6},
+      {t:'8:00a',  n:'Foundations',         w:'Iris T.',   s:7},
+      {t:'12:15p', n:'Reformer Flow',       w:'Mara K.',   s:3},
+      {t:'5:30p',  n:'Strength 50',         w:'Dani R.',   s:9},
+      {t:'6:45p',  n:'Mobility + Stretch',  w:'Lena H.',   s:12}
+    ],
+    'Sat': [
+      {t:'8:30a',  n:'Reformer Flow',       w:'Sam O.',    s:0},
+      {t:'9:45a',  n:'Strength 50',         w:'Marcus B.', s:2},
+      {t:'11:00a', n:'Foundations',         w:'Iris T.',   s:5},
+      {t:'12:15p', n:'Prenatal Pilates',    w:'Mara K.',   s:8}
+    ],
+    'Sun': [
+      {t:'8:30a',  n:'Sunrise Reformer',    w:'Mara K.',   s:4},
+      {t:'9:45a',  n:'Mat Pilates',         w:'Lena H.',   s:6},
+      {t:'11:00a', n:'Mobility + Stretch',  w:'Lena H.',   s:3},
+      {t:'12:15p', n:'Tower',               w:'Sam O.',    s:10}
+    ]
+  };
+
+  var tabsBox = document.getElementById('dayTabs');
+  var listBox = document.getElementById('classList');
+  var days = Object.keys(SCHEDULE);
+  var fullNames = {Mon:'Monday',Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday',Sun:'Sunday'};
+
+  function renderDay(day){
+    listBox.innerHTML = '';
+    SCHEDULE[day].forEach(function(c){
+      var row = document.createElement('div');
+      row.className = 'class-row';
+      var spotHtml;
+      if(c.s === 0){
+        spotHtml = '<span class="badge-full">Full · waitlist</span>';
+      } else if(c.s <= 3){
+        spotHtml = '<span class="badge-low">' + c.s + ' left</span>';
+      } else {
+        spotHtml = c.s + ' spots';
+      }
+      row.innerHTML =
+        '<span class="time">' + c.t + '</span>' +
+        '<span class="cname">' + c.n + '</span>' +
+        '<span class="who">with ' + c.w + '</span>' +
+        '<span class="spots">' + spotHtml + '</span>';
+      listBox.appendChild(row);
+    });
+  }
+
+  days.forEach(function(day, i){
+    var b = document.createElement('button');
+    b.className = 'day-tab';
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.textContent = fullNames[day];
+    b.addEventListener('click', function(){
+      tabsBox.querySelectorAll('.day-tab').forEach(function(t){ t.setAttribute('aria-selected','false'); });
+      b.setAttribute('aria-selected','true');
+      renderDay(day);
+    });
+    tabsBox.appendChild(b);
+  });
+  renderDay(days[0]);
+
+  /* ---------- membership join flow ---------- */
+  var PLANS = {
+    'Four':      {price:185, desc:'4 class credits a month'},
+    'Eight':     {price:295, desc:'8 class credits a month'},
+    'Unlimited': {price:410, desc:'Unlimited classes'}
+  };
+  var back    = document.getElementById('joinBack');
+  var step1   = document.getElementById('step1');
+  var step2   = document.getElementById('step2');
+  var done    = document.getElementById('stepDone');
+  var current = 'Eight';
+
+  function ord(n){
+    var s = ['th','st','nd','rd'], v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+  var todayN = new Date().getDate();
+  var billDay = ord(Math.min(todayN, 28));
+
+  function paintPlan(){
+    var p = PLANS[current];
+    document.getElementById('billAmt').textContent = '$' + p.price + ' a month';
+    document.getElementById('billWhen').textContent =
+      'First charge today, then $' + p.price + ' on the ' + billDay + ' of every month.';
+    document.querySelectorAll('.plan-pill').forEach(function(el){
+      el.setAttribute('aria-pressed', el.getAttribute('data-plan') === current ? 'true' : 'false');
+    });
+  }
+
+  function showStep(el){
+    [step1, step2, done].forEach(function(s){ s.hidden = (s !== el); });
+  }
+
+  function openJoin(plan){
+    current = plan;
+    paintPlan();
+    showStep(step1);
+    back.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeJoin(){
+    back.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-join]').forEach(function(b){
+    b.addEventListener('click', function(){ openJoin(b.getAttribute('data-join')); });
+  });
+  document.querySelectorAll('.plan-pill').forEach(function(b){
+    b.addEventListener('click', function(){ current = b.getAttribute('data-plan'); paintPlan(); });
+  });
+  document.getElementById('joinClose').addEventListener('click', closeJoin);
+  back.addEventListener('click', function(e){ if(e.target === back) closeJoin(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && back.classList.contains('open')) closeJoin();
+  });
+
+  document.getElementById('toStep2').addEventListener('click', function(){ showStep(step2); });
+  document.getElementById('backTo1').addEventListener('click', function(){ showStep(step1); });
+
+  document.getElementById('toConfirm').addEventListener('click', function(){
+    var fName  = document.getElementById('fName');
+    var fEmail = document.getElementById('fEmail');
+    var name   = document.getElementById('inName').value.trim();
+    var email  = document.getElementById('inEmail').value.trim();
+    var okName  = name.length > 1;
+    var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    fName.classList.toggle('bad', !okName);
+    fEmail.classList.toggle('bad', !okEmail);
+    if(!okName || !okEmail) return;
+    var p = PLANS[current];
+    document.getElementById('doneTitle').textContent = "You're in, " + name.split(' ')[0];
+    document.getElementById('sumPlan').textContent = current + ' · ' + p.desc;
+    document.getElementById('sumAmt').textContent = '$' + p.price + ' a month';
+    document.getElementById('sumWhen').textContent = 'The ' + billDay + ' of each month';
+    showStep(done);
+  });
+
+  document.getElementById('doneBook').addEventListener('click', function(){
+    closeJoin();
+    document.getElementById('schedule').scrollIntoView(
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? {} : {behavior:'smooth'}
+    );
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-a').style.maxHeight = '0px';
+      });
+      if(!open){
+        item.classList.add('open');
+        q.setAttribute('aria-expanded','true');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

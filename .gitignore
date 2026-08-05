@@ -1,0 +1,14 @@
+_retired/
+index-warm.html
+css/warm.css
+intro/build/
+intro/captures/
+intro/ai-4k/
+intro/ui-4k/
+intro/ui-shots/
+intro/endcard*
+intro/assemble.py
+intro/score.mp3
+intro/wallace-intro-4k.mp4
+*.json
+.DS_Store

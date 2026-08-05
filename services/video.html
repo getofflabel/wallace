@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video · WALLACE</title>
+<meta name="description" content="Video, shot at your place, cut for where you post. Scope and price get set on the call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="book-page">
+
+<header class="top">
+  <a class="back" href="../index.html">&larr;&nbsp; Wallace</a>
+  <nav class="nav">
+    <a href="../index.html#services">Services</a>
+    <a href="../pricing.html">Pricing</a>
+    <a class="nav-cta" href="../book.html">Book</a>
+  </nav>
+</header>
+
+<main class="bwrap">
+
+  <section class="step-panel">
+    <h1>Video.</h1>
+    <p class="step-lead">Shot at your place, cut for where you post.</p>
+  </section>
+
+  <section class="block rv">
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">01</span>
+        <b>Shot on site</b>
+        <span>Your space, your product, you.</span>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <b>Cut to fit</b>
+        <span>Delivered in the formats you actually post in.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="empty rv">
+    <span class="block-k">The work so far</span>
+    <p><b>No client work published yet.</b> When the first piece is done, it goes up here.</p>
+  </section>
+
+  <section class="block cta rv">
+    <h2>The rest we talk through.</h2>
+    <p>Scope and price get set on the call.</p>
+    <a class="btn" href="../book.html">Book a meeting &nbsp;&rarr;</a>
+  </section>
+
+</main>
+
+<footer class="bfoot">
+  <span>Wallace · New York · wallacechen23@gmail.com</span>
+  <span class="foot-llc">A Blueprint Advantage LLC company</span>
+</footer>
+
+<script>
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
+}
+</script>
+
+</body>
+</html>

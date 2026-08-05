@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WALLACE — custom websites, video, photography</title>
+<meta name="description" content="Custom built websites with payments, booking and hosting handled. Video and photography by the same person. New York.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="top">
+  <span class="status"><i class="pip"></i>August</span>
+  <nav class="nav">
+    <a href="#services">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a class="nav-cta" href="book.html">Book</a>
+  </nav>
+</header>
+
+<div class="split">
+
+  <!-- LEFT: the film, and the sites in it -->
+  <aside class="panel">
+    <div class="panel-stack">
+      <video class="reel" autoplay muted loop playsinline preload="auto" poster="shots/film-poster.jpg">
+        <source src="intro/wallace-intro-web.mp4" type="video/mp4">
+      </video>
+      <nav class="reel-links" aria-label="The websites in the film">
+        <a href="demos/marque/index.html" target="_blank" rel="noopener">Marque&nbsp;&nearr;</a>
+        <a href="demos/oro/index.html" target="_blank" rel="noopener">Oro&nbsp;&nearr;</a>
+        <a href="demos/fade/index.html" target="_blank" rel="noopener">Fade&nbsp;&nearr;</a>
+        <a href="demos/foundry/index.html" target="_blank" rel="noopener">Foundry&nbsp;&nearr;</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- RIGHT: the pitch -->
+  <main class="feed">
+
+    <section class="lead">
+      <h1 class="name"><span>Wallace</span></h1>
+      <a class="book-cta" href="book.html">Book a meeting &nbsp;&rarr;</a>
+      <p class="lead-sub"><span class="avail"><i class="pip"></i>2 slots open for August</span><br>New York · One client at a time</p>
+    </section>
+
+    <section class="svcs rv" id="services">
+      <span class="block-k">What I do</span>
+
+      <a class="svc-card" href="services/websites.html">
+        <span class="svc-n">01</span>
+        <div>
+          <b>Websites</b>
+          <p>Custom builds, card payments, booking and hosting. Four of them below.</p>
+        </div>
+        <i>&rarr;</i>
+      </a>
+
+      <a class="svc-card" href="services/video.html">
+        <span class="svc-n">02</span>
+        <div>
+          <b>Video</b>
+          <p>Social pieces, walkthroughs, founder and product footage. Shot and cut.</p>
+        </div>
+        <i>&rarr;</i>
+      </a>
+
+      <a class="svc-card" href="services/photography.html">
+        <span class="svc-n">03</span>
+        <div>
+          <b>Photography</b>
+          <p>Product, interiors, portraits. Everything matching for once.</p>
+        </div>
+        <i>&rarr;</i>
+      </a>
+
+      <a class="svc-card" href="services/custom.html">
+        <span class="svc-n">04</span>
+        <div>
+          <b>Custom project</b>
+          <p>You have an idea and nothing else. We start at zero and build the lot.</p>
+        </div>
+        <i>&rarr;</i>
+      </a>
+    </section>
+
+    <section class="block rv">
+      <span class="block-k">How it runs</span>
+      <h2>One client<br>at a time.</h2>
+      <p>Agencies quote six to eight weeks because your project sits in a queue behind everyone else's. I take one client at a time and it ships in about a week. You own every file and every account at the end.</p>
+      <a class="btn-line" href="book.html">Book a meeting &nbsp;&rarr;</a>
+    </section>
+
+    <p class="foot">Wallace · New York · wallacechen23@gmail.com<br>
+      <span class="foot-llc">A Blueprint Advantage LLC company</span></p>
+
+  </main>
+</div>
+
+<script>
+/* the reel respects reduced motion */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var reel = document.querySelector('.reel');
+  if (reel) reel.pause();
+}
+
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+} else {
+  document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
+}
+</script>
+
+</body>
+</html>

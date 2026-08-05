@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FADE · Barbershop, Lower East Side</title>
+<meta name="description" content="FADE is a four-chair barbershop in the Lower East Side. Fades, scissor cuts, beard work, hot towel shaves. Book a chair online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F2;
+    --card:#FFFFFF;
+    --ink:#141412;
+    --ink60:rgba(20,20,18,.62);
+    --ink40:rgba(20,20,18,.42);
+    --line:rgba(20,20,18,.08);
+    --line-strong:rgba(20,20,18,.14);
+    --red:#DF1F1F;
+    --red-dark:#C01717;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-lg:0 16px 40px rgba(0,0,0,.08);
+    --r-card:16px;
+    --r-media:24px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16.5px;line-height:1.6;
+    color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-0.03em;line-height:1.08}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:clamp(72px,11vh,140px) 0}
+
+
+  /* ---------- header ---------- */
+  header{
+    position:absolute;left:0;right:0;top:0;z-index:40;
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:20px;padding-bottom:20px;
+  }
+  .logo{
+    font-family:'Sora',sans-serif;font-weight:800;font-size:24px;
+    letter-spacing:-0.02em;color:#fff;text-decoration:none;
+  }
+  .nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+  .nav-links a{
+    color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--red);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15.5px;
+    padding:13px 26px;border-radius:999px;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .btn.ghost{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+  .btn.ghost:hover{background:rgba(255,255,255,.22)}
+  .btn.dark{background:var(--ink)}
+  .btn.dark:hover{background:#000}
+  @media(max-width:820px){.nav-links li.hide-m{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100svh;padding:0;
+    display:flex;align-items:flex-end;
+    color:#fff;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.18) 40%,rgba(10,10,10,.78) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:2;width:100%;
+    display:grid;grid-template-columns:1.4fr .9fr;gap:48px;align-items:end;
+    padding-top:140px;padding-bottom:72px;
+  }
+  .kicker{
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.75);margin-bottom:20px;
+  }
+  .kicker b{color:var(--red);font-weight:600}
+  .hero h1{
+    font-size:clamp(44px,6vw,84px);font-weight:700;color:#fff;
+    margin-bottom:22px;max-width:11ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p.lead{
+    font-size:17px;color:rgba(255,255,255,.82);max-width:46ch;margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+  .pricecard{
+    background:rgba(16,16,15,.72);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--r-card);padding:28px;
+    box-shadow:var(--shadow-lg);
+    max-width:400px;justify-self:end;width:100%;
+  }
+  .pricecard h3{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+  .pricerow{
+    display:flex;align-items:baseline;gap:10px;
+    padding:9px 0;font-size:15.5px;
+  }
+  .pricerow + .pricerow{border-top:1px solid rgba(255,255,255,.08)}
+  .pricerow .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.28);transform:translateY(-4px)}
+  .pricerow .p{font-family:'Sora',sans-serif;font-weight:700;font-size:16px}
+  .pricecard a.all{
+    display:inline-block;margin-top:14px;font-size:14px;color:rgba(255,255,255,.75);
+    text-decoration:underline;text-underline-offset:3px;transition:color .2s ease;
+  }
+  .pricecard a.all:hover{color:#fff}
+  @media(max-width:960px){
+    .hero-inner{grid-template-columns:1fr;gap:36px;padding-top:150px;padding-bottom:96px}
+    .pricecard{justify-self:start}
+  }
+
+  /* ---------- section headers ---------- */
+  .sec-head{margin-bottom:clamp(36px,5vh,56px);max-width:640px}
+  .sec-head .tag{
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--red);margin-bottom:14px;
+  }
+  .sec-head h2{font-size:clamp(32px,3.6vw,48px);font-weight:700;margin-bottom:14px}
+  .sec-head p{color:var(--ink60);font-size:17px}
+
+  /* ---------- services ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:28px;box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s ease,transform .2s ease;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .svc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .svc h3{font-size:20px;font-weight:700}
+  .svc .meta{display:flex;align-items:center;gap:8px;color:var(--ink60);font-size:14.5px}
+  .svc .meta svg{flex:none}
+  .svc p{color:var(--ink60);font-size:15px;flex:1}
+  .svc .price{
+    font-family:'Sora',sans-serif;font-weight:700;font-size:26px;letter-spacing:-0.02em;
+  }
+  .svc .foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+  .svc .foot button{
+    font-size:14.5px;font-weight:600;color:var(--red);
+    padding:8px 0;transition:color .2s ease;
+  }
+  .svc .foot button:hover{color:var(--red-dark)}
+  @media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ---------- booking ---------- */
+  #book{background:#EFEDE8;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .bk{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow-lg);overflow:hidden;max-width:880px;margin:0 auto;
+  }
+  .bk-top{padding:24px 32px 0}
+  .bk-progress{height:4px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:14px}
+  .bk-progress i{display:block;height:100%;background:var(--red);width:16.6%;transition:width .3s ease;border-radius:999px}
+  .bk-stepline{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .bk-stepline .n{font-size:13.5px;font-weight:600;color:var(--ink60);letter-spacing:.04em;text-transform:uppercase}
+  .bk-stepline h3{font-size:22px;font-weight:700}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;padding:16px 32px 0}
+  .chips:empty{display:none}
+  .chip{
+    font-size:13.5px;font-weight:500;color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:6px 14px;background:var(--paper);
+    transition:border-color .2s ease;
+  }
+  .chip:hover{border-color:var(--ink)}
+  .chip b{font-weight:600}
+  .bk-body{padding:28px 32px 32px}
+  .bk-panel{display:none}
+  .bk-panel.on{display:block;animation:panein .35s ease}
+  @keyframes panein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .pick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .pick{
+    text-align:left;border:1px solid var(--line-strong);border-radius:14px;
+    padding:18px 20px;background:var(--card);
+    display:flex;align-items:center;gap:16px;
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .pick:hover{border-color:var(--ink);box-shadow:var(--shadow-sm)}
+  .pick.sel{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+  .pick .tx{flex:1;min-width:0}
+  .pick .tx b{display:block;font-weight:600;font-size:16px}
+  .pick .tx span{display:block;color:var(--ink60);font-size:14px;margin-top:2px}
+  .pick .pr{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;white-space:nowrap}
+  .avatar{
+    width:46px;height:46px;border-radius:999px;flex:none;
+    background:var(--ink);color:#fff;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pick .free{
+    font-size:12.5px;font-weight:600;color:var(--red);white-space:nowrap;
+    background:rgba(223,31,31,.07);padding:5px 10px;border-radius:999px;
+  }
+  @media(max-width:680px){.pick-grid{grid-template-columns:1fr}}
+
+  /* calendar */
+  .cal{max-width:420px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .cal-head b{font-family:'Sora',sans-serif;font-weight:700;font-size:17px}
+  .cal-nav{display:flex;gap:6px}
+  .cal-nav button{
+    width:36px;height:36px;border-radius:999px;border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .cal-nav button:hover:not(:disabled){border-color:var(--ink)}
+  .cal-nav button:disabled{opacity:.3;cursor:default}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .cal-grid .dow{font-size:12px;font-weight:600;color:var(--ink40);text-align:center;padding:6px 0;text-transform:uppercase;letter-spacing:.06em}
+  .day{
+    aspect-ratio:1;border-radius:999px;font-size:14.5px;font-weight:500;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease;
+  }
+  .day:not(:disabled):hover{background:rgba(20,20,18,.07)}
+  .day.sel{background:var(--red);color:#fff;font-weight:600}
+  .day:disabled{color:var(--ink40);opacity:.45;cursor:default}
+  .cal-note{font-size:13.5px;color:var(--ink60);margin-top:14px}
+
+  /* time slots */
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .slot{
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:11px 0;font-size:14.5px;font-weight:600;text-align:center;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .slot:hover:not(:disabled){border-color:var(--ink)}
+  .slot.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .slot:disabled{color:var(--ink40);text-decoration:line-through;cursor:default;opacity:.55}
+  @media(max-width:560px){.slots{grid-template-columns:repeat(3,1fr)}}
+
+  /* forms */
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px}
+  .frm .full{grid-column:1/-1}
+  .fld label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+  .fld input,.fld textarea{
+    width:100%;font:inherit;font-size:15.5px;color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:12px;
+    padding:12px 14px;background:var(--card);
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(20,20,18,.08)}
+  .fld input.bad{border-color:var(--red);box-shadow:0 0 0 3px rgba(223,31,31,.1)}
+  .fld .err{display:none;font-size:12.5px;color:var(--red);margin-top:5px;font-weight:500}
+  .fld.show-err .err{display:block}
+  .fld textarea{resize:vertical;min-height:72px}
+  @media(max-width:560px){.frm{grid-template-columns:1fr}}
+
+  .bk-actions{display:flex;align-items:center;gap:16px;margin-top:26px}
+  .bk-actions .back{
+    font-size:15px;font-weight:600;color:var(--ink60);
+    padding:12px 4px;transition:color .2s ease;
+  }
+  .bk-actions .back:hover{color:var(--ink)}
+
+  /* deposit */
+  .dep-note{
+    display:flex;gap:14px;align-items:flex-start;
+    background:rgba(223,31,31,.06);border:1px solid rgba(223,31,31,.18);
+    border-radius:14px;padding:16px 18px;margin-bottom:24px;max-width:560px;
+  }
+  .dep-note svg{flex:none;margin-top:2px}
+  .dep-note p{font-size:14.5px;color:var(--ink);line-height:1.5}
+  .dep-note p span{color:var(--ink60)}
+
+  /* confirmation */
+  .confirm{text-align:center;padding:16px 0 8px}
+  .confirm .ok{
+    width:64px;height:64px;border-radius:999px;background:var(--red);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .confirm h3{font-size:28px;font-weight:700;margin-bottom:10px}
+  .confirm > p{color:var(--ink60);max-width:42ch;margin:0 auto 26px}
+  .confirm .summary{
+    text-align:left;max-width:400px;margin:0 auto 26px;
+    border:1px solid var(--line);border-radius:14px;background:var(--paper);
+    padding:20px 22px;
+  }
+  .confirm .summary .row{display:flex;justify-content:space-between;gap:16px;padding:7px 0;font-size:15px}
+  .confirm .summary .row + .row{border-top:1px solid var(--line)}
+  .confirm .summary .row span{color:var(--ink60)}
+  .confirm .summary .row b{font-weight:600;text-align:right}
+  .confirm .ref{font-family:'Sora',sans-serif;font-weight:700;letter-spacing:.06em}
+
+  /* ---------- gallery ---------- */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .g{
+    border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/5;
+    background:var(--ink);
+  }
+  .g img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+  .g:hover img{transform:scale(1.06)}
+  @media(max-width:960px){.gal{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- testimonials ---------- */
+  #say{padding-bottom:0}
+  .marquee{
+    overflow:hidden;padding:6px 0 clamp(72px,11vh,140px);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .track{display:flex;gap:18px;width:max-content;animation:mq 55s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  .say{
+    width:340px;flex:none;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:24px 26px;box-shadow:var(--shadow-sm);
+  }
+  .say .stars{display:flex;gap:3px;margin-bottom:12px}
+  .say p{font-size:15px;line-height:1.55;margin-bottom:14px}
+  .say .who{font-size:13.5px;font-weight:600}
+  .say .who span{color:var(--ink60);font-weight:400}
+  @media(max-width:560px){.say{width:280px}}
+
+  /* ---------- visit ---------- */
+  #visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .visit-photo{border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/5;max-height:560px}
+  .visit-photo img{width:100%;height:100%;object-fit:cover}
+  .addr{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    box-shadow:var(--shadow-sm);padding:26px 28px;margin:26px 0;
+  }
+  .addr .big{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em}
+  .addr p{color:var(--ink60);font-size:15px;margin-top:4px}
+  .hours{list-style:none;margin:0 0 8px}
+  .hours li{
+    display:flex;justify-content:space-between;gap:16px;
+    padding:11px 0;font-size:15.5px;border-bottom:1px solid var(--line);
+  }
+  .hours li span{color:var(--ink60)}
+  .hours li b{font-weight:600}
+  .hours li.today b,.hours li.today span{color:var(--red)}
+  .walkin{font-size:15px;color:var(--ink60);margin-top:18px;max-width:44ch}
+  @media(max-width:880px){
+    #visit .grid{grid-template-columns:1fr;gap:36px}
+    .visit-photo{aspect-ratio:16/10;max-height:none}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);color:rgba(255,255,255,.65);
+    padding:48px 0 56px;font-size:14px;
+  }
+  footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  footer .logo{font-size:20px}
+  footer nav{display:flex;gap:24px;flex-wrap:wrap}
+  footer nav a{color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s ease}
+  footer nav a:hover{color:#fff}
+  footer .fine{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.4)}
+  @media(max-width:820px){footer{padding-bottom:110px}}
+
+  /* ---------- mobile book bar ---------- */
+  .bookbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(247,245,242,.92);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    display:none;
+    transform:translateY(0);transition:transform .3s ease;
+  }
+  .bookbar.hide{transform:translateY(110%)}
+  .bookbar .btn{width:100%;padding:15px}
+  @media(max-width:820px){.bookbar{display:block}}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .track{animation:none;flex-wrap:wrap;width:auto}
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 · HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"><video autoplay muted loop playsinline preload="auto" poster="img/hero.jpg" aria-label="Barber working on a client's fade in a dim shop"><source src="media/hero.mp4" type="video/mp4"></video></div>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top">FADE.</a>
+      <ul class="nav-links">
+        <li class="hide-m"><a href="#services">Services</a></li>
+        <li class="hide-m"><a href="#gallery">Work</a></li>
+        <li class="hide-m"><a href="#visit">Visit</a></li>
+        <li><a href="#book" class="btn">Book appointment</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="kicker">Lower East Side <b>·</b> Four chairs <b>·</b> Tue to Sun</p>
+      <h1>Walk in shaggy. Walk out <em>sharp.</em></h1>
+      <p class="lead">Fades, scissor cuts, beard work and hot towel shaves, done properly and on time. Book a chair below or take your chances as a walk-in.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn">Book a chair</a>
+        <a href="#services" class="btn ghost">See the menu</a>
+      </div>
+    </div>
+    <aside class="pricecard">
+      <h3>The short list</h3>
+      <div class="pricerow"><span>Classic cut</span><span class="dots"></span><span class="p">$45</span></div>
+      <div class="pricerow"><span>Skin fade</span><span class="dots"></span><span class="p">$55</span></div>
+      <div class="pricerow"><span>Beard trim</span><span class="dots"></span><span class="p">$25</span></div>
+      <div class="pricerow"><span>Hot towel shave</span><span class="dots"></span><span class="p">$40</span></div>
+      <a class="all" href="#services">Full menu with timings</a>
+    </aside>
+  </div>
+</section>
+
+<!-- 2 · SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">The menu</p>
+      <h2>Flat prices. No surprises at the register.</h2>
+      <p>Every service includes a consult at the chair and a clean-up of the neckline. Card or cash, tip is up to you.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- 3 · BOOKING -->
+<section id="book">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">Booking</p>
+      <h2>Book a chair</h2>
+      <p>Six quick steps. A $15 hold saves your slot and comes off your total at the register.</p>
+    </div>
+    <div class="bk reveal" id="bkCard">
+      <div class="bk-top" id="bkTop">
+        <div class="bk-stepline">
+          <h3 id="bkTitle">Pick a service</h3>
+          <span class="n" id="bkStepN">Step 1 of 6</span>
+        </div>
+        <div class="bk-progress"><i id="bkBar"></i></div>
+      </div>
+      <div class="chips" id="bkChips"></div>
+      <div class="bk-body">
+
+        <div class="bk-panel on" data-step="1">
+          <div class="pick-grid" id="svcPicks"></div>
+        </div>
+
+        <div class="bk-panel" data-step="2">
+          <div class="pick-grid" id="barberPicks"></div>
+          <div class="bk-actions"><button class="back" data-back="1">Back</button></div>
+        </div>
+
+        <div class="bk-panel" data-step="3">
+          <div class="cal">
+            <div class="cal-head">
+              <b id="calMonth">Month</b>
+              <div class="cal-nav">
+                <button id="calPrev" aria-label="Previous month"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button id="calNext" aria-label="Next month"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <p class="cal-note">Closed Mondays. Bookings open 5 weeks out.</p>
+          </div>
+          <div class="bk-actions"><button class="back" data-back="2">Back</button></div>
+        </div>
+
+        <div class="bk-panel" data-step="4">
+          <div class="slots" id="slotGrid"></div>
+          <div class="bk-actions"><button class="back" data-back="3">Back</button></div>
+        </div>
+
+        <div class="bk-panel" data-step="5">
+          <form class="frm" id="detailForm" novalidate>
+            <div class="fld"><label for="fName">Name</label><input id="fName" type="text" autocomplete="name" placeholder="Sam Ortega"><p class="err">Give us a name for the chair.</p></div>
+            <div class="fld"><label for="fPhone">Phone</label><input id="fPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Your number"><p class="err">We text a reminder, 10 digits please.</p></div>
+            <div class="fld full"><label for="fEmail">Email</label><input id="fEmail" type="email" autocomplete="email" placeholder="Your email"><p class="err">That email doesn't look right.</p></div>
+            <div class="fld full"><label for="fNote">Anything your barber should know? <span style="color:var(--ink40);font-weight:400">(optional)</span></label><textarea id="fNote" placeholder="Growing out the top, keep the length."></textarea></div>
+          </form>
+          <div class="bk-actions">
+            <button class="back" data-back="4">Back</button>
+            <button class="btn dark" id="toDeposit">Continue to deposit</button>
+          </div>
+        </div>
+
+        <div class="bk-panel" data-step="6">
+          <div class="dep-note">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.2" stroke="#DF1F1F" stroke-width="1.6"/><path d="M10 6v4.6" stroke="#DF1F1F" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1" fill="#DF1F1F"/></svg>
+            <p><b>$15 hold, not a charge.</b> It comes off your total when you sit down. <span>No-shows and cancellations under 3 hours keep the hold. That's what keeps the book honest for everyone else.</span></p>
+          </div>
+          <form class="frm" id="cardForm" novalidate>
+            <div class="fld full"><label for="cName">Name on card</label><input id="cName" type="text" autocomplete="off" placeholder="Sam Ortega"><p class="err">Name on card, please.</p></div>
+            <div class="fld full"><label for="cNum">Card number</label><input id="cNum" type="text" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242" maxlength="19"><p class="err">16 digits.</p></div>
+            <div class="fld"><label for="cExp">Expiry</label><input id="cExp" type="text" inputmode="numeric" autocomplete="off" placeholder="MM/YY" maxlength="5"><p class="err">A future MM/YY.</p></div>
+            <div class="fld"><label for="cCvc">CVC</label><input id="cCvc" type="text" inputmode="numeric" autocomplete="off" placeholder="123" maxlength="4"><p class="err">3 or 4 digits.</p></div>
+          </form>
+          <div class="bk-actions">
+            <button class="back" data-back="5">Back</button>
+            <button class="btn" id="holdBtn">Hold my chair · $15</button>
+          </div>
+        </div>
+
+        <div class="bk-panel" data-step="7">
+          <div class="confirm">
+            <div class="ok"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M7 15.5l5.2 5L23 9.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3 id="cfTitle">You're on the books.</h3>
+            <p>We texted the details to your phone. Running late? Your barber holds the chair for ten minutes.</p>
+            <div class="summary">
+              <div class="row"><span>Service</span><b id="cfService"></b></div>
+              <div class="row"><span>Barber</span><b id="cfBarber"></b></div>
+              <div class="row"><span>When</span><b id="cfWhen"></b></div>
+              <div class="row"><span>Hold on card</span><b>$15, off your total</b></div>
+              <div class="row"><span>Booking ref</span><b class="ref" id="cfRef"></b></div>
+            </div>
+            <button class="btn dark" id="againBtn">Book another chair</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">Recent work</p>
+      <h2>Proof, in black and white.</h2>
+      <p>Shot in the shop between clients. No filters beyond the film look, no ring lights.</p>
+    </div>
+    <div class="gal">
+      <figure class="g reveal" style="--d:.0s"><img loading="lazy" src="img/g1-razor.jpg" width="1067" height="1600" alt="Straight razor detail work on a close crop"></figure>
+      <figure class="g reveal" style="--d:.06s"><img loading="lazy" src="img/g2-beard.jpg" width="1067" height="1600" alt="Barber lining up a beard"></figure>
+      <figure class="g reveal" style="--d:.12s"><img loading="lazy" src="img/g3-fade.jpg" width="1067" height="1600" alt="Back view of a finished skin fade"></figure>
+      <figure class="g reveal" style="--d:.18s"><img loading="lazy" src="img/g4-clipper.jpg" width="1600" height="1067" alt="Clipper work through the sides"></figure>
+      <figure class="g reveal" style="--d:.0s"><img loading="lazy" src="img/g5-shave.jpg" width="1067" height="1600" alt="Hot towel shave in progress"></figure>
+      <figure class="g reveal" style="--d:.06s"><img loading="lazy" src="img/g6-hat.jpg" width="1067" height="1600" alt="Barber checking a cut in the mirror"></figure>
+      <figure class="g reveal" style="--d:.12s"><img loading="lazy" src="img/g7-tools.jpg" width="1600" height="1067" alt="Shave brush, razors and combs laid out"></figure>
+      <figure class="g reveal" style="--d:.18s"><img loading="lazy" src="img/g8-client.jpg" width="1600" height="1067" alt="Client getting the top shaped up"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · TESTIMONIALS -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">The regulars</p>
+      <h2>Word travels down Ludlow.</h2>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Customer reviews">
+    <div class="track" id="sayTrack"></div>
+  </div>
+</section>
+
+<!-- 6 · VISIT -->
+<section id="visit">
+  <div class="wrap grid">
+    <div class="visit-photo reveal"><img loading="lazy" src="img/pole.jpg" width="1280" height="1600" alt="Barber pole outside the shop"></div>
+    <div>
+      <div class="sec-head reveal" style="margin-bottom:8px">
+        <p class="tag">Visit</p>
+        <h2>Between Rivington and Delancey.</h2>
+      </div>
+      <div class="addr reveal">
+        <p class="big">Lower East Side</p>
+        <p>New York · F train to Delancey St</p>
+      </div>
+      <ul class="hours reveal" id="hoursList">
+        <li data-dow="1"><b>Monday</b><span>Closed</span></li>
+        <li data-dow="2"><b>Tuesday</b><span>10:00 AM to 8:00 PM</span></li>
+        <li data-dow="3"><b>Wednesday</b><span>10:00 AM to 8:00 PM</span></li>
+        <li data-dow="4"><b>Thursday</b><span>10:00 AM to 8:00 PM</span></li>
+        <li data-dow="5"><b>Friday</b><span>10:00 AM to 8:00 PM</span></li>
+        <li data-dow="6"><b>Saturday</b><span>9:00 AM to 7:00 PM</span></li>
+        <li data-dow="0"><b>Sunday</b><span>10:00 AM to 5:00 PM</span></li>
+      </ul>
+      <p class="walkin reveal">Walk-ins take the next open chair. Bookings jump the line, which is why the regulars book.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="#top">FADE.</a>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#book">Book</a>
+        <a href="#gallery">Work</a>
+        <a href="#visit">Visit</a>
+      </nav>
+    </div>
+    <p class="fine">Lower East Side, New York. Tuesday to Saturday, 10 to 7. Walk-ins when the chairs are free.</p>
+  </div>
+</footer>
+
+<div class="bookbar" id="bookbar"><a href="#book" class="btn">Book appointment</a></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- data ---------------- */
+  var SERVICES=[
+    {id:'classic',name:'Classic Cut',price:45,mins:45,desc:'Scissor and clipper cut, shaped to how you actually wear it. Finished with a hot lather neck shave.'},
+    {id:'fade',name:'Skin Fade',price:55,mins:60,desc:'Zero to skin, blended tight. Checked under three lights before you leave the chair.'},
+    {id:'beard',name:'Beard Trim',price:25,mins:25,desc:'Shape, line-up and a hot towel finish. Bring a photo or trust the chair.'},
+    {id:'shave',name:'Hot Towel Shave',price:40,mins:40,desc:'Straight razor, two passes, three towels. The one to book before a wedding.'},
+    {id:'combo',name:'Cut + Beard',price:65,mins:75,desc:'The full reset. A cut and a beard trim in one sitting, priced under booking both.'},
+    {id:'kids',name:"Kids' Cut",price:30,mins:30,desc:'Twelve and under, Tuesday to Friday before 4 PM. Patience included at no extra cost.'}
+  ];
+  var BARBERS=[
+    {id:'marcus',name:'Marcus',spec:'Skin fades, sharp lines',free:'Today 3:30 PM'},
+    {id:'dev',name:'Dev',spec:'Scissor work, longer hair',free:'Tomorrow 11:00 AM'},
+    {id:'tony',name:'Tony',spec:'Beards, hot towel shaves',free:'Today 5:15 PM'},
+    {id:'rae',name:'Rae',spec:'Classic cuts, kids',free:'Thursday 10:00 AM'}
+  ];
+  var REVIEWS=[
+    {q:'Marcus has cut my hair for two years. I moved to Astoria and still ride the F back here every three weeks.',w:'Danny',s:'skin fade regular'},
+    {q:'Booked the shave the morning of my wedding. Tony took his time with it and I looked better than the groomsmen.',w:'Alex',s:'hot towel shave'},
+    {q:'First shop that listened when I said my hair curls at the crown instead of just buzzing over it.',w:'Jordan',s:'classic cut'},
+    {q:'My son used to cry at haircuts. Rae had him laughing in the chair by minute two. Worth every dollar of the $30.',w:'Priya',s:"kids' cut"},
+    {q:'The $15 hold sounded annoying until I realized it means the 6 PM slot is actually free at 6 PM.',w:'Mike',s:'cut + beard'},
+    {q:'Dev is the only barber who has ever cut my hair dry first to see how it falls. Small thing, huge difference.',w:'Sam',s:'scissor cut'},
+    {q:'Walked in shaggy at noon, out by 12:50, photos for a passport at 1. The timing on the menu is real.',w:'Leo',s:'classic cut'},
+    {q:'Beard trim here is 25 bucks and it lands better than the 60 dollar one I got in Soho. Not close.',w:'Omar',s:'beard trim'}
+  ];
+  var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var STEP_TITLES={1:'Pick a service',2:'Choose your barber',3:'Pick a day',4:'Grab a time',5:'Your details',6:'Hold your chair',7:'Confirmed'};
+
+  /* ---------------- helpers ---------------- */
+  function $(s,c){return (c||document).querySelector(s)}
+  function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function hashStr(s){var h=0;for(var i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}return h}
+  function fmtTime(mins){var h=Math.floor(mins/60),m=mins%60,ap=h>=12?'PM':'AM';var hh=h%12;if(hh===0)hh=12;return hh+':'+(m<10?'0':'')+m+' '+ap}
+  function iso(d){return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+
+  /* ---------------- services section ---------------- */
+  var clockSvg='<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.2" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.2v3.5l2.3 1.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+  $('#svcGrid').innerHTML=SERVICES.map(function(s,i){
+    return '<article class="svc reveal" style="--d:'+(i%3*.08)+'s">'+
+      '<h3>'+s.name+'</h3>'+
+      '<div class="meta">'+clockSvg+'<span>'+s.mins+' minutes</span></div>'+
+      '<p>'+s.desc+'</p>'+
+      '<div class="foot"><span class="price">$'+s.price+'</span>'+
+      '<button data-book="'+s.id+'">Book this</button></div></article>';
+  }).join('');
+
+  /* ---------------- testimonials ---------------- */
+  var star='<svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 .9l1.8 3.8 4.1.6-3 2.9.7 4.1L7 10.3l-3.6 2 .7-4.1-3-2.9 4.1-.6z" fill="#DF1F1F"/></svg>';
+  var cards=REVIEWS.map(function(r){
+    return '<div class="say"><div class="stars">'+star+star+star+star+star+'</div>'+
+      '<p>"'+esc(r.q)+'"</p><div class="who">'+r.w+' <span>· '+r.s+'</span></div></div>';
+  }).join('');
+  $('#sayTrack').innerHTML=cards+cards;
+
+  /* ---------------- hours: mark today ---------------- */
+  var todayDow=new Date().getDay();
+  $$('#hoursList li').forEach(function(li){
+    if(+li.getAttribute('data-dow')===todayDow) li.classList.add('today');
+  });
+
+  /* ---------------- booking state ---------------- */
+  var state={step:1,service:null,barber:null,date:null,time:null,name:'',calOffset:0};
+  var TODAY=new Date();TODAY.setHours(0,0,0,0);
+  var MAXDATE=new Date(TODAY);MAXDATE.setDate(MAXDATE.getDate()+35);
+
+  function goto(step,scroll){
+    state.step=step;
+    $$('.bk-panel').forEach(function(p){p.classList.toggle('on',+p.getAttribute('data-step')===step)});
+    var isConfirm=step===7;
+    $('#bkTop').style.display=isConfirm?'none':'';
+    $('#bkTitle').textContent=STEP_TITLES[step];
+    $('#bkStepN').textContent=isConfirm?'':'Step '+step+' of 6';
+    $('#bkBar').style.width=(Math.min(step,6)/6*100)+'%';
+    renderChips();
+    if(scroll){$('#bkCard').scrollIntoView({behavior:'smooth',block:'nearest'})}
+  }
+
+  function renderChips(){
+    if(state.step===7){$('#bkChips').innerHTML='';return}
+    var chips=[];
+    if(state.service)chips.push({s:1,t:'<b>'+state.service.name+'</b> · $'+state.service.price});
+    if(state.barber)chips.push({s:2,t:'with <b>'+state.barber.name+'</b>'});
+    if(state.date)chips.push({s:3,t:'<b>'+DAYS[state.date.getDay()]+' '+MONTHS[state.date.getMonth()].slice(0,3)+' '+state.date.getDate()+'</b>'});
+    if(state.time!==null)chips.push({s:4,t:'<b>'+fmtTime(state.time)+'</b>'});
+    $('#bkChips').innerHTML=chips.map(function(c){
+      return '<button class="chip" data-goto="'+c.s+'" title="Change">'+c.t+'</button>';
+    }).join('');
+  }
+  $('#bkChips').addEventListener('click',function(e){
+    var b=e.target.closest('[data-goto]');if(b)goto(+b.getAttribute('data-goto'),true);
+  });
+
+  /* step 1: services */
+  $('#svcPicks').innerHTML=SERVICES.map(function(s){
+    return '<button class="pick" data-svc="'+s.id+'"><span class="tx"><b>'+s.name+'</b><span>'+s.mins+' minutes</span></span><span class="pr">$'+s.price+'</span></button>';
+  }).join('');
+  $('#svcPicks').addEventListener('click',function(e){
+    var b=e.target.closest('[data-svc]');if(!b)return;
+    state.service=SERVICES.filter(function(s){return s.id===b.getAttribute('data-svc')})[0];
+    $$('#svcPicks .pick').forEach(function(p){p.classList.toggle('sel',p===b)});
+    setTimeout(function(){goto(2,true)},160);
+  });
+
+  /* "Book this" buttons in services grid */
+  $('#svcGrid').addEventListener('click',function(e){
+    var b=e.target.closest('[data-book]');if(!b)return;
+    var id=b.getAttribute('data-book');
+    state.service=SERVICES.filter(function(s){return s.id===id})[0];
+    $$('#svcPicks .pick').forEach(function(p){p.classList.toggle('sel',p.getAttribute('data-svc')===id)});
+    goto(2,false);
+    $('#bkCard').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  /* step 2: barbers */
+  $('#barberPicks').innerHTML=BARBERS.map(function(b){
+    return '<button class="pick" data-barber="'+b.id+'"><span class="avatar">'+b.name[0]+'</span>'+
+      '<span class="tx"><b>'+b.name+'</b><span>'+b.spec+'</span></span>'+
+      '<span class="free">Next: '+b.free+'</span></button>';
+  }).join('');
+  $('#barberPicks').addEventListener('click',function(e){
+    var b=e.target.closest('[data-barber]');if(!b)return;
+    var nb=BARBERS.filter(function(x){return x.id===b.getAttribute('data-barber')})[0];
+    if(!state.barber||state.barber.id!==nb.id){state.time=null}
+    state.barber=nb;
+    $$('#barberPicks .pick').forEach(function(p){p.classList.toggle('sel',p===b)});
+    setTimeout(function(){goto(3,true)},160);
+  });
+
+  /* step 3: calendar */
+  function renderCal(){
+    var base=new Date(TODAY.getFullYear(),TODAY.getMonth()+state.calOffset,1);
+    $('#calMonth').textContent=MONTHS[base.getMonth()]+' '+base.getFullYear();
+    $('#calPrev').disabled=state.calOffset<=0;
+    $('#calNext').disabled=state.calOffset>=1;
+    var html=DAYS.map(function(d){return '<span class="dow">'+d[0]+'</span>'}).join('');
+    var lead=base.getDay();
+    for(var i=0;i<lead;i++)html+='<span></span>';
+    var dim=new Date(base.getFullYear(),base.getMonth()+1,0).getDate();
+    for(var d=1;d<=dim;d++){
+      var dt=new Date(base.getFullYear(),base.getMonth(),d);
+      var off=dt<TODAY||dt>MAXDATE||dt.getDay()===1;
+      var sel=state.date&&iso(state.date)===iso(dt);
+      html+='<button class="day'+(sel?' sel':'')+'" data-date="'+iso(dt)+'"'+(off?' disabled':'')+'>'+d+'</button>';
+    }
+    $('#calGrid').innerHTML=html;
+  }
+  $('#calPrev').addEventListener('click',function(){state.calOffset--;renderCal()});
+  $('#calNext').addEventListener('click',function(){state.calOffset++;renderCal()});
+  $('#calGrid').addEventListener('click',function(e){
+    var b=e.target.closest('[data-date]');if(!b||b.disabled)return;
+    var parts=b.getAttribute('data-date').split('-');
+    var nd=new Date(+parts[0],+parts[1]-1,+parts[2]);
+    if(!state.date||iso(state.date)!==iso(nd)){state.time=null}
+    state.date=nd;
+    renderCal();
+    setTimeout(function(){renderSlots();goto(4,true)},160);
+  });
+  renderCal();
+
+  /* step 4: time slots */
+  function renderSlots(){
+    var dow=state.date.getDay();
+    var open,close;
+    if(dow===6){open=9*60;close=19*60}
+    else if(dow===0){open=10*60;close=17*60}
+    else{open=10*60;close=20*60}
+    var rnd=mulberry(hashStr((state.barber?state.barber.id:'any')+iso(state.date)));
+    var slots=[];
+    for(var t=open;t+45<=close;t+=45){slots.push({t:t,taken:rnd()<0.42})}
+    var avail=slots.filter(function(s){return !s.taken});
+    for(var i=0;avail.length<3&&i<slots.length;i++){
+      if(slots[i].taken){slots[i].taken=false;avail.push(slots[i])}
+    }
+    $('#slotGrid').innerHTML=slots.map(function(s){
+      var sel=state.time===s.t;
+      return '<button class="slot'+(sel?' sel':'')+'" data-t="'+s.t+'"'+(s.taken?' disabled':'')+'>'+fmtTime(s.t)+'</button>';
+    }).join('');
+  }
+  $('#slotGrid').addEventListener('click',function(e){
+    var b=e.target.closest('[data-t]');if(!b||b.disabled)return;
+    state.time=+b.getAttribute('data-t');
+    $$('#slotGrid .slot').forEach(function(s){s.classList.toggle('sel',s===b)});
+    setTimeout(function(){goto(5,true)},160);
+  });
+
+  /* back buttons */
+  $$('.back').forEach(function(b){
+    b.addEventListener('click',function(){goto(+b.getAttribute('data-back'),false)});
+  });
+
+  /* step 5: details */
+  function validate(input,ok){
+    var fld=input.closest('.fld');
+    input.classList.toggle('bad',!ok);
+    fld.classList.toggle('show-err',!ok);
+    return ok;
+  }
+  $('#toDeposit').addEventListener('click',function(){
+    var name=$('#fName'),phone=$('#fPhone'),email=$('#fEmail');
+    var ok=true;
+    ok=validate(name,name.value.trim().length>=2)&&ok;
+    ok=validate(phone,phone.value.replace(/\D/g,'').length>=10)&&ok;
+    ok=validate(email,/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()))&&ok;
+    if(!ok)return;
+    state.name=name.value.trim();
+    goto(6,true);
+  });
+  $$('#detailForm input, #detailForm textarea').forEach(function(i){
+    i.addEventListener('input',function(){i.classList.remove('bad');i.closest('.fld').classList.remove('show-err')});
+  });
+
+  /* step 6: deposit */
+  $('#cNum').addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,16);
+    this.value=v.replace(/(\d{4})(?=\d)/g,'$1 ');
+    this.classList.remove('bad');this.closest('.fld').classList.remove('show-err');
+  });
+  $('#cExp').addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,4);
+    this.value=v.length>2?v.slice(0,2)+'/'+v.slice(2):v;
+    this.classList.remove('bad');this.closest('.fld').classList.remove('show-err');
+  });
+  $('#cCvc').addEventListener('input',function(){
+    this.value=this.value.replace(/\D/g,'').slice(0,4);
+    this.classList.remove('bad');this.closest('.fld').classList.remove('show-err');
+  });
+  $('#cName').addEventListener('input',function(){
+    this.classList.remove('bad');this.closest('.fld').classList.remove('show-err');
+  });
+  function expOk(v){
+    var m=v.match(/^(\d{2})\/(\d{2})$/);if(!m)return false;
+    var mo=+m[1],yr=2000+ +m[2];
+    if(mo<1||mo>12)return false;
+    var now=new Date();
+    return yr>now.getFullYear()||(yr===now.getFullYear()&&mo>=now.getMonth()+1);
+  }
+  $('#holdBtn').addEventListener('click',function(){
+    var cn=$('#cName'),num=$('#cNum'),exp=$('#cExp'),cvc=$('#cCvc');
+    var ok=true;
+    ok=validate(cn,cn.value.trim().length>=2)&&ok;
+    ok=validate(num,num.value.replace(/\D/g,'').length===16)&&ok;
+    ok=validate(exp,expOk(exp.value))&&ok;
+    ok=validate(cvc,/^\d{3,4}$/.test(cvc.value))&&ok;
+    if(!ok)return;
+    var btn=this;
+    btn.disabled=true;btn.textContent='Placing hold…';
+    setTimeout(function(){
+      btn.disabled=false;btn.textContent='Hold my chair · $15';
+      var first=state.name.split(' ')[0];
+      $('#cfTitle').textContent="You're on the books"+(first?', '+first:'')+'.';
+      $('#cfService').textContent=state.service.name+' · $'+state.service.price;
+      $('#cfBarber').textContent=state.barber.name;
+      $('#cfWhen').textContent=DAYS[state.date.getDay()]+' '+MONTHS[state.date.getMonth()].slice(0,3)+' '+state.date.getDate()+', '+fmtTime(state.time);
+      var ref='FD-';var chars='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+      for(var i=0;i<5;i++)ref+=chars[Math.floor(Math.random()*chars.length)];
+      $('#cfRef').textContent=ref;
+      goto(7,true);
+    },900);
+  });
+
+  /* confirm: book another */
+  $('#againBtn').addEventListener('click',function(){
+    state.service=null;state.barber=null;state.date=null;state.time=null;state.name='';state.calOffset=0;
+    $$('#svcPicks .pick, #barberPicks .pick').forEach(function(p){p.classList.remove('sel')});
+    $$('#detailForm input, #detailForm textarea, #cardForm input').forEach(function(i){i.value=''});
+    renderCal();
+    goto(1,true);
+  });
+
+  /* prevent form submits */
+  $$('form').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault()})});
+
+  /* ---------------- scroll reveal ---------------- */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  $$('.reveal').forEach(function(el){io.observe(el)});
+
+  /* ---------------- mobile book bar ---------------- */
+  var bar=$('#bookbar');
+  var bio=new IntersectionObserver(function(entries){
+    bar.classList.toggle('hide',entries[0].isIntersecting);
+  },{threshold:.05});
+  bio.observe($('#book'));
+
+  /* ---------------- hero video: respect reduced motion ---------------- */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var hv=$('.hero-bg video');
+    if(hv){hv.pause();hv.removeAttribute('autoplay');}
+  }
+})();
+</script>
+</body>
+</html>
