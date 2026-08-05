@@ -176,8 +176,9 @@
   .review cite{font-style:normal;font-size:14.5px;color:var(--ink60)}
   .car-ctl{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
   .dots{display:flex;gap:8px}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--line-strong);border:none;padding:0;transition:background .2s ease,transform .2s ease}
-  .dot.on{background:var(--amber);transform:scale(1.2)}
+  .dot{width:8px;height:8px;border:none;padding:0;background:none;display:flex;align-items:center;justify-content:center}
+  .dot::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--line-strong);transition:background .2s ease,transform .2s ease;flex:none}
+  .dot.on::before{background:var(--amber);transform:scale(1.2)}
   .arrows{display:flex;gap:10px}
   .arrow{
     width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);
@@ -263,6 +264,20 @@
   .foot-base{border-top:1px solid var(--line);padding:20px 0;font-size:12.5px;color:var(--ink40);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   @media(max-width:860px){.foot{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.foot{grid-template-columns:1fr}}
+
+  /* ---------- mobile fit & polish ---------- */
+  [id]{scroll-margin-top:84px}
+  @media(max-width:860px){
+    .logo{display:inline-flex;align-items:center;min-height:44px}
+    .chip{min-height:44px;padding:10px 20px}
+    .na-chip{min-height:44px;padding:10px 16px}
+    .pill-grid .opt{min-height:44px;min-width:48px;padding:10px 16px}
+    .time-grid .opt{min-height:44px}
+    .arrow{width:44px;height:44px}
+    .dot{width:24px;height:44px}
+    .book input{font-size:16px}
+    .book{margin:0 auto}
+  }
 
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}

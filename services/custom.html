@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/main.css">
+<style>
+/* iPhone fit + polish: 44px tap targets, safe-area breathing room. Visuals unchanged. */
+.top { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+.back { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; margin-left: -10px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding-top: 0; padding-bottom: 0; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; }
+.bwrap { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+.bfoot { padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
+</style>
 </head>
 <body class="book-page">
 

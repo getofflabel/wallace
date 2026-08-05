@@ -439,6 +439,8 @@ a { color: inherit; text-decoration: none; }
 /* ---------- the reel, a floating card in the panel ---------- */
 .reel {
   width: 100%; max-width: 640px; height: auto; display: block;
+  aspect-ratio: 16 / 9;           /* box is reserved before the file arrives, no jump */
+  object-fit: cover;
   border-radius: 11px;
   border: 1px solid rgba(23,22,20,.13);
   box-shadow: 0 1px 2px rgba(23,22,20,.05), 0 20px 46px rgba(23,22,20,.18);
@@ -609,3 +611,34 @@ a { color: inherit; text-decoration: none; }
    .block, and an open-the-demo link sitting inside a .step grid. */
 .block p + .steps, .block p + .inc { margin-top: 22px; }
 .step .step-link { justify-self: start; margin-top: 10px; }
+
+/* ---------- iPhone fit & polish ----------
+   Touch sizing only, the look stays put. Every tappable control clears
+   44px, and inputs hold 16px so iOS Safari doesn't zoom the page when
+   one is focused. */
+
+@media (max-width: 900px) {
+
+  /* inputs at 16px so focusing one doesn't zoom the whole page */
+  .fld input[type="text"], .fld textarea,
+  .bk input[type="text"], .bk textarea,
+  #intake input[type="text"], #intake textarea { font-size: 16px; }
+
+  /* 44px minimum tap targets, padding grows but the chip look stays */
+  .nav a, .back, .reel-links a, .btn-line, .btn,
+  .pick span, .fil, .copy, .q-btn, .go, .bk-send, .book-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px;
+  }
+  .q-btn { display: flex; justify-content: space-between; }
+  .back { padding: 4px 6px; margin-left: -6px; }
+  .nav, .reel-links, .picks, .filters { gap: 8px; }
+
+  /* small text links keep their look but gain a full-height hit area */
+  .hint a { display: inline-block; padding: 13px 2px; margin: -13px -2px; }
+
+  /* breathing room above the iOS home indicator */
+  .feed { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
+  .bwrap { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
+  .bfoot { padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
+}

@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/main.css">
+<style>
+/* iPhone fit + polish: 44px tap targets, safe-area breathing room. Visuals unchanged. */
+.top { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+.back { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; margin-left: -10px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding-top: 0; padding-bottom: 0; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; }
+.bwrap { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+.bfoot { padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
+</style>
 </head>
 <body class="book-page">
 
@@ -25,50 +34,29 @@
 
   <section class="step-panel">
     <h1>Websites.</h1>
-    <p class="step-lead">Custom sites built from scratch, with payments, booking and hosting handled.</p>
+    <p class="step-lead">The whole thing, designed and built end to end for what your business actually needs.</p>
   </section>
 
   <section class="block rv">
     <div class="steps">
       <div class="step">
         <span class="step-n">01</span>
-        <b>Built from zero</b>
-        <span>No themes, no page builders.</span>
+        <b>End to end</b>
+        <span>Design, build, content, launch. Built from zero for your business, only with what it needs.</span>
       </div>
       <div class="step">
         <span class="step-n">02</span>
-        <b>Payments and booking</b>
-        <span>Card checkout and real booking, wired to your accounts.</span>
+        <b>Take it over</b>
+        <span>When it goes live, everything is yours. Accounts, files, domain. Run it yourself from day one.</span>
       </div>
       <div class="step">
         <span class="step-n">03</span>
-        <b>Hosting and domain</b>
-        <span>Set up in your name. You own everything.</span>
+        <b>Or we keep handling it</b>
+        <span>Rather not touch it? A monthly retainer and the site stays my problem: updates, changes, whatever comes up.</span>
       </div>
     </div>
   </section>
 
-  <section class="block rv">
-    <span class="block-k">The work</span>
-    <div class="steps">
-      <div class="step">
-        <span class="step-n">01</span>
-        <a class="btn-line step-link" href="../demos/oro/index.html" target="_blank" rel="noopener">Oro, a wine bar &nearr;</a>
-      </div>
-      <div class="step">
-        <span class="step-n">02</span>
-        <a class="btn-line step-link" href="../demos/fade/index.html" target="_blank" rel="noopener">Fade, a barbershop &nearr;</a>
-      </div>
-      <div class="step">
-        <span class="step-n">03</span>
-        <a class="btn-line step-link" href="../demos/foundry/index.html" target="_blank" rel="noopener">Foundry Supply, a coffee roaster &nearr;</a>
-      </div>
-      <div class="step">
-        <span class="step-n">04</span>
-        <a class="btn-line step-link" href="../demos/atrium/index.html" target="_blank" rel="noopener">Atrium, a pilates studio &nearr;</a>
-      </div>
-    </div>
-  </section>
 
   <section class="block cta rv">
     <h2>The rest we talk through.</h2>

@@ -94,7 +94,10 @@ function mountCalendar() {
   var f = document.createElement('iframe');
   f.src = BOOKING_URL + (BOOKING_URL.indexOf('?') > -1 ? '&' : '?') + 'gv=true';
   f.title = 'Pick a time';
-  f.style.cssText = 'width:100%;height:660px;border:2px solid var(--line);background:#fff';
+  /* On a phone the calendar gets most of the screen, so picking a time is
+     one scroll instead of a scroll inside a scroll. */
+  var calH = Math.max(660, Math.min(820, window.innerHeight - 110));
+  f.style.cssText = 'width:100%;height:' + calH + 'px;border:2px solid var(--line);background:#fff';
   document.getElementById('cal-mount').appendChild(f);
   mounted = true;
 }
