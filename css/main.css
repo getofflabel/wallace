@@ -645,3 +645,10 @@ a { color: inherit; text-decoration: none; }
 
 /* big stat numbers on the websites sales page */
 .stat-n { font-size: clamp(30px, 3.4vw, 44px); font-weight: 700; letter-spacing: -0.02em; color: var(--clay); line-height: 1; }
+
+/* the fork inside a step: one step, two choices */
+.choices { display: grid; gap: 10px; margin-top: 10px; }
+@media (min-width: 700px) { .choices { grid-template-columns: 1fr 1fr; } }
+.choice { border: 1.5px solid var(--hair); padding: 14px 16px; display: grid; gap: 5px; align-content: start; }
+.choice b { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.choice span { font-size: 12.5px; color: var(--dim); line-height: 1.7; }
