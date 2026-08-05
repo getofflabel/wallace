@@ -59,24 +59,36 @@
       </label>
 
       <label class="fld">
-        <span>Business name <em>optional</em></span>
-        <input type="text" id="fBiz" autocomplete="organization" placeholder="Leave blank if you don't have one yet">
+        <span>What type of business are you running <em>required</em></span>
+        <input type="text" id="fBiz" autocomplete="organization" placeholder="Auto shop, med spa, restaurant, an idea you want built...">
       </label>
 
       <fieldset class="fld">
-        <span class="fld-l">What do you need <em>pick any</em></span>
+        <span class="fld-l">What are you looking to get <em>pick any</em></span>
         <div class="picks">
           <label class="pick"><input type="checkbox" value="A website"><span>Website</span></label>
           <label class="pick"><input type="checkbox" value="An app or SaaS idea"><span>App / SaaS idea</span></label>
+          <label class="pick"><input type="checkbox" value="AI for my business"><span>AI for my business</span></label>
           <label class="pick"><input type="checkbox" value="A rebuild of something existing"><span>Rebuild</span></label>
           <label class="pick"><input type="checkbox" value="Not sure yet"><span>Not sure yet</span></label>
         </div>
       </fieldset>
 
       <label class="fld">
-        <span>Anything in advance <em>optional</em></span>
-        <textarea id="fNote" rows="3" placeholder="Whatever you want to let me know before we talk"></textarea>
+        <span>Tell me what you need, in advance <em>required</em></span>
+        <textarea id="fNote" rows="4" placeholder="The more you tell me here, the more prepared I am when we talk."></textarea>
       </label>
+
+      <fieldset class="fld">
+        <span class="fld-l">How did you find me <em>required</em></span>
+        <div class="picks" id="srcPicks">
+          <label class="pick"><input type="radio" name="fSrc" value="Instagram"><span>Instagram</span></label>
+          <label class="pick"><input type="radio" name="fSrc" value="Google"><span>Google</span></label>
+          <label class="pick"><input type="radio" name="fSrc" value="Email from Wallace"><span>Your email</span></label>
+          <label class="pick"><input type="radio" name="fSrc" value="Word of mouth"><span>Word of mouth</span></label>
+          <label class="pick"><input type="radio" name="fSrc" value="Other"><span>Other</span></label>
+        </div>
+      </fieldset>
 
       <button class="go" type="submit">Continue to the calendar &nbsp;&rarr;</button>
       <p class="hint" id="hint">Next screen is the calendar. Nothing is booked until you pick a time there.</p>
@@ -128,23 +140,25 @@ function mountCalendar() {
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  var name = document.getElementById('fName').value.trim();
-  if (!name) {
-    hint.textContent = 'Just your name and you can carry on.';
+  var name  = document.getElementById('fName').value.trim();
+  var biz   = document.getElementById('fBiz').value.trim();
+  var needs = [].slice.call(form.querySelectorAll('.picks input[type="checkbox"]:checked')).map(function (i) { return i.value; });
+  var note  = document.getElementById('fNote').value.trim();
+  var srcEl = form.querySelector('input[name="fSrc"]:checked');
+  var src   = srcEl ? srcEl.value : '';
+
+  function fail(msg, el) {
+    hint.textContent = msg;
     hint.classList.add('bad');
-    document.getElementById('fName').focus();
-    return;
+    if (el && el.focus) el.focus();
   }
   hint.classList.remove('bad');
+  if (!name)  return fail('Your name first, then you can carry on.', document.getElementById('fName'));
+  if (!biz)   return fail('Tell me what type of business you are running.', document.getElementById('fBiz'));
+  if (!note)  return fail('Tell me what you need so I can prepare for the call.', document.getElementById('fNote'));
+  if (!src)   return fail('One tap: how did you find me?');
 
-  var biz   = document.getElementById('fBiz').value.trim();
-  var needs = [].slice.call(form.querySelectorAll('.picks input:checked')).map(function (i) { return i.value; });
-  var note  = document.getElementById('fNote').value.trim();
-
-  /* Held in the tab only. There is no backend on a static site, so this is
-     shown back on the next screen to copy into the booking notes rather
-     than being quietly sent anywhere. */
-  var answers = { name: name, biz: biz, needs: needs, note: note };
+  var answers = { name: name, biz: biz, needs: needs, note: note, src: src };
   try { sessionStorage.setItem('wc_intake', JSON.stringify(answers)); } catch (err) {}
 
   /* send the answers ahead by email; the calendar shows either way */
@@ -153,19 +167,21 @@ form.addEventListener('submit', function (e) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        _subject: 'Booking intake: ' + name + (biz ? ' (' + biz + ')' : ''),
+        _subject: 'Booking intake: ' + name + ' (' + biz + ')',
         name: name,
-        business: biz || 'not given',
+        business: biz,
         needs: needs.join(', ') || 'not picked',
-        note: note || 'none'
+        what_they_need: note,
+        found_via: src
       })
     });
   } catch (err) {}
 
   var lines = [];
-  lines.push('<b>' + answers.name + '</b>' + (biz ? ' · ' + biz : ''));
-  if (needs.length) lines.push('Needs: ' + needs.join(', '));
-  if (note) lines.push(note);
+  lines.push('<b>' + answers.name + '</b> · ' + biz);
+  if (needs.length) lines.push('Looking for: ' + needs.join(', '));
+  lines.push(note);
+  lines.push('Found via ' + src);
 
   document.getElementById('recap').innerHTML =
     '<span class="recap-k">Your answers</span>' +
@@ -178,9 +194,9 @@ form.addEventListener('submit', function (e) {
   mountCalendar();
 
   document.getElementById('copyBtn').addEventListener('click', function () {
-    var txt = answers.name + (biz ? ' — ' + biz : '')
-      + (needs.length ? '\nNeeds: ' + needs.join(', ') : '')
-      + (note ? '\n' + note : '');
+    var txt = answers.name + ' (' + biz + ')'
+      + (needs.length ? '\nLooking for: ' + needs.join(', ') : '')
+      + '\n' + note + '\nFound via ' + src;
     var btn = this;
     navigator.clipboard.writeText(txt).then(function () {
       btn.textContent = 'Copied';
