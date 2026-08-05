@@ -326,7 +326,7 @@
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--hair-soft);padding:64px 0 34px;background:var(--paper-warm)}
   footer .logo{color:var(--ink)}
-  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:44px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
   .foot-grid p,.foot-grid li{color:var(--muted);font-size:14px;line-height:1.9}
   .foot-grid ul{list-style:none}
   .foot-grid a:hover{color:var(--ink)}
@@ -368,9 +368,9 @@
   <div class="nav-in">
     <a class="logo" href="#top">MARQUE</a>
     <div class="nav-links">
-      <a href="#inventory">Inventory</a>
+      <a href="inventory.html">Inventory</a>
       <a href="#financing">Financing</a>
-      <a href="#trade">Trade-in</a>
+      <a href="tradein.html">Trade-in</a>
       <a href="#visit">Visit</a>
     </div>
     <a class="pill sm" href="#testdrive">Book a test drive</a>
@@ -403,7 +403,10 @@
         <span class="eyebrow">Inventory</span>
         <h2>In the showroom now</h2>
       </div>
-      <span class="count" id="invCount">9 cars</span>
+      <div style="display:flex;align-items:center;gap:18px">
+        <span class="count" id="invCount">9 cars</span>
+        <a class="ghost" href="inventory.html">Full inventory</a>
+      </div>
     </div>
 
     <div class="filters rv" id="filters">
@@ -546,7 +549,7 @@
         <span class="eyebrow">Trade-in</span>
         <h2>Have one worth selling?</h2>
         <p>We buy clean, interesting cars outright, whether or not you buy from us. Bring the car and its VIN by the showroom, get a real number within one business day, and get paid the day we collect it.</p>
-        <a class="pill" href="#visit">Get an offer</a>
+        <a class="pill" href="tradein.html">How trade-ins work</a>
       </div>
     </div>
   </div>
@@ -568,8 +571,17 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="#top" style="display:inline-block;margin-bottom:14px">MARQUE</a>
+        <a class="logo" href="index.html" style="display:inline-block;margin-bottom:14px">MARQUE</a>
         <p>Premium pre-owned cars in Williamsburg, Brooklyn. Inspected, documented, priced straight.</p>
+      </div>
+      <div>
+        <div class="foot-h">Browse</div>
+        <ul>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="tradein.html">Trade-in</a></li>
+          <li><a href="index.html#financing">Financing</a></li>
+          <li><a href="index.html#testdrive">Test drives</a></li>
+        </ul>
       </div>
       <div>
         <div class="foot-h">Visit</div>
@@ -842,6 +854,15 @@ $("#bookAgain").addEventListener("click", () => {
   document.querySelectorAll("#bkSlots .slot").forEach(x => x.classList.remove("sel"));
   slotVal = null;
 });
+
+/* ---------- cross-page handoff (?car= ?price= ?down=) ---------- */
+const qs = new URLSearchParams(location.search);
+const qCar = qs.get("car");
+if (qCar && CARS.some(c => c.id === qCar)) bkCar.value = qCar;
+const qPrice = Number(qs.get("price")), qDown = Number(qs.get("down"));
+if (qPrice > 0) $("#calcPrice").value = Math.round(qPrice);
+if (qDown > 0) $("#calcDown").value = Math.round(qDown);
+if (qPrice > 0 || qDown > 0) calc();
 
 /* ---------- nav: transparent over hero, white after ---------- */
 const navEl = document.querySelector("nav");

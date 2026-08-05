@@ -454,6 +454,72 @@
     .hero-content{padding:120px 24px 64px}
     .co-2col{grid-template-columns:1fr}
   }
+
+  /* ---------- shared extras ---------- */
+  a.cart-btn{text-decoration:none}
+  .text-link{color:var(--clay);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .text-link:hover{color:var(--clay-dark)}
+  .tint{background:#f3ece2}
+
+  /* ---------- subpage layout ---------- */
+  .hero.sub{min-height:58vh;min-height:58svh}
+  .hero.sub .hero-content{padding:130px 24px 70px}
+  .hero.sub h1{font-size:clamp(38px,5vw,64px)}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .stat{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:28px 26px}
+  .stat .num{font-family:'Sora',sans-serif;font-weight:700;font-size:36px;letter-spacing:-0.03em}
+  .stat .lbl{font-size:14px;color:var(--ink-60);margin-top:6px;line-height:1.5}
+  .week{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .day{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:24px 22px;display:flex;flex-direction:column;gap:9px}
+  .day .d-name{font-family:'Sora',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay)}
+  .day h3{font-size:18px;font-weight:600;letter-spacing:-0.02em}
+  .day p{font-size:13.5px;color:var(--ink-60);line-height:1.55}
+  .day.hot{background:var(--ink);border-color:var(--ink)}
+  .day.hot h3{color:var(--paper)}
+  .day.hot .d-name{color:#e08a5e}
+  .day.hot p{color:rgba(250,246,240,.72)}
+  .essay{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+  .essay + .essay{margin-top:clamp(48px,8vh,88px)}
+  .essay.flip .essay-img{order:2}
+  .essay-img{border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-sm)}
+  .essay-img img{width:100%;height:100%;object-fit:cover}
+  .essay-txt h3{font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-0.025em;margin-bottom:14px}
+  .essay-txt p{color:var(--ink-60);font-size:15.5px}
+  .essay-txt p + p{margin-top:12px}
+  .num-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .nstep{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--shadow-sm);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+  .nstep h3{font-size:18px;font-weight:600;letter-spacing:-0.02em}
+  .nstep p{font-size:14px;color:var(--ink-60);line-height:1.55}
+  .info-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .info-card{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+  .price-table{background:var(--cream);border:1px solid var(--hair);border-radius:var(--r-card);box-shadow:var(--shadow-sm);overflow:hidden;max-width:720px}
+  .price-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;padding:16px 22px;border-bottom:1px solid var(--hair);font-size:14.5px;align-items:baseline}
+  .price-row:last-child{border-bottom:none}
+  .price-row.head{font-family:'Sora',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60);background:#f7f1e8}
+  .price-row .was{color:var(--ink-40)}
+  .price-row .now{font-family:'Sora',sans-serif;font-weight:600}
+  .table-note{font-size:13px;color:var(--ink-60);margin-top:14px}
+  .cta-band{background:var(--ink);color:var(--paper);border-radius:var(--r-media);padding:clamp(44px,6vw,76px) clamp(26px,5vw,68px);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .cta-band h2{font-size:clamp(28px,3.4vw,42px);font-weight:700}
+  .cta-band p{color:rgba(250,246,240,.75);max-width:46ch;margin-top:10px;font-size:15.5px}
+  @media (max-width:1000px){
+    .stat-row{grid-template-columns:repeat(2,1fr)}
+    .week{grid-template-columns:repeat(2,1fr)}
+    .num-steps{grid-template-columns:repeat(2,1fr)}
+    .info-rail{grid-template-columns:repeat(2,1fr)}
+    .essay{grid-template-columns:1fr}
+    .essay.flip .essay-img{order:0}
+  }
+  @media (max-width:640px){
+    .stat-row{grid-template-columns:repeat(2,1fr);gap:14px}
+    .stat{padding:22px 20px}
+    .stat .num{font-size:30px}
+    .week{grid-template-columns:1fr}
+    .num-steps{grid-template-columns:1fr}
+    .info-rail{grid-template-columns:1fr}
+    .price-row{padding:14px 16px;gap:8px}
+    .cta-band{padding:40px 24px}
+  }
 </style>
 </head>
 <body>
@@ -463,8 +529,9 @@
     <a class="logo" href="#top">FOUNDRY·SUPPLY</a>
     <nav class="nav-links">
       <a href="#shop">Shop</a>
-      <a href="#roasting" class="hide-m">Roasting</a>
-      <a href="#visit" class="hide-m">Visit</a>
+      <a href="roasting.html">Roasting</a>
+      <a href="wholesale.html">Wholesale</a>
+      <a href="#visit">Visit</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -476,7 +543,8 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#shop">Shop</a>
-    <a href="#roasting">Roasting</a>
+    <a href="roasting.html">Roasting</a>
+    <a href="wholesale.html">Wholesale</a>
     <a href="#visit">Visit</a>
   </div>
 </header>
@@ -489,7 +557,7 @@
     <p>Foundry Supply is a two-person roastery on the ground floor of a former ironworks. We roast every Thursday, ship every Friday, and never let a batch sit longer than a day.</p>
     <div class="hero-ctas">
       <a href="#shop" class="btn btn-clay">Shop the roast list</a>
-      <a href="#roasting" class="btn btn-ghost">How we roast</a>
+      <a href="roasting.html" class="btn btn-ghost">How we roast</a>
     </div>
   </div>
 </section>
@@ -536,7 +604,7 @@
         <p class="kicker">Behind the drum</p>
         <h2>Green to bag in nine days</h2>
       </div>
-      <p>No warehouse, no pallets of stale stock. We buy small lots, roast them the week you order, and taste every single batch before it ships.</p>
+      <p>No warehouse, no pallets of stale stock. We buy small lots, roast them the week you order, and taste every single batch before it ships. <a class="text-link" href="roasting.html">See the full week</a></p>
     </div>
     <div class="roast-grid">
       <div class="step reveal">

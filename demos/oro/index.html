@@ -279,6 +279,11 @@
     .book{margin:0 auto}
   }
 
+  /* ---------- shared page additions ---------- */
+  .more-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;font-size:15px;color:var(--amber);transition:color .2s ease}
+  .more-link:hover{color:#e3b25c}
+  .more-link svg{width:15px;height:15px;flex:none}
+
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
@@ -298,8 +303,8 @@
 <nav class="nav" id="nav">
   <a class="logo" href="#top">ORO</a>
   <div class="nav-links">
-    <a href="#spaces">The Rooms</a>
-    <a href="#menu">Menu</a>
+    <a href="rooms.html">The Rooms</a>
+    <a href="menu.html">Menu</a>
     <a href="#reviews">Reviews</a>
     <a class="btn btn-amber" href="#reserve">Reserve</a>
   </div>
@@ -364,6 +369,9 @@
         </div>
       </article>
     </div>
+    <a class="more-link" href="rooms.html">More about each room
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
 </section>
 
@@ -386,6 +394,9 @@
         <p class="menu-count" id="menuCount"></p>
         <div class="menu-list" id="menuList"></div>
         <p class="menu-note">Tell us about allergies, we take them seriously. Corkage $25, waived on Tuesdays.</p>
+        <a class="more-link" href="menu.html">See the full menu and wine list
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
 
         <div class="band">
           <figure class="reveal">

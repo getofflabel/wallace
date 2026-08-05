@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FADE &middot; Services and prices</title>
+<meta name="description" content="The full FADE menu. Cuts, fades, beard work and shaves with flat prices and real timings, plus which barber to book for what.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F2;
+    --card:#FFFFFF;
+    --ink:#141412;
+    --ink60:rgba(20,20,18,.62);
+    --ink40:rgba(20,20,18,.42);
+    --line:rgba(20,20,18,.08);
+    --line-strong:rgba(20,20,18,.14);
+    --red:#DF1F1F;
+    --red-dark:#C01717;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-lg:0 16px 40px rgba(0,0,0,.08);
+    --r-card:16px;
+    --r-media:24px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16.5px;line-height:1.6;
+    color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-0.03em;line-height:1.08}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:clamp(72px,11vh,140px) 0}
+
+
+  /* ---------- header ---------- */
+  header{
+    position:absolute;left:0;right:0;top:0;z-index:40;
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:20px;padding-bottom:20px;
+  }
+  .logo{
+    font-family:'Sora',sans-serif;font-weight:800;font-size:24px;
+    letter-spacing:-0.02em;color:#fff;text-decoration:none;
+  }
+  .nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+  .nav-links a{
+    color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--red);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15.5px;
+    padding:13px 26px;border-radius:999px;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+  .btn.ghost{background:rgba(255,255,255,.12);backdrop-filter:blur(6px)}
+  .btn.ghost:hover{background:rgba(255,255,255,.22)}
+  .btn.dark{background:var(--ink)}
+  .btn.dark:hover{background:#000}
+  @media(max-width:820px){.nav-links li.hide-m{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100svh;padding:0;
+    display:flex;align-items:flex-end;
+    color:#fff;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.18) 40%,rgba(10,10,10,.78) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:2;width:100%;
+    display:grid;grid-template-columns:1.4fr .9fr;gap:48px;align-items:end;
+    padding-top:140px;padding-bottom:72px;
+  }
+  .kicker{
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.75);margin-bottom:20px;
+  }
+  .kicker b{color:var(--red);font-weight:600}
+  .hero h1{
+    font-size:clamp(44px,6vw,84px);font-weight:700;color:#fff;
+    margin-bottom:22px;max-width:11ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p.lead{
+    font-size:17px;color:rgba(255,255,255,.82);max-width:46ch;margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+  .pricecard{
+    background:rgba(16,16,15,.72);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--r-card);padding:28px;
+    box-shadow:var(--shadow-lg);
+    max-width:400px;justify-self:end;width:100%;
+  }
+  .pricecard h3{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+  .pricerow{
+    display:flex;align-items:baseline;gap:10px;
+    padding:9px 0;font-size:15.5px;
+  }
+  .pricerow + .pricerow{border-top:1px solid rgba(255,255,255,.08)}
+  .pricerow .dots{flex:1;border-bottom:1px dotted rgba(255,255,255,.28);transform:translateY(-4px)}
+  .pricerow .p{font-family:'Sora',sans-serif;font-weight:700;font-size:16px}
+  .pricecard a.all{
+    display:inline-block;margin-top:14px;font-size:14px;color:rgba(255,255,255,.75);
+    text-decoration:underline;text-underline-offset:3px;transition:color .2s ease;
+  }
+  .pricecard a.all:hover{color:#fff}
+  @media(max-width:960px){
+    .hero-inner{grid-template-columns:1fr;gap:36px;padding-top:150px;padding-bottom:96px}
+    .pricecard{justify-self:start}
+  }
+
+  /* ---------- section headers ---------- */
+  .sec-head{margin-bottom:clamp(36px,5vh,56px);max-width:640px}
+  .sec-head .tag{
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--red);margin-bottom:14px;
+  }
+  .sec-head h2{font-size:clamp(32px,3.6vw,48px);font-weight:700;margin-bottom:14px}
+  .sec-head p{color:var(--ink60);font-size:17px}
+
+  /* ---------- services ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:28px;box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s ease,transform .2s ease;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .svc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .svc h3{font-size:20px;font-weight:700}
+  .svc .meta{display:flex;align-items:center;gap:8px;color:var(--ink60);font-size:14.5px}
+  .svc .meta svg{flex:none}
+  .svc p{color:var(--ink60);font-size:15px;flex:1}
+  .svc .price{
+    font-family:'Sora',sans-serif;font-weight:700;font-size:26px;letter-spacing:-0.02em;
+  }
+  .svc .foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+  .svc .foot button{
+    font-size:14.5px;font-weight:600;color:var(--red);
+    padding:8px 0;transition:color .2s ease;
+  }
+  .svc .foot button:hover{color:var(--red-dark)}
+  @media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ---------- booking ---------- */
+  #book{background:#EFEDE8;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .bk{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow-lg);overflow:hidden;max-width:880px;margin:0 auto;
+  }
+  .bk-top{padding:24px 32px 0}
+  .bk-progress{height:4px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:14px}
+  .bk-progress i{display:block;height:100%;background:var(--red);width:16.6%;transition:width .3s ease;border-radius:999px}
+  .bk-stepline{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .bk-stepline .n{font-size:13.5px;font-weight:600;color:var(--ink60);letter-spacing:.04em;text-transform:uppercase}
+  .bk-stepline h3{font-size:22px;font-weight:700}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;padding:16px 32px 0}
+  .chips:empty{display:none}
+  .chip{
+    font-size:13.5px;font-weight:500;color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:6px 14px;background:var(--paper);
+    transition:border-color .2s ease;
+  }
+  .chip:hover{border-color:var(--ink)}
+  .chip b{font-weight:600}
+  .bk-body{padding:28px 32px 32px}
+  .bk-panel{display:none}
+  .bk-panel.on{display:block;animation:panein .35s ease}
+  @keyframes panein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .pick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .pick{
+    text-align:left;border:1px solid var(--line-strong);border-radius:14px;
+    padding:18px 20px;background:var(--card);
+    display:flex;align-items:center;gap:16px;
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .pick:hover{border-color:var(--ink);box-shadow:var(--shadow-sm)}
+  .pick.sel{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+  .pick .tx{flex:1;min-width:0}
+  .pick .tx b{display:block;font-weight:600;font-size:16px}
+  .pick .tx span{display:block;color:var(--ink60);font-size:14px;margin-top:2px}
+  .pick .pr{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;white-space:nowrap}
+  .avatar{
+    width:46px;height:46px;border-radius:999px;flex:none;
+    background:var(--ink);color:#fff;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pick .free{
+    font-size:12.5px;font-weight:600;color:var(--red);white-space:nowrap;
+    background:rgba(223,31,31,.07);padding:5px 10px;border-radius:999px;
+  }
+  @media(max-width:680px){.pick-grid{grid-template-columns:1fr}}
+
+  /* calendar */
+  .cal{max-width:420px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .cal-head b{font-family:'Sora',sans-serif;font-weight:700;font-size:17px}
+  .cal-nav{display:flex;gap:6px}
+  .cal-nav button{
+    width:36px;height:36px;border-radius:999px;border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .cal-nav button:hover:not(:disabled){border-color:var(--ink)}
+  .cal-nav button:disabled{opacity:.3;cursor:default}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .cal-grid .dow{font-size:12px;font-weight:600;color:var(--ink40);text-align:center;padding:6px 0;text-transform:uppercase;letter-spacing:.06em}
+  .day{
+    aspect-ratio:1;border-radius:999px;font-size:14.5px;font-weight:500;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease;
+  }
+  .day:not(:disabled):hover{background:rgba(20,20,18,.07)}
+  .day.sel{background:var(--red);color:#fff;font-weight:600}
+  .day:disabled{color:var(--ink40);opacity:.45;cursor:default}
+  .cal-note{font-size:13.5px;color:var(--ink60);margin-top:14px}
+
+  /* time slots */
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .slot{
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:11px 0;font-size:14.5px;font-weight:600;text-align:center;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .slot:hover:not(:disabled){border-color:var(--ink)}
+  .slot.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .slot:disabled{color:var(--ink40);text-decoration:line-through;cursor:default;opacity:.55}
+  @media(max-width:560px){.slots{grid-template-columns:repeat(3,1fr)}}
+
+  /* forms */
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px}
+  .frm .full{grid-column:1/-1}
+  .fld label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+  .fld input,.fld textarea{
+    width:100%;font:inherit;font-size:15.5px;color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:12px;
+    padding:12px 14px;background:var(--card);
+    transition:border-color .2s ease,box-shadow .2s ease;
+  }
+  .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(20,20,18,.08)}
+  .fld input.bad{border-color:var(--red);box-shadow:0 0 0 3px rgba(223,31,31,.1)}
+  .fld .err{display:none;font-size:12.5px;color:var(--red);margin-top:5px;font-weight:500}
+  .fld.show-err .err{display:block}
+  .fld textarea{resize:vertical;min-height:72px}
+  @media(max-width:560px){.frm{grid-template-columns:1fr}}
+
+  .bk-actions{display:flex;align-items:center;gap:16px;margin-top:26px}
+  .bk-actions .back{
+    font-size:15px;font-weight:600;color:var(--ink60);
+    padding:12px 4px;transition:color .2s ease;
+  }
+  .bk-actions .back:hover{color:var(--ink)}
+
+  /* deposit */
+  .dep-note{
+    display:flex;gap:14px;align-items:flex-start;
+    background:rgba(223,31,31,.06);border:1px solid rgba(223,31,31,.18);
+    border-radius:14px;padding:16px 18px;margin-bottom:24px;max-width:560px;
+  }
+  .dep-note svg{flex:none;margin-top:2px}
+  .dep-note p{font-size:14.5px;color:var(--ink);line-height:1.5}
+  .dep-note p span{color:var(--ink60)}
+
+  /* confirmation */
+  .confirm{text-align:center;padding:16px 0 8px}
+  .confirm .ok{
+    width:64px;height:64px;border-radius:999px;background:var(--red);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .confirm h3{font-size:28px;font-weight:700;margin-bottom:10px}
+  .confirm > p{color:var(--ink60);max-width:42ch;margin:0 auto 26px}
+  .confirm .summary{
+    text-align:left;max-width:400px;margin:0 auto 26px;
+    border:1px solid var(--line);border-radius:14px;background:var(--paper);
+    padding:20px 22px;
+  }
+  .confirm .summary .row{display:flex;justify-content:space-between;gap:16px;padding:7px 0;font-size:15px}
+  .confirm .summary .row + .row{border-top:1px solid var(--line)}
+  .confirm .summary .row span{color:var(--ink60)}
+  .confirm .summary .row b{font-weight:600;text-align:right}
+  .confirm .ref{font-family:'Sora',sans-serif;font-weight:700;letter-spacing:.06em}
+
+  /* ---------- gallery ---------- */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .g{
+    border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/5;
+    background:var(--ink);
+  }
+  .g img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+  .g:hover img{transform:scale(1.06)}
+  @media(max-width:960px){.gal{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- testimonials ---------- */
+  #say{padding-bottom:0}
+  .marquee{
+    overflow:hidden;padding:6px 0 clamp(72px,11vh,140px);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .track{display:flex;gap:18px;width:max-content;animation:mq 55s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  .say{
+    width:340px;flex:none;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:24px 26px;box-shadow:var(--shadow-sm);
+  }
+  .say .stars{display:flex;gap:3px;margin-bottom:12px}
+  .say p{font-size:15px;line-height:1.55;margin-bottom:14px}
+  .say .who{font-size:13.5px;font-weight:600}
+  .say .who span{color:var(--ink60);font-weight:400}
+  @media(max-width:560px){.say{width:280px}}
+
+  /* ---------- visit ---------- */
+  #visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .visit-photo{border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/5;max-height:560px}
+  .visit-photo img{width:100%;height:100%;object-fit:cover}
+  .addr{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    box-shadow:var(--shadow-sm);padding:26px 28px;margin:26px 0;
+  }
+  .addr .big{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em}
+  .addr p{color:var(--ink60);font-size:15px;margin-top:4px}
+  .hours{list-style:none;margin:0 0 8px}
+  .hours li{
+    display:flex;justify-content:space-between;gap:16px;
+    padding:11px 0;font-size:15.5px;border-bottom:1px solid var(--line);
+  }
+  .hours li span{color:var(--ink60)}
+  .hours li b{font-weight:600}
+  .hours li.today b,.hours li.today span{color:var(--red)}
+  .walkin{font-size:15px;color:var(--ink60);margin-top:18px;max-width:44ch}
+  @media(max-width:880px){
+    #visit .grid{grid-template-columns:1fr;gap:36px}
+    .visit-photo{aspect-ratio:16/10;max-height:none}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);color:rgba(255,255,255,.65);
+    padding:48px 0 56px;font-size:14px;
+  }
+  footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  footer .logo{font-size:20px}
+  footer nav{display:flex;gap:24px;flex-wrap:wrap}
+  footer nav a{color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s ease}
+  footer nav a:hover{color:#fff}
+  footer .fine{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.4)}
+  @media(max-width:820px){footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}}
+
+  /* ---------- mobile book bar ---------- */
+  .bookbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(247,245,242,.92);backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    display:none;
+    transform:translateY(0);transition:transform .3s ease;
+  }
+  .bookbar.hide{transform:translateY(110%)}
+  .bookbar .btn{width:100%;padding:15px}
+  @media(max-width:820px){.bookbar{display:block}}
+
+  /* ---------- mobile fit & polish ---------- */
+  [id]{scroll-margin-top:24px}
+  @media(max-width:860px){
+    .hero-inner{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+    .logo{display:inline-flex;align-items:center;min-height:44px}
+    .pricecard a.all{display:inline-flex;align-items:center;min-height:44px;margin-top:6px}
+    .svc .foot button{min-height:44px}
+    .chip{min-height:44px;padding:8px 14px}
+    .cal-nav button{width:44px;height:44px}
+    .day{aspect-ratio:auto;min-height:44px}
+    .bk-top{padding:20px 20px 0}
+    .chips{padding:14px 20px 0}
+    .bk-body{padding:24px 20px 28px}
+    .fld input,.fld textarea{font-size:16px}
+    footer nav a,footer .logo{display:inline-flex;align-items:center;min-height:44px}
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .track{animation:none;flex-wrap:wrap;width:auto}
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  }
+
+  /* ---------- page-specific (this page only) ---------- */
+  .page-hero{min-height:56svh}
+  .page-hero .hero-inner{grid-template-columns:1fr;padding-top:150px;padding-bottom:64px}
+  .page-hero h1{font-size:clamp(40px,5vw,64px);max-width:16ch}
+  .cta-band{background:var(--ink);color:#fff;border-radius:var(--r-media);
+    padding:clamp(44px,7vw,72px) 32px;text-align:center}
+  .cta-band h2{font-size:clamp(30px,3.4vw,44px);font-weight:700;margin-bottom:12px}
+  .cta-band p{color:rgba(255,255,255,.72);font-size:16.5px;max-width:44ch;margin:0 auto 26px}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .menu-cols{display:grid;grid-template-columns:1.1fr .95fr;gap:20px;align-items:start}
+  .menu-col{display:grid;gap:20px}
+  @media(max-width:880px){.menu-cols{grid-template-columns:1fr}}
+  .mgroup{background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    box-shadow:var(--shadow-sm);padding:26px 28px 12px}
+  .mgroup h3{font-size:20px;font-weight:700}
+  .mgroup .sub{color:var(--ink60);font-size:14.5px;margin:4px 0 8px}
+  .mrow{display:grid;grid-template-columns:1fr auto;gap:2px 18px;padding:15px 0;align-items:baseline}
+  .mrow + .mrow{border-top:1px solid var(--line)}
+  .mrow .nm{font-weight:600;font-size:16px}
+  .mrow .pr{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;text-align:right;white-space:nowrap}
+  .mrow .ds{color:var(--ink60);font-size:14.5px}
+  .mrow .tm{color:var(--ink60);font-size:13.5px;text-align:right;white-space:nowrap;align-self:start}
+  #crew{background:#EFEDE8;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .crew-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .crew{background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+    padding:28px;box-shadow:var(--shadow-sm);display:flex;gap:18px;align-items:flex-start;
+    transition:box-shadow .2s ease,transform .2s ease}
+  .crew:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .crew .avatar{width:54px;height:54px;font-size:20px}
+  .crew h3{font-size:20px;font-weight:700}
+  .crew .spec{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin:3px 0 8px}
+  .crew p{color:var(--ink60);font-size:15px}
+  .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .skill{font-size:13px;font-weight:500;color:var(--ink60);border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px}
+  @media(max-width:680px){.crew-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<!-- 1 - PAGE HERO -->
+<section class="hero page-hero" id="top">
+  <div class="hero-bg"><img src="img/w1-shop.jpg" alt="Two barbers working the floor of the shop"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html">FADE.</a>
+      <ul class="nav-links">
+        <li class="hide-m"><a href="services.html">Services</a></li>
+        <li class="hide-m"><a href="work.html">Work</a></li>
+        <li class="hide-m"><a href="index.html#visit">Visit</a></li>
+        <li><a href="index.html#book" class="btn">Book appointment</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="kicker">The menu <b>&middot;</b> Flat prices <b>&middot;</b> Real timings</p>
+      <h1>Every service. Every price.</h1>
+      <p class="lead">What you see below is what you pay at the register. The minutes are what we block in the book, so your slot starts on time.</p>
+      <div class="hero-ctas"><a href="index.html#book" class="btn">Book a chair</a><a href="work.html" class="btn ghost">See the work</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 - FULL MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">The full menu</p>
+      <h2>Cuts, beards and the extras.</h2>
+      <p>Every service includes a consult at the chair and a clean-up of the neckline. Card or cash, tip is up to you.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-col">
+      <div class="mgroup reveal" style="--d:0s">
+        <h3>Cuts</h3>
+        <p class="sub">Clipper, scissor or both.</p>
+        <div class="mrow"><span class="nm">Classic Cut</span><span class="pr">$45</span><span class="ds">Scissor and clipper, shaped to how you actually wear it. Hot lather neck shave to finish.</span><span class="tm">45 min</span></div>
+        <div class="mrow"><span class="nm">Skin Fade</span><span class="pr">$55</span><span class="ds">Zero to skin, blended tight. Checked under three lights before you leave the chair.</span><span class="tm">60 min</span></div>
+        <div class="mrow"><span class="nm">Scissor Cut, longer hair</span><span class="pr">$55</span><span class="ds">No clippers. Cut dry first to see how it falls, then washed and finished.</span><span class="tm">60 min</span></div>
+        <div class="mrow"><span class="nm">Buzz Cut</span><span class="pr">$30</span><span class="ds">One guard all over, edges cleaned with the razor. In and out.</span><span class="tm">20 min</span></div>
+        <div class="mrow"><span class="nm">Cut + Beard</span><span class="pr">$65</span><span class="ds">The full reset. A cut and a beard trim in one sitting, priced under booking both.</span><span class="tm">75 min</span></div>
+        <div class="mrow"><span class="nm">Kids' Cut</span><span class="pr">$30</span><span class="ds">Twelve and under, Tuesday to Friday before 4 PM. Patience included.</span><span class="tm">30 min</span></div>
+      </div>
+      </div>
+      <div class="menu-col">
+      <div class="mgroup reveal" style="--d:0.06s">
+        <h3>Beard and shave</h3>
+        <p class="sub">Hot towels with everything.</p>
+        <div class="mrow"><span class="nm">Beard Trim</span><span class="pr">$25</span><span class="ds">Shape, line-up and a hot towel finish. Bring a photo or trust the chair.</span><span class="tm">25 min</span></div>
+        <div class="mrow"><span class="nm">Hot Towel Shave</span><span class="pr">$40</span><span class="ds">Straight razor, two passes, three towels. The one to book before a wedding.</span><span class="tm">40 min</span></div>
+        <div class="mrow"><span class="nm">Head Shave</span><span class="pr">$40</span><span class="ds">Full head with the razor, cold towel to close. Smoother than any clipper.</span><span class="tm">35 min</span></div>
+        <div class="mrow"><span class="nm">Line-Up</span><span class="pr">$15</span><span class="ds">Edges and neckline only. Keeps a fade honest between full cuts.</span><span class="tm">15 min</span></div>
+      </div>
+      <div class="mgroup reveal" style="--d:0.12s">
+        <h3>Add-ons</h3>
+        <p class="sub">Tack onto any cut, or drop in.</p>
+        <div class="mrow"><span class="nm">Gray Blend</span><span class="pr">+$20</span><span class="ds">Takes the edge off the gray without going flat. Grows out clean.</span><span class="tm">adds 15 min</span></div>
+        <div class="mrow"><span class="nm">Wash + Style</span><span class="pr">+$10</span><span class="ds">Hot wash, blow-dry and product, matched to how you style it at home.</span><span class="tm">adds 10 min</span></div>
+        <div class="mrow"><span class="nm">Neck Tidy</span><span class="pr">$10</span><span class="ds">Neckline and ears only, between visits. Walk-in friendly, no booking needed.</span><span class="tm">10 min</span></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 - WHO TO BOOK -->
+<section id="crew">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">The chairs</p>
+      <h2>Four barbers. Book by strength.</h2>
+      <p>Any chair can run the whole menu. But every barber has a lane where they are the best in the room.</p>
+    </div>
+    <div class="crew-grid">
+      <article class="crew reveal" style="--d:0.00s">
+        <span class="avatar">M</span>
+        <div>
+          <h3>Marcus</h3>
+          <p class="spec">Skin fades, sharp lines</p>
+          <p>Tightest fades in the shop. If the photo on your phone is a skin fade, this is the chair.</p>
+          <div class="skills"><span class="skill">Skin Fade</span><span class="skill">Buzz Cut</span><span class="skill">Line-Up</span></div>
+        </div>
+      </article>
+      <article class="crew reveal" style="--d:0.08s">
+        <span class="avatar">D</span>
+        <div>
+          <h3>Dev</h3>
+          <p class="spec">Scissor work, longer hair</p>
+          <p>Cuts dry first to see how the hair falls, then finishes wet. Book Dev for anything past two inches.</p>
+          <div class="skills"><span class="skill">Scissor Cut</span><span class="skill">Classic Cut</span><span class="skill">Wash + Style</span></div>
+        </div>
+      </article>
+      <article class="crew reveal" style="--d:0.00s">
+        <span class="avatar">T</span>
+        <div>
+          <h3>Tony</h3>
+          <p class="spec">Beards, hot towel shaves</p>
+          <p>Twenty years on the straight razor. Weddings, first shaves and stubborn beards all land here.</p>
+          <div class="skills"><span class="skill">Hot Towel Shave</span><span class="skill">Beard Trim</span><span class="skill">Head Shave</span></div>
+        </div>
+      </article>
+      <article class="crew reveal" style="--d:0.08s">
+        <span class="avatar">R</span>
+        <div>
+          <h3>Rae</h3>
+          <p class="spec">Classic cuts, kids</p>
+          <p>Fast hands, calm chair. Rae takes most of the kids and every nervous first-timer.</p>
+          <div class="skills"><span class="skill">Classic Cut</span><span class="skill">Kids' Cut</span><span class="skill">Cut + Beard</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 - GOOD TO KNOW -->
+<section id="notes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="tag">Good to know</p>
+      <h2>The fine print, kept short.</h2>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal" style="--d:0s">
+        <h3>The $15 hold</h3>
+        <p>Booking places a $15 hold, not a charge. It comes off your total at the register. No-shows and cancellations under 3 hours keep the hold.</p>
+      </article>
+      <article class="svc reveal" style="--d:.08s">
+        <h3>Timings are real</h3>
+        <p>The minutes on this menu are what we block in the book. Thick hair or a big change? Say so when you book and we pad the slot.</p>
+      </article>
+      <article class="svc reveal" style="--d:.16s">
+        <h3>Walk-ins</h3>
+        <p>Walk-ins take the next open chair and bookings jump the line. Tuesday and Wednesday mornings are the quietest.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 - CTA -->
+<section id="cta" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Found your service?</h2>
+      <p>Booking takes about a minute. Pick a service, a barber and a time.</p>
+      <div class="cta-actions">
+        <a href="index.html#book" class="btn">Book a chair</a>
+        <a href="work.html" class="btn ghost">See the work first</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <a class="logo" href="index.html">FADE.</a>
+      <nav>
+        <a href="services.html">Services</a>
+        <a href="index.html#book">Book</a>
+        <a href="work.html">Work</a>
+        <a href="index.html#visit">Visit</a>
+      </nav>
+    </div>
+    <p class="fine">Lower East Side, New York. Tuesday to Saturday, 10 to 7. Walk-ins when the chairs are free.</p>
+  </div>
+</footer>
+
+<div class="bookbar"><a href="index.html#book" class="btn">Book appointment</a></div>
+
+<script>
+(function(){
+  'use strict';
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  Array.prototype.slice.call(document.querySelectorAll('.reveal')).forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
