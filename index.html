@@ -87,11 +87,50 @@
 </div>
 
 <script>
-/* the reel respects reduced motion */
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+/* Keep the reel playing on iOS. Safari refuses autoplay unless muted is set
+   as a property (not just the attribute), and it drops playback when the tab
+   is restored from the back/forward cache or the phone leaves Low Power Mode.
+   So: try immediately, retry when it becomes visible, and retry once on the
+   first touch, which always counts as a user gesture. */
+(function () {
   var reel = document.querySelector('.reel');
-  if (reel) reel.pause();
-}
+  if (!reel) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    reel.pause();
+    return;
+  }
+
+  reel.muted = true;              /* property, not just the attribute */
+  reel.defaultMuted = true;
+  reel.setAttribute('muted', '');
+  reel.playsInline = true;
+
+  function attempt() {
+    if (!reel.paused) return;
+    var p = reel.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  attempt();
+  reel.addEventListener('loadeddata', attempt);
+  reel.addEventListener('canplay', attempt);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) attempt();
+  });
+  window.addEventListener('pageshow', attempt);
+
+  /* a real gesture is the one thing iOS always honours */
+  ['touchstart', 'click', 'scroll'].forEach(function (evt) {
+    window.addEventListener(evt, attempt, { once: true, passive: true });
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) attempt(); });
+    }, { threshold: 0.15 }).observe(reel);
+  }
+})();
 
 if ('IntersectionObserver' in window) {
   var io = new IntersectionObserver(function (es) {
