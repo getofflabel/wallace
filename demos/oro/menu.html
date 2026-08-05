@@ -47,16 +47,17 @@
   /* ---------- nav ---------- */
   .nav{
     position:sticky;top:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px clamp(20px,4vw,40px);
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:14px clamp(20px,4vw,40px);
     transition:background .3s ease,border-color .3s ease;
     border-bottom:1px solid transparent;
   }
   .nav.scrolled{background:rgba(20,17,16,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:.28em;color:var(--cream)}
-  .nav-links{display:flex;align-items:center;gap:clamp(16px,2.5vw,32px)}
-  .nav-links a{font-size:15px;color:var(--ink60);transition:color .2s ease}
-  .nav-links a:hover{color:var(--cream)}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;letter-spacing:.28em;padding-left:.28em;color:var(--cream)}
+  .nav-side{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px)}
+  .nav-side.right{justify-content:flex-end}
+  .nav-side a:not(.btn){font-size:15px;color:var(--ink60);transition:color .2s ease;min-height:44px;display:inline-flex;align-items:center}
+  .nav-side a:not(.btn):hover{color:var(--cream)}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
     border-radius:999px;border:none;font-weight:600;font-size:15px;
@@ -67,10 +68,12 @@
   .btn-amber:hover{background:#e3b25c}
   .btn-cream{background:var(--cream);color:#1d1508;box-shadow:var(--shadow-lg)}
   .btn-cream:hover{background:#fff}
-  .nav .btn{padding:10px 22px}
-  .nav-links a.btn-amber{color:#1d1508}
-  .nav-links a.btn-amber:hover{color:#1d1508}
-  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+  .nav .btn{padding:10px 20px}
+  @media(max-width:720px){
+    .nav-side a:not(.btn){font-size:14px}
+    .nav .btn{padding:9px 15px;font-size:14px}
+    .logo{font-size:17px}
+  }
 
   /* ---------- hero ---------- */
   .hero{position:relative;height:min(92vh,860px);min-height:560px;display:flex;align-items:flex-end}
@@ -254,7 +257,7 @@
   /* ---------- footer ---------- */
   footer{margin-top:var(--pad);border-top:1px solid var(--line);background:var(--bg2)}
   .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);padding:clamp(48px,7vh,72px) 0}
-  .foot .logo{font-size:26px;margin-bottom:14px;display:block}
+  .foot .logo{font-size:24px;padding-left:0;margin-bottom:14px;display:block}
   .foot p{font-size:14.5px;color:var(--ink60)}
   .foot h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink40);font-weight:600;margin-bottom:14px;font-family:'Inter',sans-serif}
   .foot ul{list-style:none}
@@ -335,11 +338,12 @@
 <body>
 
 <nav class="nav" id="nav">
-  <a class="logo" href="index.html">ORO</a>
-  <div class="nav-links">
-    <a href="rooms.html">The Rooms</a>
+  <div class="nav-side left">
     <a href="menu.html">Menu</a>
-    <a href="index.html#reviews">Reviews</a>
+    <a href="rooms.html">Rooms</a>
+  </div>
+  <a class="logo" href="index.html">ORO</a>
+  <div class="nav-side right">
     <a class="btn btn-amber" href="index.html#reserve">Reserve</a>
   </div>
 </nav>
@@ -348,9 +352,8 @@
   <img class="hero-img" src="img/antipasti.jpg" alt="Focaccia, cheese and cured meat on a wooden board">
   <div class="hero-shade"></div>
   <div class="wrap hero-inner">
-    <p class="hero-kicker">The menu &middot; Dinner from five</p>
-    <h1>One page of food, one page of wine.</h1>
-    <p>Rolled, pressed and printed the same afternoon. If it is on this page, the kitchen is proud of it.</p>
+    <h1>The menu</h1>
+    <p>One page of food, one page of wine, printed this afternoon. If it is here, we are proud of it.</p>
   </div>
 </header>
 
@@ -445,7 +448,7 @@
     </div>
     <div class="foot-base">
       <span>© ORO, Brooklyn</span>
-      <span>Wednesday to Sunday from five</span>
+      <span>Tuesday to Sunday, from five</span>
     </div>
   </div>
 </footer>

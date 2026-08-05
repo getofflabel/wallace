@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORO · Italian Wine Bar &amp; Kitchen · Brooklyn</title>
-<meta name="description" content="ORO is an Italian wine bar and kitchen in Brooklyn. Fresh pasta, a short wine list that is always right, and a courtyard under string lights.">
+<meta name="description" content="ORO is an Italian wine bar and kitchen in Boerum Hill, Brooklyn. Fresh pasta rolled every afternoon, a short wine list, walk-ins welcome at the bar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     --shadow-lg:0 16px 40px rgba(0,0,0,.45);
     --r-card:16px;
     --r-media:24px;
-    --pad:clamp(72px,11vh,140px);
+    --pad:clamp(64px,9vh,110px);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -43,20 +43,22 @@
   h1,h2,h3{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:-0.03em;line-height:1.08}
   .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
 
-
   /* ---------- nav ---------- */
   .nav{
     position:sticky;top:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px clamp(20px,4vw,40px);
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:14px clamp(20px,4vw,40px);
     transition:background .3s ease,border-color .3s ease;
     border-bottom:1px solid transparent;
   }
   .nav.scrolled{background:rgba(20,17,16,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
-  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;letter-spacing:.28em;color:var(--cream)}
-  .nav-links{display:flex;align-items:center;gap:clamp(16px,2.5vw,32px)}
-  .nav-links a{font-size:15px;color:var(--ink60);transition:color .2s ease}
-  .nav-links a:hover{color:var(--cream)}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:20px;letter-spacing:.28em;padding-left:.28em;color:var(--cream)}
+  .nav-logo{opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .nav.scrolled .nav-logo{opacity:1;pointer-events:auto}
+  .nav-side{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px)}
+  .nav-side.right{justify-content:flex-end}
+  .nav-side a:not(.btn){font-size:15px;color:var(--ink60);transition:color .2s ease;min-height:44px;display:inline-flex;align-items:center}
+  .nav-side a:not(.btn):hover{color:var(--cream)}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
     border-radius:999px;border:none;font-weight:600;font-size:15px;
@@ -67,135 +69,104 @@
   .btn-amber:hover{background:#e3b25c}
   .btn-cream{background:var(--cream);color:#1d1508;box-shadow:var(--shadow-lg)}
   .btn-cream:hover{background:#fff}
-  .nav .btn{padding:10px 22px}
-  .nav-links a.btn-amber{color:#1d1508}
-  .nav-links a.btn-amber:hover{color:#1d1508}
-  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+  .nav .btn{padding:10px 20px}
+  @media(max-width:720px){
+    .nav-side a:not(.btn){font-size:14px}
+    .nav .btn{padding:9px 15px;font-size:14px}
+    .logo{font-size:17px}
+  }
 
   /* ---------- hero ---------- */
-  .hero{position:relative;height:min(92vh,860px);min-height:560px;display:flex;align-items:flex-end}
-  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .hero{position:relative;height:min(88vh,820px);min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center}
   video.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
   .hero-shade{position:absolute;inset:0;background:
-    linear-gradient(to top,rgba(20,17,16,.92) 0%,rgba(20,17,16,.35) 45%,rgba(20,17,16,.15) 70%,rgba(20,17,16,.4) 100%)}
-  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:clamp(48px,8vh,88px)}
-  .hero-kicker{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:18px}
-  .hero h1{font-size:clamp(44px,6vw,84px);max-width:11ch;margin-bottom:22px;font-weight:700}
-  .hero p:not(.hero-kicker){color:var(--ink60);max-width:44ch;margin-bottom:32px;font-size:17px}
+    linear-gradient(to top,rgba(20,17,16,.9) 0%,rgba(20,17,16,.42) 40%,rgba(20,17,16,.3) 65%,rgba(20,17,16,.45) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:12px}
+  .wordmark{font-family:'Sora',sans-serif;font-weight:700;color:var(--cream);font-size:clamp(60px,11vw,124px);letter-spacing:.26em;padding-left:.26em;line-height:1;margin-bottom:18px}
+  .hero-line{color:rgba(243,236,223,.85);font-size:clamp(16px,2vw,19px);margin-bottom:30px}
   .hero .btn{padding:15px 34px;font-size:16px}
 
-  /* ---------- ticker ---------- */
-  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:14px 0}
-  .ticker-track{display:flex;width:max-content;animation:tick 36s linear infinite}
-  .ticker-set{display:flex;align-items:center;white-space:nowrap}
-  .ticker-set span{font-size:14.5px;color:var(--ink60);letter-spacing:.03em}
-  .ticker-set i{width:5px;height:5px;border-radius:50%;background:var(--amber);display:inline-block;margin:0 26px;flex:none}
-  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  /* ---------- sections ---------- */
-  section{padding-top:var(--pad)}
-  .sec-head{margin-bottom:clamp(36px,6vh,60px)}
-  .kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:14px}
-  .sec-head h2{font-size:clamp(34px,4.5vw,54px);max-width:18ch}
-  .sec-head p{color:var(--ink60);max-width:52ch;margin-top:16px}
-
-  /* ---------- spaces (fanned cards) ---------- */
-  .spaces{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,28px);align-items:start}
-  .space{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
-    overflow:hidden;box-shadow:var(--shadow-sm);
-    transition:transform .35s cubic-bezier(.22,.9,.3,1),box-shadow .35s ease,border-color .35s ease;
-  }
-  .space:nth-child(1){transform:rotate(-2.2deg) translateY(10px)}
-  .space:nth-child(2){transform:rotate(0deg) translateY(-6px)}
-  .space:nth-child(3){transform:rotate(2.2deg) translateY(10px)}
-  .space:hover{transform:rotate(0deg) translateY(-12px);box-shadow:var(--shadow-lg);border-color:var(--line-strong);z-index:2;position:relative}
-  .space .ph{height:300px;overflow:hidden}
-  .space img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-  .space:hover img{transform:scale(1.05)}
-  .space .body{padding:22px 24px 26px}
-  .space h3{font-size:21px;margin-bottom:8px}
-  .space p{color:var(--ink60);font-size:15.5px}
-  .space .tag{display:inline-block;font-size:12.5px;letter-spacing:.08em;color:var(--amber);font-weight:600;margin-bottom:10px;text-transform:uppercase}
+  /* ---------- tonight (chalkboard) ---------- */
+  .tonight{background:var(--bg2);border-bottom:1px solid var(--line);padding:clamp(40px,6vh,64px) 0}
+  .t-head{display:flex;align-items:baseline;gap:16px;margin-bottom:24px}
+  .t-head h2{font-size:24px}
+  .t-head .t-date{font-size:14px;color:var(--ink40);white-space:nowrap}
+  .t-head::after{content:'';flex:1;height:1px;background:var(--line-strong)}
+  .t-cols{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,56px)}
+  .t-col + .t-col{border-left:1px solid var(--line);padding-left:clamp(28px,4vw,56px)}
+  .t-notes{list-style:none;border-top:1px solid var(--line)}
+  .t-notes li{padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink60);font-size:15px}
+  .t-foot{font-size:13.5px;color:var(--ink40);margin-top:20px}
   @media(max-width:860px){
-    .spaces{grid-template-columns:1fr}
-    .space:nth-child(n){transform:none}
-    .space:hover{transform:translateY(-6px)}
-    .space .ph{height:230px}
+    .t-cols{grid-template-columns:1fr;gap:28px}
+    .t-col + .t-col{border-left:none;padding-left:0}
   }
 
-  /* ---------- split layout: menu + reviews | booking ---------- */
-  .split{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:clamp(28px,4vw,60px);align-items:start}
-  @media(max-width:1020px){.split{grid-template-columns:minmax(0,1fr)}}
-
-  /* ---------- menu ---------- */
-  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
-  .chip{
-    border-radius:999px;padding:9px 20px;font-size:14.5px;font-weight:500;
-    background:transparent;color:var(--ink60);border:1px solid var(--line-strong);
-    transition:all .2s ease;
-  }
-  .chip:hover{color:var(--cream);border-color:var(--cream)}
-  .chip.on{background:var(--cream);color:#1d1508;border-color:var(--cream);font-weight:600}
-  .menu-count{font-size:13.5px;color:var(--ink40);margin-bottom:10px}
+  /* ---------- menu-style sections ---------- */
+  section{padding-top:var(--pad)}
+  .m-sec{margin-top:var(--pad)}
+  .m-sec:first-child{margin-top:0}
+  .m-head{display:flex;align-items:baseline;gap:16px;margin-bottom:24px}
+  .m-head h2{font-size:clamp(24px,2.6vw,30px)}
+  .m-head::after{content:'';flex:1;height:1px;background:var(--line-strong)}
+  .g-label{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:10px}
+  .m-group{margin-top:26px}
+  .m-group:first-of-type{margin-top:0}
   .menu-list{border-top:1px solid var(--line)}
   .dish{
     display:flex;justify-content:space-between;align-items:baseline;gap:24px;
-    padding:20px 4px;border-bottom:1px solid var(--line);
-    opacity:1;transform:none;transition:opacity .35s ease,transform .35s ease;
+    padding:16px 4px;border-bottom:1px solid var(--line);
   }
-  .dish.hide{display:none}
-  .dish.entering{opacity:0;transform:translateY(10px)}
-  .dish .l h3{font-size:17.5px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:0;margin-bottom:4px}
+  .dish .l h3{font-size:17px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:0;margin-bottom:3px}
   .dish .l p{font-size:14.5px;color:var(--ink60)}
-  .dish .l .cat{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:600}
-  .dish .price{font-family:'Sora',sans-serif;font-weight:600;font-size:17px;white-space:nowrap;color:var(--cream)}
+  .dish .price{font-family:'Sora',sans-serif;font-weight:600;font-size:16.5px;white-space:nowrap;color:var(--cream)}
   .menu-note{font-size:13.5px;color:var(--ink40);margin-top:16px}
+  .more-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;font-size:15px;color:var(--amber);transition:color .2s ease}
+  .more-link:hover{color:#e3b25c}
+  .more-link svg{width:15px;height:15px;flex:none}
+
+  /* ---------- split: menu | booking ---------- */
+  .split{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:clamp(28px,4vw,60px);align-items:start}
+  @media(max-width:1020px){.split{grid-template-columns:minmax(0,1fr)}}
 
   /* ---------- food band ---------- */
-  .band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(48px,7vh,72px)}
+  .band{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(36px,5vh,56px)}
   .band figure{margin:0}
   .band .im{border-radius:var(--r-media);overflow:hidden}
-  .band img{width:100%;height:260px;object-fit:cover;transition:transform .5s ease}
+  .band img{width:100%;height:240px;object-fit:cover;transition:transform .5s ease}
   .band figure:hover img{transform:scale(1.04)}
   .band figcaption{font-size:13.5px;color:var(--ink40);margin-top:10px}
   @media(max-width:720px){.band{grid-template-columns:1fr}.band img{height:220px}}
 
-  /* ---------- reviews ---------- */
-  .car-wrap{position:relative}
-  .car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .car::-webkit-scrollbar{display:none}
-  .review{
-    min-width:100%;scroll-snap-align:start;
-    background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
-    padding:clamp(28px,4vw,44px);box-shadow:var(--shadow-sm);
+  /* ---------- rooms as a list ---------- */
+  .rooms-list{border-top:1px solid var(--line)}
+  .room-row{display:grid;grid-template-columns:72px 1fr auto;gap:18px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line);transition:background .2s ease}
+  .room-row:hover{background:rgba(243,236,223,.03)}
+  .room-row img{width:72px;height:72px;object-fit:cover;border-radius:12px}
+  .room-row h3{font-size:17px;font-weight:600;font-family:'Inter',sans-serif;letter-spacing:0;margin-bottom:3px}
+  .room-row p{font-size:14.5px;color:var(--ink60)}
+  .room-row .seats{font-family:'Sora',sans-serif;font-weight:600;font-size:14px;color:var(--ink60);white-space:nowrap}
+  @media(max-width:720px){
+    .room-row{grid-template-columns:60px 1fr}
+    .room-row img{width:60px;height:60px}
+    .room-row .seats{grid-column:2;white-space:normal;font-size:13px}
   }
-  .stars{display:flex;gap:4px;margin-bottom:20px}
-  .stars svg{width:16px;height:16px;fill:var(--amber)}
-  .review blockquote{font-family:'Sora',sans-serif;font-size:clamp(19px,2.2vw,24px);font-weight:400;letter-spacing:-0.01em;line-height:1.45;margin-bottom:22px}
-  .review cite{font-style:normal;font-size:14.5px;color:var(--ink60)}
-  .car-ctl{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
-  .dots{display:flex;gap:8px}
-  .dot{width:8px;height:8px;border:none;padding:0;background:none;display:flex;align-items:center;justify-content:center}
-  .dot::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--line-strong);transition:background .2s ease,transform .2s ease;flex:none}
-  .dot.on::before{background:var(--amber);transform:scale(1.2)}
-  .arrows{display:flex;gap:10px}
-  .arrow{
-    width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);
-    background:transparent;color:var(--cream);display:flex;align-items:center;justify-content:center;
-    transition:all .2s ease;
-  }
-  .arrow:hover{background:var(--cream);color:#1d1508;border-color:var(--cream)}
-  .arrow svg{width:16px;height:16px}
+
+  /* ---------- word of mouth ---------- */
+  .quotes{border-top:1px solid var(--line)}
+  .quote{padding:20px 4px;border-bottom:1px solid var(--line)}
+  .quote blockquote{font-family:'Sora',sans-serif;font-size:clamp(17px,1.9vw,20px);font-weight:400;letter-spacing:-0.01em;line-height:1.5;margin-bottom:8px}
+  .quote cite{font-style:normal;font-size:13.5px;color:var(--ink40)}
 
   /* ---------- booking card ---------- */
   .book{
-    position:sticky;top:86px;
+    position:sticky;top:78px;
     background:var(--card);border:1px solid var(--line-strong);border-radius:20px;
     box-shadow:var(--shadow-lg);padding:26px 26px 28px;
   }
+  .book .g-label{margin-bottom:6px}
   .book-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-  .book-head h3{font-size:20px}
+  .book-head h2{font-size:20px;letter-spacing:-0.02em}
   .steps-ind{display:flex;gap:6px}
   .steps-ind i{width:7px;height:7px;border-radius:50%;background:var(--line-strong);transition:background .25s ease}
   .steps-ind i.done{background:var(--amber)}
@@ -254,7 +225,7 @@
   /* ---------- footer ---------- */
   footer{margin-top:var(--pad);border-top:1px solid var(--line);background:var(--bg2)}
   .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);padding:clamp(48px,7vh,72px) 0}
-  .foot .logo{font-size:26px;margin-bottom:14px;display:block}
+  .foot .logo{font-size:24px;padding-left:0;margin-bottom:14px;display:block}
   .foot p{font-size:14.5px;color:var(--ink60)}
   .foot h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink40);font-weight:600;margin-bottom:14px;font-family:'Inter',sans-serif}
   .foot ul{list-style:none}
@@ -266,23 +237,14 @@
   @media(max-width:520px){.foot{grid-template-columns:1fr}}
 
   /* ---------- mobile fit & polish ---------- */
-  [id]{scroll-margin-top:84px}
+  [id]{scroll-margin-top:76px}
   @media(max-width:860px){
-    .logo{display:inline-flex;align-items:center;min-height:44px}
-    .chip{min-height:44px;padding:10px 20px}
     .na-chip{min-height:44px;padding:10px 16px}
     .pill-grid .opt{min-height:44px;min-width:48px;padding:10px 16px}
     .time-grid .opt{min-height:44px}
-    .arrow{width:44px;height:44px}
-    .dot{width:24px;height:44px}
     .book input{font-size:16px}
     .book{margin:0 auto}
   }
-
-  /* ---------- shared page additions ---------- */
-  .more-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;font-size:15px;color:var(--amber);transition:color .2s ease}
-  .more-link:hover{color:#e3b25c}
-  .more-link svg{width:15px;height:15px;flex:none}
 
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -294,18 +256,18 @@
     *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none}
-    .ticker-track{animation:none}
   }
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <a class="logo" href="#top">ORO</a>
-  <div class="nav-links">
-    <a href="rooms.html">The Rooms</a>
+  <div class="nav-side left">
     <a href="menu.html">Menu</a>
-    <a href="#reviews">Reviews</a>
+    <a href="rooms.html">Rooms</a>
+  </div>
+  <a class="logo nav-logo" href="#top">ORO</a>
+  <div class="nav-side right">
     <a class="btn btn-amber" href="#reserve">Reserve</a>
   </div>
 </nav>
@@ -316,85 +278,74 @@
   </video>
   <div class="hero-shade"></div>
   <div class="wrap hero-inner">
-    <p class="hero-kicker">Italian wine bar &amp; kitchen&nbsp;· Boerum Hill, Brooklyn</p>
-    <h1>Stay for one more glass.</h1>
-    <p>Fresh pasta rolled every afternoon, a short wine list that is always right, and nobody will ever rush your table.</p>
+    <h1 class="wordmark">ORO</h1>
+    <p class="hero-line">Wine and fresh pasta in Boerum Hill. Come sit with us.</p>
     <a class="btn btn-cream" href="#reserve">Reserve a table</a>
   </div>
 </header>
 
-<div class="ticker" aria-label="Tonight at ORO">
-  <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-set">
-      <span>Tonight's pours: Nebbiolo · Etna Rosso · Franciacorta</span><i></i>
-      <span>Walk-ins welcome at the bar</span><i></i>
-      <span>Fresh pasta rolled at 4pm daily</span><i></i>
-      <span>Open till midnight Friday and Saturday</span><i></i>
-      <span>Courtyard open, weather permitting</span><i></i>
-      <span>Half-price bottles every Tuesday</span><i></i>
-    </div>
-  </div>
-</div>
-
-<section id="spaces">
+<section class="tonight" aria-label="Tonight at ORO">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker">Three rooms, one kitchen</p>
-      <h2>Pick your kind of evening</h2>
-      <p>Same menu everywhere. The only decision is how much noise you want with it.</p>
+    <div class="t-head reveal">
+      <h2>Tonight</h2>
+      <span class="t-date" id="tonightDate"></span>
     </div>
-    <div class="spaces">
-      <article class="space reveal-fade">
-        <div class="ph"><img src="img/bar.jpg" alt="The amber-lit bar counter at ORO" loading="lazy"></div>
-        <div class="body">
-          <span class="tag">Seats 14</span>
-          <h3>The Bar</h3>
-          <p>First come, first poured. The seats regulars fight over, closest to the corkscrew.</p>
+    <div class="t-cols reveal">
+      <div class="t-col">
+        <p class="g-label">On the corkscrew</p>
+        <div class="menu-list">
+          <div class="dish"><div class="l"><h3>Nebbiolo, Langhe &rsquo;21</h3><p>Roses and tar, the regulars&rsquo; pick</p></div><span class="price">$16</span></div>
+          <div class="dish"><div class="l"><h3>Etna Rosso &rsquo;22</h3><p>Volcanic, light on its feet</p></div><span class="price">$15</span></div>
+          <div class="dish"><div class="l"><h3>Franciacorta Brut</h3><p>The better answer to prosecco</p></div><span class="price">$17</span></div>
         </div>
-      </article>
-      <article class="space reveal-fade">
-        <div class="ph"><img src="img/dining.jpg" alt="Candlelit tables in the dining room" loading="lazy"></div>
-        <div class="body">
-          <span class="tag">Seats 42</span>
-          <h3>The Dining Room</h3>
-          <p>Candles, low ceilings, and the kind of dark that makes everyone look well rested.</p>
-        </div>
-      </article>
-      <article class="space reveal-fade">
-        <div class="ph"><img src="img/courtyard.jpg" alt="The courtyard at dusk under string lights" loading="lazy"></div>
-        <div class="body">
-          <span class="tag">Seats 28 · Seasonal</span>
-          <h3>The Courtyard</h3>
-          <p>String lights, brick walls, and long dinners that quietly turn into late ones.</p>
-        </div>
-      </article>
+      </div>
+      <div class="t-col">
+        <p class="g-label">From the kitchen</p>
+        <ul class="t-notes">
+          <li>We rolled pasta at 4, as always. The tagliatelle runs out, order it first.</li>
+          <li>Branzino roasted whole tonight, salsa verde and charred lemon.</li>
+          <li>Tortelli di zucca stay on while the squash holds out.</li>
+        </ul>
+      </div>
     </div>
-    <a class="more-link" href="rooms.html">More about each room
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <p class="t-foot reveal">Walk-ins welcome at the bar · Courtyard open, weather permitting · Half-price bottles every Tuesday</p>
   </div>
 </section>
 
-<section>
+<section style="padding-top:var(--pad)">
   <div class="wrap split">
     <div>
-      <div id="menu">
-        <div class="sec-head reveal">
-          <p class="kicker">The menu</p>
-          <h2>Short, seasonal, argued over daily</h2>
-          <p>Everything below is on tonight. The pasta changes when the kitchen wins the argument.</p>
+      <div class="m-sec" id="menu">
+        <div class="m-head reveal"><h2>The menu, the short version</h2></div>
+
+        <div class="m-group reveal">
+          <p class="g-label">To start</p>
+          <div class="menu-list">
+            <div class="dish"><div class="l"><h3>Focaccia di Recco</h3><p>Paper-thin, stracchino, rosemary oil</p></div><span class="price">$9</span></div>
+            <div class="dish"><div class="l"><h3>Burrata &amp; peaches</h3><p>Charred peaches, basil, aged balsamic</p></div><span class="price">$18</span></div>
+            <div class="dish"><div class="l"><h3>The board</h3><p>Focaccia, taleggio, coppa, olive tapenade</p></div><span class="price">$24</span></div>
+          </div>
         </div>
-        <div class="filters reveal" id="filters" aria-label="Filter the menu">
-          <button class="chip on" data-cat="all">Everything</button>
-          <button class="chip" data-cat="antipasti">Antipasti</button>
-          <button class="chip" data-cat="pasta">Pasta</button>
-          <button class="chip" data-cat="mains">Mains</button>
-          <button class="chip" data-cat="wine">Wine</button>
+
+        <div class="m-group reveal">
+          <p class="g-label">Rolled at 4pm</p>
+          <div class="menu-list">
+            <div class="dish"><div class="l"><h3>Tagliatelle al rag&ugrave;</h3><p>Six-hour beef and pork rag&ugrave;, grana</p></div><span class="price">$26</span></div>
+            <div class="dish"><div class="l"><h3>Cacio e pepe</h3><p>Tonnarelli, pecorino, cracked black pepper</p></div><span class="price">$23</span></div>
+            <div class="dish"><div class="l"><h3>Spaghetti al pomodoro</h3><p>San Marzano tomatoes, basil, good olive oil</p></div><span class="price">$21</span></div>
+          </div>
         </div>
-        <p class="menu-count" id="menuCount"></p>
-        <div class="menu-list" id="menuList"></div>
+
+        <div class="m-group reveal">
+          <p class="g-label">From the fire</p>
+          <div class="menu-list">
+            <div class="dish"><div class="l"><h3>Branzino</h3><p>Whole roasted, salsa verde, charred lemon</p></div><span class="price">$34</span></div>
+            <div class="dish"><div class="l"><h3>Bistecca</h3><p>16 oz ribeye, rosemary, made for sharing</p></div><span class="price">$58</span></div>
+          </div>
+        </div>
+
         <p class="menu-note">Tell us about allergies, we take them seriously. Corkage $25, waived on Tuesdays.</p>
-        <a class="more-link" href="menu.html">See the full menu and wine list
+        <a class="more-link" href="menu.html">The full menu and wine list
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
 
@@ -414,52 +365,53 @@
         </div>
       </div>
 
-      <section id="reviews" style="padding-bottom:0">
-        <div class="sec-head reveal">
-          <p class="kicker">Word of mouth</p>
-          <h2>What the neighborhood says</h2>
+      <div class="m-sec" id="rooms">
+        <div class="m-head reveal"><h2>Where to sit</h2></div>
+        <div class="rooms-list reveal">
+          <a class="room-row" href="rooms.html">
+            <img src="img/bar.jpg" alt="The amber-lit bar counter at ORO" loading="lazy">
+            <div><h3>The Bar</h3><p>First come, first poured. Closest to the corkscrew.</p></div>
+            <span class="seats">Seats 14 · Walk in</span>
+          </a>
+          <a class="room-row" href="rooms.html">
+            <img src="img/dining.jpg" alt="Candlelit tables in the dining room" loading="lazy">
+            <div><h3>The Dining Room</h3><p>Candles, low ceilings, tables you can hear each other across.</p></div>
+            <span class="seats">Seats 42 · Reserve</span>
+          </a>
+          <a class="room-row" href="rooms.html">
+            <img src="img/courtyard.jpg" alt="The courtyard at dusk under string lights" loading="lazy">
+            <div><h3>The Courtyard</h3><p>String lights and open sky out back, April to October.</p></div>
+            <span class="seats">Seats 28 · Seasonal</span>
+          </a>
         </div>
-        <div class="car-wrap reveal">
-          <div class="car" id="car">
-            <article class="review">
-              <div class="stars" aria-label="5 stars"></div>
-              <blockquote>&ldquo;Came in for one glass after work and left three hours later. The bar seats are the best seats in Brooklyn.&rdquo;</blockquote>
-              <cite>Dana R. · Fort Greene</cite>
-            </article>
-            <article class="review">
-              <div class="stars" aria-label="5 stars"></div>
-              <blockquote>&ldquo;The tagliatelle is the thing. Order it first, it runs out, and yes I have seen it happen at 8:15.&rdquo;</blockquote>
-              <cite>Mike T. · Park Slope</cite>
-            </article>
-            <article class="review">
-              <div class="stars" aria-label="5 stars"></div>
-              <blockquote>&ldquo;Took my parents on a Sunday. Courtyard, string lights, nobody rushed us. They still bring it up.&rdquo;</blockquote>
-              <cite>Priya S. · Clinton Hill</cite>
-            </article>
-            <article class="review">
-              <div class="stars" aria-label="5 stars"></div>
-              <blockquote>&ldquo;The wine list is one page and every bottle on it is right. Ask for whatever the room is drinking.&rdquo;</blockquote>
-              <cite>Jon L. · Bed-Stuy</cite>
-            </article>
+        <a class="more-link" href="rooms.html">More about each room
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="m-sec" id="word">
+        <div class="m-head reveal"><h2>Word of mouth</h2></div>
+        <div class="quotes reveal">
+          <div class="quote">
+            <blockquote>&ldquo;Came in for one glass after work and left three hours later. The bar seats are the best seats in Brooklyn.&rdquo;</blockquote>
+            <cite>Dana R. · Fort Greene</cite>
           </div>
-          <div class="car-ctl">
-            <div class="dots" id="dots"></div>
-            <div class="arrows">
-              <button class="arrow" id="prevBtn" aria-label="Previous review">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button class="arrow" id="nextBtn" aria-label="Next review">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </button>
-            </div>
+          <div class="quote">
+            <blockquote>&ldquo;The tagliatelle is the thing. Order it first, it runs out, and yes I have seen it happen at 8:15.&rdquo;</blockquote>
+            <cite>Mike T. · Park Slope</cite>
+          </div>
+          <div class="quote">
+            <blockquote>&ldquo;Took my parents on a Sunday. Courtyard, string lights, nobody rushed us. They still bring it up.&rdquo;</blockquote>
+            <cite>Priya S. · Clinton Hill</cite>
           </div>
         </div>
-      </section>
+      </div>
     </div>
 
     <aside class="book" id="reserve" aria-label="Reserve a table">
+      <p class="g-label">Reservations</p>
       <div class="book-head">
-        <h3>Reserve a table</h3>
+        <h2>Reserve a table</h2>
         <div class="steps-ind" id="stepsInd"><i></i><i></i><i></i><i></i></div>
       </div>
       <p class="book-sub">No card needed. We hold tables for 15 minutes.</p>
@@ -501,7 +453,7 @@
     </div>
     <div class="foot-base">
       <span>© ORO, Brooklyn</span>
-      <span>Wednesday to Sunday from five</span>
+      <span>Tuesday to Sunday, from five</span>
     </div>
   </div>
 </footer>
@@ -515,6 +467,12 @@
   if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     heroVideo.removeAttribute('autoplay');
     heroVideo.pause();
+  }
+
+  /* ---------- tonight's date ---------- */
+  var tonightDate = document.getElementById('tonightDate');
+  if (tonightDate){
+    tonightDate.textContent = new Date().toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
   }
 
   /* ---------- nav scroll state ---------- */
@@ -542,107 +500,6 @@
   } else {
     reveals.forEach(function(el){ el.classList.add('in'); });
   }
-
-  /* ---------- ticker duplicate ---------- */
-  var track = document.getElementById('tickerTrack');
-  var clone = track.children[0].cloneNode(true);
-  clone.setAttribute('aria-hidden','true');
-  track.appendChild(clone);
-
-  /* ---------- stars ---------- */
-  var starSVG = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.4 1.15 6.55L12 17.1l-5.9 3.15L7.25 13.7 2.5 9.3l6.6-1.04L12 2z"/></svg>';
-  Array.prototype.forEach.call(document.querySelectorAll('.stars'), function(s){
-    s.innerHTML = starSVG + starSVG + starSVG + starSVG + starSVG;
-  });
-
-  /* ---------- menu ---------- */
-  var MENU = [
-    {cat:'antipasti', name:'Focaccia di Recco', desc:'Paper-thin, stracchino, rosemary oil', price:9},
-    {cat:'antipasti', name:'Burrata &amp; peaches', desc:'Charred peaches, basil, aged balsamic', price:18},
-    {cat:'antipasti', name:'Polpette al sugo', desc:'Beef and pork meatballs, ricotta salata', price:16},
-    {cat:'antipasti', name:'Carciofi fritti', desc:'Crisp artichokes, lemon aioli', price:15},
-    {cat:'antipasti', name:'The board', desc:'Focaccia, taleggio, coppa, olive tapenade', price:24},
-    {cat:'pasta', name:'Tagliatelle al rag&ugrave;', desc:'Six-hour beef and pork rag&ugrave;, grana', price:26},
-    {cat:'pasta', name:'Cacio e pepe', desc:'Tonnarelli, pecorino, cracked black pepper', price:23},
-    {cat:'pasta', name:'Spaghetti al pomodoro', desc:'San Marzano tomatoes, basil, good olive oil', price:21},
-    {cat:'pasta', name:'Pappardelle', desc:'Braised short rib, gremolata', price:29},
-    {cat:'pasta', name:'Tortelli di zucca', desc:'Squash, brown butter, crispy sage', price:25},
-    {cat:'mains', name:'Branzino', desc:'Whole roasted, salsa verde, charred lemon', price:34},
-    {cat:'mains', name:'Pollo al mattone', desc:'Brick-pressed half chicken, chili honey', price:28},
-    {cat:'mains', name:'Bistecca', desc:'16 oz ribeye, rosemary, made for sharing', price:58},
-    {cat:'mains', name:'Melanzane alla parmigiana', desc:'Eggplant, tomato, mozzarella, basil', price:24},
-    {cat:'wine', name:'Nebbiolo, Langhe &rsquo;21', desc:'Glass · roses and tar, the regulars&rsquo; pick', price:16},
-    {cat:'wine', name:'Etna Rosso &rsquo;22', desc:'Glass · volcanic, light on its feet', price:15},
-    {cat:'wine', name:'Vermentino, Sardinia &rsquo;23', desc:'Glass · salty, cold, made for antipasti', price:13},
-    {cat:'wine', name:'Franciacorta Brut', desc:'Glass · the better answer to prosecco', price:17},
-    {cat:'wine', name:'Chianti Classico &rsquo;20', desc:'Glass · cherry, leather, a Tuscan evening', price:14},
-    {cat:'wine', name:'Primitivo, Puglia &rsquo;21', desc:'Glass · dark, generous, dangerously easy', price:12}
-  ];
-  var CAT_LABEL = {antipasti:'Antipasti', pasta:'Pasta', mains:'Mains', wine:'Wine'};
-  var menuList = document.getElementById('menuList');
-  var menuCount = document.getElementById('menuCount');
-  MENU.forEach(function(m){
-    var row = document.createElement('div');
-    row.className = 'dish';
-    row.setAttribute('data-cat', m.cat);
-    row.innerHTML = '<div class="l"><span class="cat">' + CAT_LABEL[m.cat] + '</span><h3>' + m.name + '</h3><p>' + m.desc + '</p></div>' +
-                    '<span class="price">$' + m.price + '</span>';
-    menuList.appendChild(row);
-  });
-  var chips = Array.prototype.slice.call(document.querySelectorAll('#filters .chip'));
-  function applyFilter(cat){
-    var shown = 0;
-    Array.prototype.forEach.call(menuList.children, function(row){
-      var match = (cat === 'all' || row.getAttribute('data-cat') === cat);
-      row.classList.toggle('hide', !match);
-      if (match){
-        shown++;
-        row.classList.add('entering');
-        requestAnimationFrame(function(){ requestAnimationFrame(function(){ row.classList.remove('entering'); }); });
-      }
-    });
-    menuCount.textContent = shown + (cat === 'wine' ? ' pours tonight' : (cat === 'all' ? ' items on tonight' : ' dishes tonight'));
-  }
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('on'); });
-      chip.classList.add('on');
-      applyFilter(chip.getAttribute('data-cat'));
-    });
-  });
-  applyFilter('all');
-
-  /* ---------- reviews carousel ---------- */
-  var car = document.getElementById('car');
-  var slides = car.children.length;
-  var dotsWrap = document.getElementById('dots');
-  var dots = [];
-  for (var d = 0; d < slides; d++){
-    (function(i){
-      var b = document.createElement('button');
-      b.className = 'dot' + (i === 0 ? ' on' : '');
-      b.setAttribute('aria-label', 'Go to review ' + (i+1));
-      b.addEventListener('click', function(){ goTo(i); });
-      dotsWrap.appendChild(b);
-      dots.push(b);
-    })(d);
-  }
-  function slideW(){ return car.children[0].getBoundingClientRect().width + 18; }
-  function current(){ return Math.round(car.scrollLeft / slideW()); }
-  function goTo(i){
-    i = Math.max(0, Math.min(slides - 1, i));
-    car.scrollTo({left: i * slideW(), behavior:'smooth'});
-  }
-  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current() - 1); });
-  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current() + 1); });
-  var scrollT;
-  car.addEventListener('scroll', function(){
-    clearTimeout(scrollT);
-    scrollT = setTimeout(function(){
-      var i = current();
-      dots.forEach(function(dot, j){ dot.classList.toggle('on', j === i); });
-    }, 80);
-  }, {passive:true});
 
   /* ---------- booking wizard ---------- */
   var TIMES = ['5:00 PM','5:30 PM','6:00 PM','6:30 PM','7:00 PM','7:30 PM','8:00 PM','8:30 PM','9:00 PM','9:30 PM','10:00 PM'];
