@@ -34,6 +34,8 @@ ORG = f'''{{
         "description": "The entire website built for you: design, writing, build, launch, and the tools your business runs on."}}}},
       {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "AI automation for small business",
         "description": "A helper that answers customers around the clock and books them in, missed enquiries caught, automatic follow-up, and personalised recommendations."}}}},
+      {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "AI video ads",
+        "description": "Cinematic commercials generated with AI. No filming day, every format, fresh cuts monthly."}}}},
       {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "App and SaaS development",
         "description": "Turning a business idea into a working app, SaaS product or online store."}}}}
     ]
@@ -89,6 +91,15 @@ PAGES = {
         service('AI automation for small business',
                 'Customer-facing AI built into a business: a helper that answers customers around the clock and books them in, missed enquiries caught and answered, automatic follow-up, and personalised recommendations.',
                 f'{SITE}/services/ai.html')],
+  ),
+  'services/video.html': dict(
+    path='/services/video.html',
+    title='A Commercial for Your Business, No Camera Needed | Studio Wallace',
+    desc='Cinematic ads for your business, generated with AI. No filming day, no crew, no location shoot. Fresh cuts for Instagram and TikTok every month.',
+    ld=[crumbs('AI-made commercials', f'{SITE}/services/video.html'),
+        service('AI video ads',
+                'Cinematic commercials for businesses, generated with AI. Every format for Instagram, TikTok, YouTube and paid ads, with fresh cuts monthly.',
+                f'{SITE}/services/video.html')],
   ),
   'services/custom.html': dict(
     path='/services/custom.html',
