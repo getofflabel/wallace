@@ -25,8 +25,8 @@
   <!-- STEP 1 -->
   <section class="step-panel" id="step1">
     <span class="step-tag">Step 1 of 2</span>
-    <h1>Who am I<br>meeting?</h1>
-    <p class="step-lead">Thirty seconds, so I can turn up to the call already knowing something about you instead of asking the obvious.</p>
+    <h1>Before<br>we talk.</h1>
+    <p class="step-lead">A few quick answers so the call starts at your business instead of the basics.</p>
 
     <form id="intake" novalidate>
       <label class="fld">
@@ -50,8 +50,8 @@
       </fieldset>
 
       <label class="fld">
-        <span>Anything I should know <em>optional</em></span>
-        <textarea id="fNote" rows="3" placeholder="Current site, a deadline, a budget in mind, whatever matters"></textarea>
+        <span>Anything in advance <em>optional</em></span>
+        <textarea id="fNote" rows="3" placeholder="Whatever you want to let me know before we talk"></textarea>
       </label>
 
       <button class="go" type="submit">Continue to the calendar &nbsp;&rarr;</button>
@@ -69,7 +69,7 @@
 
     <div id="cal-mount"></div>
 
-    <p class="hint">Put your name and what you need in the booking notes so it comes through with the invite. <a href="#" id="backStep">Change your answers</a></p>
+    <p class="hint">Your answers are already on their way to me. <a href="#" id="backStep">Change them</a></p>
   </section>
 
 </main>
@@ -106,7 +106,7 @@ form.addEventListener('submit', function (e) {
 
   var name = document.getElementById('fName').value.trim();
   if (!name) {
-    hint.textContent = 'Just your name and we can carry on.';
+    hint.textContent = 'Just your name and you can carry on.';
     hint.classList.add('bad');
     document.getElementById('fName').focus();
     return;
@@ -122,6 +122,21 @@ form.addEventListener('submit', function (e) {
      than being quietly sent anywhere. */
   var answers = { name: name, biz: biz, needs: needs, note: note };
   try { sessionStorage.setItem('wc_intake', JSON.stringify(answers)); } catch (err) {}
+
+  /* send the answers ahead by email; the calendar shows either way */
+  try {
+    fetch('https://formsubmit.co/ajax/wallacechen23@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Booking intake: ' + name + (biz ? ' (' + biz + ')' : ''),
+        name: name,
+        business: biz || 'not given',
+        needs: needs.join(', ') || 'not picked',
+        note: note || 'none'
+      })
+    });
+  } catch (err) {}
 
   var lines = [];
   lines.push('<b>' + answers.name + '</b>' + (biz ? ' · ' + biz : ''));
