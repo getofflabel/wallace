@@ -25,13 +25,15 @@ ORG = f'''{{
   "areaServed": {{"@type": "Country", "name": "United States"}},
   "availableLanguage": "English",
   "priceRange": "$$",
-  "knowsAbout": ["Web design", "Web development", "Online booking systems", "Stripe payments", "E-commerce", "SaaS development", "Mobile app development"],
+  "knowsAbout": ["Web design", "Web development", "Online booking systems", "Stripe payments", "E-commerce", "SaaS development", "Mobile app development", "AI chatbots", "AI automation", "Lead follow-up automation"],
   "hasOfferCatalog": {{
     "@type": "OfferCatalog",
     "name": "Services",
     "itemListElement": [
       {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "Custom website design and development",
         "description": "The entire website built for you: design, writing, build, launch, and the tools your business runs on."}}}},
+      {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "AI automation for small business",
+        "description": "A helper that answers customers around the clock and books them in, missed enquiries caught, automatic follow-up, and personalised recommendations."}}}},
       {{"@type": "Offer", "itemOffered": {{"@type": "Service", "name": "App and SaaS development",
         "description": "Turning a business idea into a working app, SaaS product or online store."}}}}
     ]
@@ -78,6 +80,15 @@ PAGES = {
         service('Custom website design and development',
                 'The entire website built for you end to end, including payments, booking and online sales.',
                 f'{SITE}/services/websites.html')],
+  ),
+  'services/ai.html': dict(
+    path='/services/ai.html',
+    title='AI Built Into Your Business | Studio Wallace',
+    desc='Answer customers at 2am, never miss another enquiry, and follow up with everyone who almost booked. Practical AI built into the business you already run.',
+    ld=[crumbs('AI for your business', f'{SITE}/services/ai.html'),
+        service('AI automation for small business',
+                'Customer-facing AI built into a business: a helper that answers customers around the clock and books them in, missed enquiries caught and answered, automatic follow-up, and personalised recommendations.',
+                f'{SITE}/services/ai.html')],
   ),
   'services/custom.html': dict(
     path='/services/custom.html',

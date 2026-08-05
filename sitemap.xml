@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://studiowallace.com/services/ai.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://studiowallace.com/services/custom.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
