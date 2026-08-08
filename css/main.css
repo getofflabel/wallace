@@ -304,14 +304,14 @@ a { color: inherit; text-decoration: none; }
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--dim);
 }
-.fld input[type="text"], .fld textarea {
+.fld input[type="text"], .fld input[type="email"], .fld textarea {
   font-family: inherit; font-size: 13px; color: var(--ink);
   background: transparent;
   border: 1.5px solid var(--line);
   padding: 13px 14px; width: 100%;
   transition: border-color .18s ease;
 }
-.fld input[type="text"]:focus, .fld textarea:focus {
+.fld input[type="text"]:focus, .fld input[type="email"]:focus, .fld textarea:focus {
   outline: none; border-color: var(--clay);
 }
 .fld textarea { resize: vertical; min-height: 76px; }
@@ -482,7 +482,7 @@ a { color: inherit; text-decoration: none; }
 .bk .bk-row { display: grid; gap: 15px; }
 @media (min-width: 560px) { .bk .bk-row { grid-template-columns: 1fr 1fr; } }
 .bk .fld > span, .bk .fld-l { font-size: 10px; letter-spacing: 0.14em; }
-.bk input[type="text"], .bk textarea { padding: 11px 12px; font-size: 12.5px; }
+.bk input[type="text"], .bk input[type="email"], .bk textarea { padding: 11px 12px; font-size: 12.5px; }
 .bk textarea { min-height: 58px; }
 .bk .pick span { font-size: 10.5px; padding: 8px 12px; }
 .bk-send {
@@ -555,7 +555,7 @@ a { color: inherit; text-decoration: none; }
   font-style: normal; font-weight: 400; letter-spacing: 0.1em;
   color: var(--dim); font-size: 9.5px;
 }
-#intake input[type="text"], #intake textarea {
+#intake input[type="text"], #intake input[type="email"], #intake textarea {
   font-family: inherit; font-size: 13.5px; color: var(--ink);
   background: transparent; border: 2px solid var(--line);
   padding: 14px 15px; width: 100%;
@@ -620,9 +620,9 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) {
 
   /* inputs at 16px so focusing one doesn't zoom the whole page */
-  .fld input[type="text"], .fld textarea,
-  .bk input[type="text"], .bk textarea,
-  #intake input[type="text"], #intake textarea { font-size: 16px; }
+  .fld input[type="text"], .fld input[type="email"], .fld textarea,
+  .bk input[type="text"], .bk input[type="email"], .bk textarea,
+  #intake input[type="text"], #intake input[type="email"], #intake textarea { font-size: 16px; }
 
   /* 44px minimum tap targets, padding grows but the chip look stays */
   .nav a, .back, .reel-links a, .btn-line, .btn,
