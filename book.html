@@ -59,6 +59,11 @@
       </label>
 
       <label class="fld">
+        <span>Your email <em>required</em></span>
+        <input type="email" id="fEmail" autocomplete="email" inputmode="email" placeholder="So I can reach you back">
+      </label>
+
+      <label class="fld">
         <span>What type of business are you running <em>required</em></span>
         <input type="text" id="fBiz" autocomplete="organization" placeholder="Auto shop, med spa, restaurant, an idea you want built...">
       </label>
@@ -141,6 +146,7 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
 
   var name  = document.getElementById('fName').value.trim();
+  var email = document.getElementById('fEmail').value.trim();
   var biz   = document.getElementById('fBiz').value.trim();
   var needs = [].slice.call(form.querySelectorAll('.picks input[type="checkbox"]:checked')).map(function (i) { return i.value; });
   var note  = document.getElementById('fNote').value.trim();
@@ -154,11 +160,15 @@ form.addEventListener('submit', function (e) {
   }
   hint.classList.remove('bad');
   if (!name)  return fail('Your name first, then you can carry on.', document.getElementById('fName'));
+  /* the email is the whole point: anyone who fills this in and then wanders off
+     before picking a time is still reachable. Without it they are gone. */
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))
+    return fail('I need an email that works so I can reach you back.', document.getElementById('fEmail'));
   if (!biz)   return fail('Tell me what type of business you are running.', document.getElementById('fBiz'));
   if (!note)  return fail('Tell me what you need so I can prepare for the call.', document.getElementById('fNote'));
   if (!src)   return fail('One tap: how did you find me?');
 
-  var answers = { name: name, biz: biz, needs: needs, note: note, src: src };
+  var answers = { name: name, email: email, biz: biz, needs: needs, note: note, src: src };
   try { sessionStorage.setItem('wc_intake', JSON.stringify(answers)); } catch (err) {}
 
   /* send the answers ahead by email; the calendar shows either way */
@@ -168,7 +178,9 @@ form.addEventListener('submit', function (e) {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         _subject: 'Booking intake: ' + name + ' (' + biz + ')',
+        _replyto: email,
         name: name,
+        email: email,
         business: biz,
         needs: needs.join(', ') || 'not picked',
         what_they_need: note,
@@ -179,6 +191,7 @@ form.addEventListener('submit', function (e) {
 
   var lines = [];
   lines.push('<b>' + answers.name + '</b> · ' + biz);
+  lines.push(email);
   if (needs.length) lines.push('Looking for: ' + needs.join(', '));
   lines.push(note);
   lines.push('Found via ' + src);
